@@ -1,0 +1,18 @@
+# Introduction {#intro}
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+```{r, message = FALSE, warning = FALSE}
+library(tidyverse)
+library(pmtables)
+
+stdata() %>% stable() %>% st_asis()
+```
+
+\clearpage
+
+
+```{r}
+stdata() %>% stable(cols_bold = TRUE) %>% st_asis()
+```
+
