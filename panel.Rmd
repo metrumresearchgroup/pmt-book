@@ -1,0 +1,48 @@
+# Group table rows with panel  {#panel-intro}
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
+```
+
+```{r, include = FALSE}
+smcars <- mutate(mtcars, name = rownames(mtcars))
+smcars <- select(smcars, name, everything())
+smcars <- filter(smcars, cyl < 8)
+smcars <- arrange(smcars, carb)
+smcars <- slice(smcars, 1:10)
+```
+
+Paneling your table is a way to group sets of rows together into a "panel" 
+with a panel header in bold. For example, we can panel a table of `mtcars` by
+`carb`.  We will be working with an abbreviated version of `mtcars`:
+
+```{r}
+smcars
+```
+
+Then we pass into `stable()` and name the paneling column:
+```{r}
+smcars %>% stable(panel = "carb") %>% st_asis()
+```
+
+Now, all of the `carb==1` rows are grouped with the heading `1` and similarly 
+the `carb==2` rows are grouped with the heading `2` in bold. 
+
+This is ok, but a more informative heading would be helpful. To do this, we'll 
+call `as.panel()` to both name the panel column and set some options:
+
+```{r}
+```{r}
+smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_asis()
+```
+`````
+
+
+
+
+
+## panel: important points
+
+1. Most of the time, the data frame should be sorted by the `panel` column
+1. 

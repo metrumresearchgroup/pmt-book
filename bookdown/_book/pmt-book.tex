@@ -41,6 +41,7 @@
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -109,6 +110,7 @@
 \setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{amsthm}
+\usepackage[utopia]{mathdesign}
 \makeatletter
 \def\thm@space@setup{%
   \thm@preskip=8pt plus 2pt minus 4pt
@@ -127,7 +129,7 @@
 
 \title{The pmtables Book}
 \author{Metrum Research Group}
-\date{2020-12-22}
+\date{2021-01-07}
 
 \begin{document}
 \maketitle
@@ -136,10 +138,16 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{about-this-book}{%
+\chapter{About this book}\label{about-this-book}}
 
-Placeholder
+This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports, e.g., a math equation \(a^2 + b^2 = c^2\).
+
+The \textbf{bookdown} package can be installed from CRAN or Github:
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading \texttt{\#}.
+
+To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.name/tinytex/}.
 
 \hypertarget{intro}{%
 \chapter{Introduction}\label{intro}}
@@ -218,7 +226,7 @@ STUDY & DOSE & FORM & N & WT & CRCL & AGE & ALB & SCR \\
 \end{table}
 
 \hypertarget{stable-intro}{%
-\chapter{stable}\label{stable-intro}}
+\chapter{A simple table: stable}\label{stable-intro}}
 
 \texttt{stable()} is the name of the workhorse function that is used to turn
 data.frames into \texttt{TeX} tables. This chapter will introduce the \texttt{stable()} function and how to us it to create basic tables.
@@ -383,7 +391,7 @@ Saving your stable \textbf{can} be as easy as sending it into \texttt{writeLines
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{writeLines}\NormalTok{(out, }\DataTypeTok{con =} \KeywordTok{tempfile}\NormalTok{(}\DataTypeTok{tmpdir =} \StringTok{'.'}\NormalTok{,}\DataTypeTok{fileext =} \StringTok{".tex"}\NormalTok{))}
+\KeywordTok{writeLines}\NormalTok{(out, }\DataTypeTok{con =} \KeywordTok{tempfile}\NormalTok{(}\DataTypeTok{tmpdir =} \StringTok{'.'}\NormalTok{, }\DataTypeTok{fileext =} \StringTok{".tex"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -437,6 +445,72 @@ will be saved there untill you change that
 \KeywordTok{stable_save}\NormalTok{(out)}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{panel-intro}{%
+\chapter{Group table rows with panel}\label{panel-intro}}
+
+Paneling your table is a way to group sets of rows together into a ``panel''
+with a panel header in bold. For example, we can panel a table of \texttt{mtcars} by \texttt{carb}. First, we sort
+the data by carb:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{smcars <-}\StringTok{ }\KeywordTok{arrange}\NormalTok{(smcars, carb)}
+\end{Highlighting}
+\end{Shaded}
+
+Then we pass into \texttt{stable()} and name the paneling column:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{stable}\NormalTok{(smcars, }\DataTypeTok{panel =} \StringTok{"carb"}\NormalTok{) }\OperatorTok{%>%}\StringTok{ }\KeywordTok{st_asis}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[H]
+\centering
+\setlength{\tabcolsep}{5pt} 
+\begin{threeparttable}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}[h]{lllllllllll}
+\hline
+name & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear \\
+\hline
+\multicolumn{11}{l}{\textbf{1}}\\
+Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85 & 2.32 & 18.61 & 1 & 1 & 4 \\
+Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 \\
+Valiant & 18.1 & 6 & 225 & 105 & 2.76 & 3.46 & 20.22 & 1 & 0 & 3 \\
+Fiat 128 & 32.4 & 4 & 78.7 & 66 & 4.08 & 2.2 & 19.47 & 1 & 1 & 4 \\
+Toyota Corolla & 33.9 & 4 & 71.1 & 65 & 4.22 & 1.835 & 19.9 & 1 & 1 & 4 \\
+Toyota Corona & 21.5 & 4 & 120.1 & 97 & 3.7 & 2.465 & 20.01 & 1 & 0 & 3 \\
+Fiat X1-9 & 27.3 & 4 & 79 & 66 & 4.08 & 1.935 & 18.9 & 1 & 1 & 4 \\
+\hline \multicolumn{11}{l}{\textbf{2}}\\
+Merc 240D & 24.4 & 4 & 146.7 & 62 & 3.69 & 3.19 & 20 & 1 & 0 & 4 \\
+Merc 230 & 22.8 & 4 & 140.8 & 95 & 3.92 & 3.15 & 22.9 & 1 & 0 & 4 \\
+Honda Civic & 30.4 & 4 & 75.7 & 52 & 4.93 & 1.615 & 18.52 & 1 & 1 & 4 \\
+Porsche 914-2 & 26 & 4 & 120.3 & 91 & 4.43 & 2.14 & 16.7 & 0 & 1 & 5 \\
+Lotus Europa & 30.4 & 4 & 95.1 & 113 & 3.77 & 1.513 & 16.9 & 1 & 1 & 5 \\
+Volvo 142E & 21.4 & 4 & 121 & 109 & 4.11 & 2.78 & 18.6 & 1 & 1 & 4 \\
+\hline \multicolumn{11}{l}{\textbf{4}}\\
+Mazda RX4 & 21 & 6 & 160 & 110 & 3.9 & 2.62 & 16.46 & 0 & 1 & 4 \\
+Mazda RX4 Wag & 21 & 6 & 160 & 110 & 3.9 & 2.875 & 17.02 & 0 & 1 & 4 \\
+Merc 280 & 19.2 & 6 & 167.6 & 123 & 3.92 & 3.44 & 18.3 & 1 & 0 & 4 \\
+Merc 280C & 17.8 & 6 & 167.6 & 123 & 3.92 & 3.44 & 18.9 & 1 & 0 & 4 \\
+\hline \multicolumn{11}{l}{\textbf{6}}\\
+Ferrari Dino & 19.7 & 6 & 145 & 175 & 3.62 & 2.77 & 15.5 & 0 & 1 & 5 \\
+\hline
+\end{tabular}
+\end{threeparttable}
+\end{table}
+
+\hypertarget{group-table-columns-with-spanners}{%
+\chapter{Group table columns with spanners}\label{group-table-columns-with-spanners}}
+
+\hypertarget{tables-that-span-multiple-pages-longtable}{%
+\chapter{Tables that span multiple pages: longtable}\label{tables-that-span-multiple-pages-longtable}}
+
+\hypertarget{the-pipe-interface}{%
+\chapter{The pipe interface}\label{the-pipe-interface}}
 
   \bibliography{book.bib,packages.bib}
 

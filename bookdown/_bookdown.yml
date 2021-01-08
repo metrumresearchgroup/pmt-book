@@ -1,0 +1,14 @@
+book_filename: "pmt-book"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+rmd_files: [
+  "index.Rmd", 
+  "01-intro.Rmd", 
+  "02-stable.Rmd", 
+  "panel.Rmd", 
+  "spanners.Rmd", 
+  "longtable.Rmd", 
+  "pipe.Rmd"
+]

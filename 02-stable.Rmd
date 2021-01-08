@@ -1,9 +1,10 @@
 
-# stable  {#stable-intro}
+# A simple table: stable  
 ```{r, include = FALSE}
-library(pmtables)
-library(tidyverse)
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
 ```
+
 
 
 `stable()` is the name of the workhorse function that is used to turn 
@@ -77,7 +78,7 @@ out %>% st_asis()
 Saving your stable **can** be as easy as sending it into `writeLines()`
 
 ```{r}
-writeLines(out, con = tempfile(tmpdir = '.',fileext = ".tex"))
+writeLines(out, con = tempfile(tmpdir = '.', fileext = ".tex"))
 ```
 
 But remember that we passed in the `output_file` argument to `stable()` 
@@ -119,25 +120,4 @@ stable_save(out)
 options(pmtables.dir = NULL)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\clearpage

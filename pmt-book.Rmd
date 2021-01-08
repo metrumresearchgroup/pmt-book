@@ -1,0 +1,24 @@
+---
+title: "pmt"
+---
+
+\clearpage
+
+```{r, child = "01-intro.Rmd"}
+```
+
+```{r, child = "02-stable.Rmd"}
+```
+
+```{r, child = "panel.Rmd"}
+```
+
+```{r, child = "spanners.Rmd"}
+```
+
+```{r, child = "longtable.Rmd"}
+```
+
+```{r, child = "pipe.Rmd"}
+```
+
