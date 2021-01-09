@@ -1,1 +1,409 @@
 # The pipe interface
+
+
+## Data
+
+Mostly working with this data; but some others come in later to illustrate
+certain features.
+
+```{r}
+library(pmtables)
+library(yspec)
+library(dplyr)
+spec <- ys_help$spec()
+
+data <- pmt_summarized
+head(data)
+```
+
+\clearpage
+
+## Simple table
+
+
+```{r}
+data %>% st_new() %>% stable(cols_bold = TRUE) %>% st_asis()
+```
+
+\clearpage
+
+## Annotate
+
+- Arguments to identify the name of the generating R script and the output file
+name
+- The output file name is retained as an attribute to be used later when saving
+the table data
+- Arbitrary notes are also allowed (encouraged)
+
+```{r}
+data %>% 
+  st_data() %>%
+  st_files(r = "foo.R", output = "foo.tex") %>%
+  st_notes(
+    "Data were analyzed in quadruplicate.", 
+    "The results are very clear."
+  ) %>% stable() %>% st_asis()
+```
+
+\clearpage
+
+## Notes in minipage
+
+- By default, notes are put in the 3rd part of threeparttable
+- Alternatively, we can put them in a minipage just below the table
+
+```{r}
+data %>% 
+  st_new() %>% 
+  st_files("foo.R", "foo.tex") %>% 
+  st_noteconf(type = "minipage", width = 0.85) %>%
+  st_notes(
+    "Data were analyzed in quadruplicate.", 
+    "The results are very clear."
+  ) %>% stable() %>% st_asis()
+
+```
+
+\clearpage
+
+## Align
+
+- Center everything except for
+- `STUDY` (left)
+- `DOSE` and `SCR` (right)
+
+```{r}
+data %>% 
+  st_new() %>% 
+  st_align("c", STUDY = 'l', .r = "DOSE,SCR") %>% 
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+
+## Units
+
+- Automatically put units under the column name
+
+```{r}
+data %>% 
+  st_new() %>% 
+  st_center(STUDY = 'l', .r = "DOSE,SCR") %>% 
+  st_units(WT = "kg", SCR = "mg/dL", DOSE = "mg") %>%
+  stable() %>% st_asis()
+```
+
+Alternatively
+```{r}
+units <- ys_get_unit(spec, parens = TRUE)
+
+data[1:3,] %>% 
+  st_new() %>% 
+  st_center(STUDY = 'l', .r = "DOSE,SCR") %>% 
+  st_units(units) %>%
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## Expand header rows
+
+- Multiline table header 
+- Unlimited number
+- Use `...` to break
+
+```{r}
+data %>% 
+  st_new() %>% 
+  st_rename("Study...Number" = STUDY, "Serum...Albumin" = ALB) %>%
+  st_units(units) %>%
+  stable() %>% st_asis()
+```
+
+
+
+\clearpage
+
+## Math
+
+- Columns with at least two `$` are "math" and will not be sanitized
+- Otherwise the are functions to "prime" the data frame
+- The default is to convert every column to character
+- Then walk the columns, look for non-math columns and sanitize them
+
+```{r, eval = FALSE}
+ptab <- readRDS("datasets/ptab.RDS")
+ptab
+```
+
+
+```{r, eval = FALSE}
+ptab %>% 
+  st_data() %>% 
+  st_center(Parameter = col_ragged(3), .l = "Symbol") %>%
+  st_panel(".type") %>% 
+  stable() %>% st_asis()
+```
+
+
+
+\clearpage
+
+## hline from column
+
+- Use the column to determine where the hline should go
+
+```{r}
+st_new(data) %>% 
+  st_hline(from = "STUDY") %>% 
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## hline anywhere
+
+- Give row numbers for hline
+
+```{r}
+st_new(data) %>% 
+  st_hline(at = c(3,nrow(data))-1) %>%
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## hline pattern
+
+```{r, eval = FALSE}
+tmp <- readRDS("datasets/with-total.RDS")
+
+st_new(tmp) %>% 
+  st_hline(pattern = "all", cols = "STUDY", n = 2) %>% 
+  stable() %>% st_asis()
+```
+\clearpage
+
+## hline multiple
+
+```{r, eval = FALSE}
+tmp <- readRDS("datasets/with-total.RDS")
+
+st_new(tmp) %>% 
+  st_hline(at = 3, n = 2) %>% 
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## Mark a summary row (cf sumrows)
+
+```{r, eval = FALSE}
+tmp <- readRDS("datasets/with-total.RDS")
+
+st_new(tmp) %>% 
+  st_hline(at = 3, n = 2) %>% 
+  st_bold(cols = "STUDY", pattern = "all") %>%
+  st_edit(pattern = "all", replacement = "All studies") %>%
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+## Remove duplicate values
+
+- Discard repeating values in a column
+
+```{r}
+data %>% 
+  st_new() %>% 
+  st_hline(from = "STUDY") %>% 
+  st_clear_reps("STUDY") %>% 
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## Add styling to data frame
+
+- tex_bold will make table cells bold when they match `pattern`
+- tex_it will make table cells italics when they match `pattern`
+- styling is only added when there is at least one character
+- input must be string
+- combine this with `clear_rep` and `hline_from` to partition the table
+```{r}
+tmp <- ptdata() 
+tmp <- mutate(tmp, STUDY = tex_bold(as.character(STUDY)))
+```
+
+```{r}
+tmp %>% 
+  st_new() %>% 
+  st_clear_reps(STUDY) %>%
+  st_hline(from = "STUDY") %>%
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+## Add styling in the pipeline
+
+```{r}
+tmp <- ptdata()
+```
+
+```{r}
+
+tmp %>%
+  st_new() %>%
+  st_clear_reps(STUDY, .now = TRUE) %>%
+  st_hline(pattern = "\\S+", cols = "STUDY") %>%
+  st_bold(cols = "STUDY") %>%
+  st_it("DOSE") %>%
+  st_edit("\\bmale", "dude") %>%
+  st_edit("female", "gal") %>%
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+## Panel
+
+- Divide the table using column contents
+- there's a bug somewhere there
+
+```{r}
+
+data %>% 
+  st_new() %>% 
+  st_center(DOSE = 'l', SCR = 'r') %>% 
+  st_panel("STUDY", prefix = "Study number: ") %>% 
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## Colspan
+
+- Group columns
+
+```{r}
+data %>% 
+  st_new() %>% 
+  st_left(.c = "WT,AGE,CRCL") %>% 
+  st_span("In final model", WT:CRCL) %>% 
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+## Colspan - multiple
+
+- Multiple groupings
+- Multiple levels
+
+```{r}
+
+data %>% 
+  st_new() %>% 
+  st_span("Meh", DOSE:WT) %>% 
+  st_span("Hrm", AGE:CRCL) %>%
+  st_span("Huh", ALB:SCR) %>% 
+  st_span("Expert opinion", CRCL:SCR, level = 2) %>% 
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+## Colspan - from cols
+
+- we have some columns of the form `tag.name`
+
+```{r, eval = FALSE}
+dotdata <- readRDS("datasets/with-dots.RDS")
+head(dotdata, n=2)
+```
+
+```{r, eval = FALSE}
+dotdata %>% 
+  st_new() %>%
+  st_span_split(sep = '.') %>%
+  stable() %>% st_asis()
+```
+
+\clearpage
+
+## Handle wide columns
+
+### `descr is` taking over the table
+```{r, eval = FALSE}
+ptable <- readRDS("datasets/ptable.RDS")
+
+ptable %>% st_new() %>% stable() %>% st_asis()
+```
+
+
+### Limit `descr` to 5 cm
+
+```{r, eval = FALSE}
+ptable %>% 
+  st_new() %>% 
+  st_align(descr = col_ragged(5)) %>% 
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+## Identify a summary row
+
+We can point to one or more rows and style it up as a "summary row"
+
+```{r, eval = FALSE}
+df.total <- readRDS(file = "datasets/with-total.RDS")
+df.total
+```
+
+
+```{r, eval = FALSE}
+st_new(df.total) %>% 
+  st_sumrow(pattern = "all", label = "All studies", bold = TRUE) %>% 
+  stable() %>% st_asis()
+```
+
+
+\clearpage
+
+
+## Fontsize
+
+- Where's my glasses?
+
+```{r}
+data %>% st_new() %>% st_sizes(font = "tiny") %>% stable() %>% st_asis()
+```
+
+\clearpage
+
+## Row space
+
+```{r}
+sl <- data %>% slice(1:3)
+sl %>% st_new() %>%                         stable() %>% st_asis()
+sl %>% st_new() %>% st_sizes(row = 0.9) %>% stable() %>% st_asis()
+sl %>% st_new() %>% st_sizes(row = 2  ) %>% stable() %>% st_asis()
+```
+\clearpage
+
+## Col space
+
+```{r}
+data %>% st_new() %>% st_sizes(col = 20) %>% stable() %>% st_asis()
+```

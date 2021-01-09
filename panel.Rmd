@@ -1,5 +1,19 @@
 # Group table rows with panel  {#panel-intro}
 
+## Syntax
+
+```{r, eval = FALSE}
+stable(stdata(), panel = "STUDY") 
+```
+
+To set a prefix for the panel header:
+```{r, eval = FALSE}
+stable(stdata(), panel = as.panel("STUDY", prefix = "Study: "))
+```
+
+
+## Basics
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(comment = '.')
 source("global.R")
@@ -46,3 +60,6 @@ smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_asis()
 
 1. Most of the time, the data frame should be sorted by the `panel` column
 1. 
+
+
+\clearpage

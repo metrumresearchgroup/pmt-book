@@ -6,12 +6,38 @@ source("global.R")
 ```
 
 
+## Syntax
+
+Pass your data.frame into `stable()` 
+```{r, eval = FALSE}
+stable(data)
+```
+
+Other formal arguments include:
+
+- **align** to set column alignment
+- **panel** to create groups of rows under a "panel" header
+- **span** to group columns under a "spanner" header
+- **notes** to create table notes
+- **sumrows** to insert summary rows 
+- **units** that get placed below the corresponding column name
+- **drop** to omit certain columns from the table
+- **sizes** to set different table size attributes
+- **escape_fun** a function to sanitize table items
+
+You can also pass a bunch of other arguments through `...` to further format
+the table (see `?stable` for details)
+
+
+
+## Basics
 
 `stable()` is the name of the workhorse function that is used to turn 
-data.frames into `TeX` tables. This chapter will introduce the `stable()` function and how to us it to create basic tables. 
+data.frames into `TeX` tables. This chapter will introduce the `stable()` 
+function and how to us it to create basic tables. 
 
-To illustrate usage and features of `stable()`, we will use the `stdata`
-data set that comes with pmtables
+To illustrate usage and features of `stable()`, we will use the `stdata` data 
+set that comes with pmtables
 
 
 ```{r}

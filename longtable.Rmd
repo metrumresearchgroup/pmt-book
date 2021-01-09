@@ -1,2 +1,32 @@
 # Tables that span multiple pages: longtable
 
+## Syntax
+
+To create a long table
+
+```{r, eval = FALSE}
+stable_long(stdata())
+```
+
+
+## Basics
+
+You can create `longtables` that span multiple pages of your pdf document.
+Tables using the`longtable` environment are very different than the the 
+basic table from `stable()` which are built using tabular environment.
+
+
+## Inserting longtable into your latex document
+
+Once you have written your long table out to a file, you can source it into 
+your latex document with a simple input command
+
+```{txt, eval = FALSE}
+\input{my-table.tex}
+```
+
+You should not wrap your longtable input code in `\begin{table}`/`\end{table}`
+as you would with a regular tabular table. 
+
+
+\clearpage
