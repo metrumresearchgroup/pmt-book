@@ -1,9 +1,13 @@
 # pmtable
 
+```{r, include = FALSE}
+source("global.R")
+```
+
 __Some setup__
 
 ```{r}
-units = ys_get_unit(ys_help$spec(), parens = TRUE)
+units = yspec::ys_get_unit(yspec::ys_help$spec(), parens = TRUE)
 ```
 
 ```{r}
@@ -11,6 +15,37 @@ data <- pmt_first
 data_pk <- pmt_pk
 data_all <- pmt_obs
 ```
+
+## Principles
+
+These functions expect that the user passes in all data that is to be summarized
+and nothing more.  We will not filter your data. 
+
+
+## Rename cols
+
+When you select columns to summarize, you can generally pass in alternate 
+(nicer) names that you want to show up in the table.  For example, if I have 
+a column called `WT` in the data frame and I want it to show up as `Weight`
+this can be accomplished during the call
+
+```{r}
+pt_cont_wide(data, cols = c(Weight = "WT")) %>% 
+  stable(notes = NULL) %>% st_asis()
+```
+
+Alternatively, you can use the `table` argument to enter rename info. Note that
+`table` is a list that should have names that match up with columns in the data
+frame and values that are the new names
+
+```{r}
+tab <- list(SEXf = "Sex", ASIANf = "Race group")
+
+pt_cat_wide(data, cols = "SEXf,ASIANf", table = tab) %>% 
+  stable() %>% st_asis()
+```
+
+
 
 
 ## Data inventory tables
