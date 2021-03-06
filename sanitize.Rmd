@@ -12,9 +12,6 @@ x <- ptdata() %>% st_new(notes = "EDA_summary = TRUE") %>%
 x$notes
 ```
 
-
-\clearpage
-
 ## File names
 
 ```{r}
@@ -35,7 +32,7 @@ out <-
   stable(inspect = TRUE) %>% 
   get_stable_data()
 
-out$cols_new
+out$cols_tex
 ```
 
 ## Main table contents
@@ -57,7 +54,7 @@ out <-
   stable(inspect = TRUE, span = colgroup("foo_this", WT:SCR)) %>% 
   get_stable_data()
 
-out$span_data
+out$span_data$tex
 ```
 
 
@@ -80,5 +77,3 @@ xtra <- tibble(a = "foo%", b = "$\\mu$g", c = "1234 \\% %")
 out <- stable(data, cols_extra = xtra)
 out[grepl("%", out, fixed = TRUE)]
 ```
-
-\clearpage
