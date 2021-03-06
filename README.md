@@ -1,5 +1,5 @@
-# pmt
+# Introducing pmtables
 
-See the preview [here](pmt-intro.pdf)
+See the pdf [here](pmt-intro.pdf)
 
 
