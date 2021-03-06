@@ -241,8 +241,8 @@ $if(title)$
 \renewcommand{\doctitle}{\textbf{$title$}}
 $endif$
 
-\newcommand{\mtrum}{{\color{mrgreen}M}etrumRG}
-\lhead{{\large \textbf{\color{anth}pmt book}}}
+
+
 
 \newcommand{\status}{}
 
@@ -257,8 +257,20 @@ $if(confidential)$
   $endif$
 $endif$
 
-\chead{{\large {\color{second}\status}}}
-\rhead{\large  \textbf{\mtrum}}
+\newcommand{\mtrum}{{\color{mrgreen}M}etrumRG}
+\lhead{}
+\chead{}
+\rhead{}
+
+\pagestyle{fancy}
+\fancyhead[L]{{\large \textbf{\color{anth}pmt intro}}}
+\fancyhead[R]{\large  \textbf{\mtrum}}
+\fancyhead[C]{{\large {\color{second}\status}}}
+\fancypagestyle{firstpage}{%
+  \lhead{}
+  \chead{}
+  \rhead{}
+}
 
 $if(watermark)$
 \definecolor{grey}{RGB}{225,225,225}
@@ -268,6 +280,8 @@ $endif$
 
 
 \begin{document}
+
+\thispagestyle{firstpage}
 
 $if(hide_header)$
 

@@ -1,5 +1,5 @@
 ---
-title: "\\color{mrgreen}The pmtables Book"
+title: "\\color{mrgreen}Introducing pmtables"
 date: "`r Sys.Date()`"
 author: Kyle Baron
 comment: > 
@@ -12,7 +12,7 @@ version: "`r packageVersion('pmtables')`"
 \clearpage
 
 
-```{r, child = "02-stable.Rmd"}
+```{r, child = "stable.Rmd"}
 ```
 
 \clearpage
@@ -54,5 +54,6 @@ version: "`r packageVersion('pmtables')`"
 
 ```{r,include = FALSE}
 system("rm file*.tex")
+system("rm *.log")
 ```
 

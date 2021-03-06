@@ -297,3 +297,24 @@ Then pass that list as `units` to `stable()`
 stable(data, units = u) %>% st_asis()
 ```
 
+### Multi-line column headers
+
+If the column header is long, you can break it across multiple lines.  By 
+default, use `...`  in the column name
+
+```{r}
+tibble(`First line ... Second line` = 123456789) %>% 
+  stable() %>% st_asis() 
+```
+
+The break can be introduced through the rename mechanism
+
+```{r}
+tibble(a = 1) %>% 
+  stable(cols_rename =  c(`First ... Second` = "a")) %>% 
+  st_asis()
+```
+
+Look at the `?tab_cols` help topic for the `cols_break` argument; this 
+lets you change the character sequence used for the break. 
+
