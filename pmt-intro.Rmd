@@ -4,7 +4,7 @@ date: "`r Sys.Date()`"
 author: Metrum Research Group
 comment: > 
   This is a simple introduction to the pmtables package for R. I hope this will 
-  be useful for those who are new to the package and thos who just need a 
+  be useful for those who are new to the package and those who just need a 
   reminder on the syntax. 
 version: "`r packageVersion('pmtables')`"
 ---
