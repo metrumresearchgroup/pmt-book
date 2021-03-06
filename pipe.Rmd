@@ -24,7 +24,7 @@ data <- pmt_summarized
 head(data)
 ```
 
-You start out a pipline by passing your data frame into `st_new()`
+You start out a pipeline by passing your data frame into `st_new()`
 
 ```{r}
 data %>% st_new() %>% class

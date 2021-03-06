@@ -31,7 +31,7 @@ a graphic in the viewer window
 data %>% stable() %>% st2viewer()
 ```
 
-This method is more conveient because the tables always go to the viewer. But 
+This method is more convenient because the tables always go to the viewer. But 
 the rendering will not be like what you will see in the report. 
 
 ## st2article

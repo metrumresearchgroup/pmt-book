@@ -7,7 +7,7 @@ source("global.R")
 
 ## Syntax
 
-Set the `span` arument to the output of `as.span()`. The key arguments
+Set the `span` argument to the output of `as.span()`. The key arguments
 for `as.span()` are the spanner title and the names of the columns
 over which you want the spanner to run
 

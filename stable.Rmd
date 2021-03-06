@@ -134,7 +134,7 @@ stable_save(out, dir = tempdir())
 And if you look at the default value for `dir` in `?stable_save`, you'll 
 see that this is associated with an option called `pmtables.dir`;  you 
 can set that option to your default output directory and your tables 
-will be saved there untill you change that
+will be saved there until you change that
 
 ```{r, eval=FALSE}
 options(pmtables.dir = tempdir())
@@ -209,7 +209,7 @@ new name on the left and the old name on the right.
 
 ### Hide a column name 
 
-You can also "erase" the name of a colum in the output
+You can also "erase" the name of a column in the output
 
 ```{r}
 data %>% 
@@ -274,7 +274,7 @@ data %>%
   st_asis()
 ```
 
-The appeaance of the notes can be controlled by calling `noteconf()` and 
+The appearance of the notes can be controlled by calling `noteconf()` and 
 passing the result as `note_config`. See `?tab_notes()` for more details.
 
 
