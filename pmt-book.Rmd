@@ -22,7 +22,9 @@ title: "pmt"
 ```{r, child = "pipe.Rmd"}
 ```
 
-```{r, child = "sanitize.Rmd"}
+```{r, child = "preview.Rmd"}
+```
 
+```{r, child = "sanitize.Rmd"}
 ```
 

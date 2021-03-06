@@ -193,6 +193,32 @@ See `cols_align()` help topic for more information and argument descriptions.
 
 ## Some other customization
 
+### Rename columns
+
+You can change the name that appears in the rendered table with `cols_rename`
+
+```{r}
+data %>% 
+  slice(1:3) %>% 
+  stable(cols_rename = c(Age = "AGE", Weight = "WT")) %>%
+  st_asis()
+```
+
+Note that the rename syntax follows the tidyselect convention of putting the 
+new name on the left and the old name on the right.
+
+### Hide a column name 
+
+You can also "erase" the name of a colum in the output
+
+```{r}
+data %>% 
+  slice(1:3) %>% 
+  stable(cols_blank = "WT,ALB,SCR") %>% 
+  st_asis()
+```
+
+
 
 ### Drop a column from the table
 

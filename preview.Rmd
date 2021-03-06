@@ -18,7 +18,7 @@ data %>% stable() %>% st2report(ntex = 2)
 
 Pass in a list of tables and you will get one table on each page with a listing
 of tables in the table of contents
-```{r}
+```{r, eval = FALSE}
 list(table1, table2, table3) %>% st2report()
 ```
 
@@ -27,7 +27,7 @@ list(table1, table2, table3) %>% st2report()
 This function relies on `texPreview()` to render your table and display it as 
 a graphic in the viewer window
 
-```{r}
+```{r, eval = FALSE}
 data %>% stable() %>% st2viewer()
 ```
 
@@ -38,7 +38,7 @@ the rendering will not be like what you will see in the report.
 
 Like `st2report()` but less report-like. You should use `st2report()` instead.
 
-```{r}
+```{r, eval = FALSE}
 data %>% stable() %>% st2article()
 ```
 
@@ -49,7 +49,7 @@ The original.  Rather than building a TeX article, it runs the table in a
 `Rmd` document via pandoc.  Not recommended; it is much slower to get the 
 preview because there has to be a call to `pandoc`
 
-```{r}
+```{r, eval = FALSE}
 data %>% stable() %>% st2doc()
 ```
 
