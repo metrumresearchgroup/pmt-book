@@ -1,4 +1,9 @@
+```{r, include = FALSE}
+source("global.R")
+```
+
 # Group table columns with spanners
+
 
 ## Syntax
 
@@ -10,9 +15,71 @@ over which you want the spanner to run
 stable(stdata(), span = as.span("Covariates", WT:SCR))
 ```
 
+The equivalent pipe syntax is
+
+```{r, eval = FALSE}
+st_new(stdata()) %>% st_span("Covariates", WT:SCR)
+```
 
 
-## Introduction
+
+## Basics
+
+A column spanner puts a horizontal line over a sequence of column names and 
+places a title above that line forming a column group. 
+
+As a trivial example: 
+
+```{r}
+data <- 
+  tibble(
+    Tariffville = "06081",  Connecticut= "CT", 
+    Minnesota = "MN", Minneapolis = "55455"
+  ) 
+
+data %>% stable(span = as.span("States", Connecticut:Minnesota)) %>%  st_asis()
+```
+
+## Multiple spanners
+
+Multiple spanners can be added to a table by specifying the `level` for any 
+spanner that you want to be placed above the lowest level spanner.  For 
+example, 
+
+```{r}
+sp <- list(
+  as.span("States", Connecticut:Minnesota), 
+  as.span("The Universe", Tariffville:Minneapolis, level = 2)
+)
+data %>% stable(span = sp) %>% st_asis()
+```
+
+Note that to specify multiple spanners, we pass a list of span objects. I've 
+simplified the code a bit here by creating that list as a standalone object
+and then passing the whole list as `span`.
+
+### Using pipe syntax
+
+For problems like this, it might be preferable to use the pipe syntax
+
+```{r}
+data %>%
+  st_new() %>% 
+  st_span("States", Connecticut:Minnesota) %>% 
+  st_span("The Universe", Tariffville:Minneapolis, level = 2) %>% 
+  stable() %>% 
+  st_asis()
+```
+
+## Breaking span title
+
+We can make the title of the span break across multiple lines by using `...`
+
+```{r}
+stable(data, span = as.span("Example ... States", Connecticut:Minnesota)) %>%
+  st_asis()
+```
+
 
 
 

@@ -146,4 +146,104 @@ stable_save(out)
 options(pmtables.dir = NULL)
 ```
 
-\clearpage
+
+## Align columns
+
+Use the `align` argument to align column data to the left, center or right. Use
+a `cols_*` function to specify the default alignment for all columns
+
+```{r}
+tmp <- tibble(AB = 1, CDEFGHIJ = 2, KL = 3)
+stable(tmp, align = cols_center()) %>% st_asis()
+```
+
+You can pass in exceptions to the default
+```{r}
+stable(tmp, align = cols_center(CDEFGHIJ = "r")) %>% st_asis()
+```
+
+Or you can pass an alignment directive and the columns that are bound by that 
+directive
+
+```{r}
+stable(tmp, align = cols_center(.l = "AB,KL")) %>% st_asis()
+```
+
+A special directive called `.outer` lets you specify the alignment of the first
+and last column in the table. For example, this code puts the first column to 
+the left and the last column to the right.
+
+```{r}
+stable(tmp, align = cols_center(.outer = "lr")) %>% st_asis()
+```
+
+### Fixed column widths
+
+Use `col_ragged(size)` to force a column to be a fixed size. 
+
+```{r}
+stable(tmp, align = cols_center(AB = col_ragged(2))) %>% st_asis()
+```
+
+By default, the unit is `cm` so that the first column (`AB`) has a width 
+of 2 cm regardless of the contents. 
+
+See `cols_align()` help topic for more information and argument descriptions.
+
+
+## Some other customization
+
+
+### Drop a column from the table
+
+If we want to prevent a column from appearing in the output table (e.g. 
+`FORM`)
+```{r}
+head(data)
+```
+
+list the column name as `drop`
+
+```{r}
+stable(data, drop = "FORM") %>% st_asis()
+```
+
+Of course some tidyverse could accomplish the same thing
+```{r, eval = FALSE}
+data %>% select(-FORM) %>% stable() 
+```
+
+### Notes
+
+Arbitrary notes can get added to any table using the `notes` argument. 
+
+```{r}
+data %>% 
+  slice(1:3) %>% 
+  stable(notes = "Showing just the first three rows") %>% 
+  st_asis()
+```
+
+The appeaance of the notes can be controlled by calling `noteconf()` and 
+passing the result as `note_config`. See `?tab_notes()` for more details.
+
+
+### Units
+
+pmtables can automatically place units underneath the appropriate column. To 
+do this, generate a list with names that match the column names you want to 
+label with units. 
+
+```{r}
+u <- list(
+  WT = "kg", CRCL = "ml/min", AGE = "year", ALB = "g/dL", 
+  SCR = "mg\\%"
+) %>% map(~paste0("(", .x, ")"))
+```
+
+Then pass that list as `units` to `stable()`
+
+```{r}
+stable(data, units = u) %>% st_asis()
+```
+

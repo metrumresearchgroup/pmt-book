@@ -1,0 +1,57 @@
+
+# Options for previewing the table
+
+## st2report
+
+Take a table or a list of tables and render them in a report-like document with 
+a table of contents and a (faux) caption for each table
+
+```{r, eval = FALSE}
+data %>% stable() %>% st2report()
+```
+
+You might try passing `ntex` to force the document to build more than once
+(sometimes the layout settles down after the second build
+```{r, eval = FALSE}
+data %>% stable() %>% st2report(ntex = 2)
+```
+
+Pass in a list of tables and you will get one table on each page with a listing
+of tables in the table of contents
+```{r}
+list(table1, table2, table3) %>% st2report()
+```
+
+## st2viewer
+
+This function relies on `texPreview()` to render your table and display it as 
+a graphic in the viewer window
+
+```{r}
+data %>% stable() %>% st2viewer()
+```
+
+This method is more conveient because the tables always go to the viewer. But 
+the rendering will not be like what you will see in the report. 
+
+## st2article
+
+Like `st2report()` but less report-like. You should use `st2report()` instead.
+
+```{r}
+data %>% stable() %>% st2article()
+```
+
+
+## st2doc
+
+The original.  Rather than building a TeX article, it runs the table in a 
+`Rmd` document via pandoc.  Not recommended; it is much slower to get the 
+preview because there has to be a call to `pandoc`
+
+```{r}
+data %>% stable() %>% st2doc()
+```
+
+
+

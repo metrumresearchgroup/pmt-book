@@ -1,70 +1,87 @@
 # The pipe interface
 
+```{r, include = FALSE}
+eval_pipe <- FALSE
+library(yspec)
+library(pmtables)
+spec <- ys_help$spec()
+library(dplyr)
+# knitr::knit_hooks$set(output = function(x,options) {
+#   if(isTRUE(options$as.is)) {
+#     return(st_asis(x))  
+#   }
+#   return(x)
+# })
+```
 
-## Data
+## Basics
 
 Mostly working with this data; but some others come in later to illustrate
 certain features.
 
 ```{r}
-library(pmtables)
-library(yspec)
-library(dplyr)
-spec <- ys_help$spec()
-
 data <- pmt_summarized
 head(data)
 ```
+
+You start out a pipline by passing your data frame into `st_new()`
+
+```{r}
+data %>% st_new() %>% class
+```
+This creates an object that gets revised by subsequent steps in the pipeline, 
+adding features and styling as you go. 
+
+For the final step in the pipeline, we'll send the object to `stable()` to 
+create the table
+
+```{r}
+data %>% st_new() %>% stable() %>% head(n=9)
+```
+
 
 \clearpage
 
 ## Simple table
 
 
-```{r}
-data %>% st_new() %>% stable(cols_bold = TRUE) %>% st_asis()
+```{r, eval = eval_pipe}
+data %>% st_new() %>% stable(cols_bold = TRUE)
 ```
-
-\clearpage
 
 ## Annotate
 
 - Arguments to identify the name of the generating R script and the output file
-name
+  name
 - The output file name is retained as an attribute to be used later when saving
-the table data
+  the table data
 - Arbitrary notes are also allowed (encouraged)
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
-  st_data() %>%
+  st_new() %>%
   st_files(r = "foo.R", output = "foo.tex") %>%
   st_notes(
     "Data were analyzed in quadruplicate.", 
     "The results are very clear."
-  ) %>% stable() %>% st_asis()
+  ) %>% stable()
 ```
-
-\clearpage
 
 ## Notes in minipage
 
 - By default, notes are put in the 3rd part of threeparttable
 - Alternatively, we can put them in a minipage just below the table
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
   st_new() %>% 
-  st_files("foo.R", "foo.tex") %>% 
   st_noteconf(type = "minipage", width = 0.85) %>%
   st_notes(
     "Data were analyzed in quadruplicate.", 
     "The results are very clear."
-  ) %>% stable() %>% st_asis()
-
+  ) %>% stable()
 ```
 
-\clearpage
 
 ## Align
 
@@ -72,41 +89,38 @@ data %>%
 - `STUDY` (left)
 - `DOSE` and `SCR` (right)
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
   st_new() %>% 
   st_align("c", STUDY = 'l', .r = "DOSE,SCR") %>% 
-  stable() %>% st_asis()
+  stable() 
 ```
-
-
-\clearpage
 
 
 ## Units
 
 - Automatically put units under the column name
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
   st_new() %>% 
   st_center(STUDY = 'l', .r = "DOSE,SCR") %>% 
   st_units(WT = "kg", SCR = "mg/dL", DOSE = "mg") %>%
-  stable() %>% st_asis()
+  stable() 
 ```
 
-Alternatively
-```{r}
+Alternatively, you can get a list of units out of a `yspec` object and 
+pass that in:
+
+```{r, eval = eval_pipe}
 units <- ys_get_unit(spec, parens = TRUE)
 
 data[1:3,] %>% 
   st_new() %>% 
   st_center(STUDY = 'l', .r = "DOSE,SCR") %>% 
   st_units(units) %>%
-  stable() %>% st_asis()
+  stable()
 ```
-
-\clearpage
 
 ## Expand header rows
 
@@ -114,17 +128,13 @@ data[1:3,] %>%
 - Unlimited number
 - Use `...` to break
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
   st_new() %>% 
   st_rename("Study...Number" = STUDY, "Serum...Albumin" = ALB) %>%
   st_units(units) %>%
-  stable() %>% st_asis()
+  stable()
 ```
-
-
-
-\clearpage
 
 ## Math
 
@@ -144,59 +154,52 @@ ptab %>%
   st_data() %>% 
   st_center(Parameter = col_ragged(3), .l = "Symbol") %>%
   st_panel(".type") %>% 
-  stable() %>% st_asis()
+  stable() 
 ```
 
+## Add horizontal lines
 
-
-\clearpage
-
-## hline from column
+### hline from column
 
 - Use the column to determine where the hline should go
 
-```{r}
+```{r, eval = FALSE}
 st_new(data) %>% 
   st_hline(from = "STUDY") %>% 
-  stable() %>% st_asis()
+  stable() %>% 
+  st_asis()
 ```
 
-\clearpage
-
-## hline anywhere
+### hline anywhere
 
 - Give row numbers for hline
 
-```{r}
+```{r, eval = FALSE}
 st_new(data) %>% 
   st_hline(at = c(3,nrow(data))-1) %>%
-  stable() %>% st_asis()
+  stable() %>% 
+  st_asis()
 ```
 
-\clearpage
-
-## hline pattern
+### hline from pattern
 
 ```{r, eval = FALSE}
 tmp <- readRDS("datasets/with-total.RDS")
 
 st_new(tmp) %>% 
   st_hline(pattern = "all", cols = "STUDY", n = 2) %>% 
-  stable() %>% st_asis()
+  stable() 
 ```
-\clearpage
 
-## hline multiple
+### hline multiple
 
 ```{r, eval = FALSE}
 tmp <- readRDS("datasets/with-total.RDS")
 
 st_new(tmp) %>% 
   st_hline(at = 3, n = 2) %>% 
-  stable() %>% st_asis()
+  stable() 
 ```
-
-\clearpage
 
 ## Mark a summary row (cf sumrows)
 
@@ -207,22 +210,19 @@ st_new(tmp) %>%
   st_hline(at = 3, n = 2) %>% 
   st_bold(cols = "STUDY", pattern = "all") %>%
   st_edit(pattern = "all", replacement = "All studies") %>%
-  stable() %>% st_asis()
+  stable() 
 ```
-
-
-\clearpage
 
 ## Remove duplicate values
 
 - Discard repeating values in a column
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
   st_new() %>% 
   st_hline(from = "STUDY") %>% 
   st_clear_reps("STUDY") %>% 
-  stable() %>% st_asis()
+  stable()
 ```
 
 \clearpage
@@ -239,12 +239,12 @@ tmp <- ptdata()
 tmp <- mutate(tmp, STUDY = tex_bold(as.character(STUDY)))
 ```
 
-```{r}
+```{r, eval = eval_pipe}
 tmp %>% 
   st_new() %>% 
   st_clear_reps(STUDY) %>%
   st_hline(from = "STUDY") %>%
-  stable() %>% st_asis()
+  stable()
 ```
 
 
@@ -256,7 +256,7 @@ tmp %>%
 tmp <- ptdata()
 ```
 
-```{r}
+```{r, eval = eval_pipe}
 
 tmp %>%
   st_new() %>%
@@ -266,7 +266,7 @@ tmp %>%
   st_it("DOSE") %>%
   st_edit("\\bmale", "dude") %>%
   st_edit("female", "gal") %>%
-  stable() %>% st_asis()
+  stable() 
 ```
 
 
@@ -277,38 +277,38 @@ tmp %>%
 - Divide the table using column contents
 - there's a bug somewhere there
 
-```{r}
+```{r, eval = eval_pipe}
 
 data %>% 
   st_new() %>% 
   st_center(DOSE = 'l', SCR = 'r') %>% 
   st_panel("STUDY", prefix = "Study number: ") %>% 
-  stable() %>% st_asis()
+  stable()
 ```
 
 \clearpage
 
-## Colspan
+## Spanners
 
 - Group columns
 
-```{r}
+```{r, eval = eval_pipe}
 data %>% 
   st_new() %>% 
   st_left(.c = "WT,AGE,CRCL") %>% 
   st_span("In final model", WT:CRCL) %>% 
-  stable() %>% st_asis()
+  stable()
 ```
 
 
 \clearpage
 
-## Colspan - multiple
+### Colspan: multiple
 
 - Multiple groupings
 - Multiple levels
 
-```{r}
+```{r, eval = eval_pipe}
 
 data %>% 
   st_new() %>% 
@@ -316,13 +316,13 @@ data %>%
   st_span("Hrm", AGE:CRCL) %>%
   st_span("Huh", ALB:SCR) %>% 
   st_span("Expert opinion", CRCL:SCR, level = 2) %>% 
-  stable() %>% st_asis()
+  stable() 
 ```
 
 
 \clearpage
 
-## Colspan - from cols
+### Colspan: from columns
 
 - we have some columns of the form `tag.name`
 
@@ -335,7 +335,7 @@ head(dotdata, n=2)
 dotdata %>% 
   st_new() %>%
   st_span_split(sep = '.') %>%
-  stable() %>% st_asis()
+  stable()
 ```
 
 \clearpage
@@ -346,7 +346,7 @@ dotdata %>%
 ```{r, eval = FALSE}
 ptable <- readRDS("datasets/ptable.RDS")
 
-ptable %>% st_new() %>% stable() %>% st_asis()
+ptable %>% st_new() %>% stable() 
 ```
 
 
@@ -356,7 +356,7 @@ ptable %>% st_new() %>% stable() %>% st_asis()
 ptable %>% 
   st_new() %>% 
   st_align(descr = col_ragged(5)) %>% 
-  stable() %>% st_asis()
+  stable()
 ```
 
 
@@ -375,35 +375,37 @@ df.total
 ```{r, eval = FALSE}
 st_new(df.total) %>% 
   st_sumrow(pattern = "all", label = "All studies", bold = TRUE) %>% 
-  stable() %>% st_asis()
+  stable()
 ```
 
 
 \clearpage
 
 
-## Fontsize
+## Font and table sizes
+
+### Font size
 
 - Where's my glasses?
 
-```{r}
-data %>% st_new() %>% st_sizes(font = "tiny") %>% stable() %>% st_asis()
+```{r, eval = eval_pipe}
+data %>% st_new() %>% st_sizes(font = "tiny") %>% stable() 
 ```
 
 \clearpage
 
-## Row space
+### Row space
 
-```{r}
+```{r, eval = eval_pipe}
 sl <- data %>% slice(1:3)
-sl %>% st_new() %>%                         stable() %>% st_asis()
-sl %>% st_new() %>% st_sizes(row = 0.9) %>% stable() %>% st_asis()
-sl %>% st_new() %>% st_sizes(row = 2  ) %>% stable() %>% st_asis()
+sl %>% st_new() %>%                         stable()
+sl %>% st_new() %>% st_sizes(row = 0.9) %>% stable()
+sl %>% st_new() %>% st_sizes(row = 2  ) %>% stable()
 ```
 \clearpage
 
-## Col space
+### Column space
 
-```{r}
-data %>% st_new() %>% st_sizes(col = 20) %>% stable() %>% st_asis()
+```{r, eval = eval_pipe}
+data %>% st_new() %>% st_sizes(col = 20) %>% stable()
 ```

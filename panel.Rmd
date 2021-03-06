@@ -2,6 +2,8 @@
 
 ## Syntax
 
+To panel a table by `STUDY` 
+
 ```{r, eval = FALSE}
 stable(stdata(), panel = "STUDY") 
 ```
@@ -28,8 +30,9 @@ smcars <- slice(smcars, 1:10)
 ```
 
 Paneling your table is a way to group sets of rows together into a "panel" 
-with a panel header in bold. For example, we can panel a table of `mtcars` by
-`carb`.  We will be working with an abbreviated version of `mtcars`:
+with a panel header rendered in bold font. For example, we can panel a table 
+of `mtcars` by `carb`.  We will be working with an abbreviated version of 
+`mtcars`:
 
 ```{r}
 smcars
@@ -50,16 +53,17 @@ call `as.panel()` to both name the panel column and set some options:
 ```{r}
 smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_asis()
 ```
-`````
 
-
-
+Note that the prefix is completely specified by the user (including any spaces
+or a colon.
 
 
 ## panel: important points
 
 1. Most of the time, the data frame should be sorted by the `panel` column
-1. 
+1. pmtables creates panels by non-repeating values in the panel column; there 
+   will be an error if duplicate panel names are found and this can be 
+   overridden by passing `duplicates_ok` to `as.panel()`.  
 
 
 \clearpage
