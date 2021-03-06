@@ -45,6 +45,13 @@ version: "`r packageVersion('pmtables')`"
 ```{r, child = "sanitize.Rmd"}
 ```
 
+\clearpage
+
+```{r, child = "pmtable.Rmd"}
+
+```
+
+
 ```{r,include = FALSE}
 system("rm file*.tex")
 ```

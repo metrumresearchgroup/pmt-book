@@ -228,3 +228,44 @@ Equivalent call
 stable(data, span = as.span("Covariates", c(WT, ALB, EGFR)))
 ```
 
+## hlines - at
+
+To put horizontal lines at specific rows
+
+```{r, eval = FALSE}
+st_new(data) %>% st_hline(at = c(2,4,6))
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, hline_at = c(2,4,6))
+```
+
+## hlines - from
+
+To calculate hlines based on data frame column values (for example, to break
+the table by changing values of `STUDYf`)
+
+```{r, eval = FALSE}
+st_new(data) %>% st_hline(from = "STUDYf")
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, hline_from = "STUDYf")
+```
+
+## hlines - pattern
+
+To search the table for a pattern and add hlines above matches
+
+```{r}
+st_new(data) %>% st_hline(pattern  = "All", cols = "Summary")
+```
+
+The `cols` argument limits the search to the `Summary` column; omit this 
+argument to search the whole table.
+
+There is no equivalent call for this using straight `stable()`.

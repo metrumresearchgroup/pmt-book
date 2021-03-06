@@ -2,10 +2,22 @@
 
 ## Syntax
 
-To create a long table
+To create a long table from a data frame
 
 ```{r, eval = FALSE}
 stable_long(stdata())
+```
+
+To create a long table from pipeline
+
+```{r, eval = FALSE}
+st_new(data) %>% stable_long()
+```
+
+To create a long table from `pmtable`
+
+```{r, eval = FALSE}
+pt_cont_long(data, cols = "WT,EGFR") %>% stable_long()
 ```
 
 
