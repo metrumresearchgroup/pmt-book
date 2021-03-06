@@ -318,3 +318,31 @@ tibble(a = 1) %>%
 Look at the `?tab_cols` help topic for the `cols_break` argument; this 
 lets you change the character sequence used for the break. 
 
+
+### Insert horizontal lines
+
+Pass `hlines_at` to insert horizontal lines above specific rows.  This can 
+be either logical vector with the same length as the number of rows in the 
+table or a vector of integers.
+
+```{r}
+stable(stdata(), hline_at = c(3,5)) %>% st_asis()
+```
+
+or 
+
+```{r}
+stable(stdata(), hline_at = data$FORM == "tablet") %>% st_asis()
+```
+
+
+Pass `hlines_from` to derive hline locations based on non-repeating values 
+in a table column. Notice how this behaves. 
+
+```{r}
+stable(stdata(), hline_from = "DOSE") %>% st_asis()
+```
+
+
+See the `?tab_hlines` help topic for more info. See also `st_hline()` for 
+the pipe equivalent with additional feature.
