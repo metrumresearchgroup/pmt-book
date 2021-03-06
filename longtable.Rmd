@@ -28,5 +28,3 @@ your latex document with a simple input command
 You should not wrap your longtable input code in `\begin{table}`/`\end{table}`
 as you would with a regular tabular table. 
 
-
-\clearpage

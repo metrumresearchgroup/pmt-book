@@ -1,30 +1,51 @@
 ---
-title: "pmt"
+title: "\\color{mrgreen}The pmtables Book"
+date: "`r Sys.Date()`"
+author: Kyle Baron
+comment: > 
+  This is a simple introduction to the pmtables package for R. I hope this will 
+  be useful for those who are new to the package and thos who just need a 
+  reminder on the syntax. 
+version: "`r packageVersion('pmtables')`"
 ---
 
 \clearpage
 
-```{r, child = "01-intro.Rmd"}
-```
 
 ```{r, child = "02-stable.Rmd"}
 ```
 
+\clearpage
+
 ```{r, child = "panel.Rmd"}
 ```
+
+\clearpage
 
 ```{r, child = "spanners.Rmd"}
 ```
 
+\clearpage
+
 ```{r, child = "longtable.Rmd"}
 ```
+
+\clearpage
 
 ```{r, child = "pipe.Rmd"}
 ```
 
+\clearpage
+
 ```{r, child = "preview.Rmd"}
 ```
 
+\clearpage
+
 ```{r, child = "sanitize.Rmd"}
+```
+
+```{r,include = FALSE}
+system("rm file*.tex")
 ```
 
