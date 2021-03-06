@@ -49,7 +49,7 @@ example,
 ```{r}
 sp <- list(
   as.span("States", Connecticut:Minnesota), 
-  as.span("The Universe", Tariffville:Minneapolis, level = 2)
+  as.span("Important Locations", Tariffville:Minneapolis, level = 2)
 )
 data %>% stable(span = sp) %>% st_asis()
 ```
@@ -66,7 +66,7 @@ For problems like this, it might be preferable to use the pipe syntax
 data %>%
   st_new() %>% 
   st_span("States", Connecticut:Minnesota) %>% 
-  st_span("The Universe", Tariffville:Minneapolis, level = 2) %>% 
+  st_span("Important Locations", Tariffville:Minneapolis, level = 2) %>% 
   stable() %>% 
   st_asis()
 ```
@@ -76,7 +76,7 @@ data %>%
 We can make the title of the span break across multiple lines by using `...`
 
 ```{r}
-stable(data, span = as.span("Example ... States", Connecticut:Minnesota)) %>%
+stable(data, span = as.span("Important ... States", Connecticut:Minnesota)) %>%
   st_asis()
 ```
 

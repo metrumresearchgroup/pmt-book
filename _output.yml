@@ -3,4 +3,4 @@ templ::mrg_notebook:
   toc_depth: 3
   confidential: false
   template: "source/pmt-template.tex"
-  
+
