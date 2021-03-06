@@ -191,7 +191,7 @@ of 2 cm regardless of the contents.
 See `cols_align()` help topic for more information and argument descriptions.
 
 
-## Some other customization
+## Manipulating columns and names
 
 ### Rename columns
 
@@ -218,6 +218,27 @@ data %>%
   st_asis()
 ```
 
+### Unmask column names
+
+In tibbles, you can't have duplicate column names.  The `cols_split` argument
+lets you unmask the names when duplicate names are prefixed with a tag and 
+a delimiter
+
+```{r}
+tmp <- tibble(a.A = 1, b.A = 2, c.A = 3)
+```
+
+```{r}
+tmp %>% stable(cols_split = '.') %>% st_asis()
+```
+
+
+### Make column names bold
+
+```{r}
+data %>% slice(1:2) %>% stable(cols_bold = TRUE) %>% st_asis()
+```
+
 
 
 ### Drop a column from the table
@@ -238,6 +259,9 @@ Of course some tidyverse could accomplish the same thing
 ```{r, eval = FALSE}
 data %>% select(-FORM) %>% stable() 
 ```
+
+
+## Other customizations
 
 ### Notes
 
