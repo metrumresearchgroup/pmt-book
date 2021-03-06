@@ -261,7 +261,7 @@ stable(data, hline_from = "STUDYf")
 
 To search the table for a pattern and add hlines above matches
 
-```{r}
+```{r, eval = FALSE}
 st_new(data) %>% st_hline(pattern  = "All", cols = "Summary")
 ```
 
