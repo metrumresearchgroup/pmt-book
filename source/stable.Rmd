@@ -346,3 +346,23 @@ stable(stdata(), hline_from = "DOSE") %>% st_asis()
 
 See the `?tab_hlines` help topic for more info. See also `st_hline()` for 
 the pipe equivalent with additional feature.
+
+
+### Clear replicate values
+
+You can create groups in a table by "clearing" replicate values
+
+```{r}
+stable(stdata(), clear_reps = "STUDY") %>% st_asis()
+```
+
+This can be combined with an hline
+```{r}
+stable(stdata(), clear_reps = "STUDY", hline_from = "STUDY") %>% 
+  st_asis()
+
+```
+
+See `?tab_clear_reps` for other options, including an option for clearing
+based on several grouping variables.
+

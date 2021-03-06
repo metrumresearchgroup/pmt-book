@@ -2,5 +2,5 @@ templ::mrg_notebook:
   toc: true
   toc_depth: 3
   confidential: false
-  template: "pmt-template.tex"
+  template: "source/pmt-template.tex"
   

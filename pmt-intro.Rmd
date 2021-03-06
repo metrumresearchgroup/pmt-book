@@ -12,49 +12,49 @@ version: "`r packageVersion('pmtables')`"
 \clearpage
 
 
-```{r, child = "stable.Rmd"}
+```{r, child = "source/stable.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "panel.Rmd"}
+```{r, child = "source/panel.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "spanners.Rmd"}
+```{r, child = "source/spanners.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "longtable.Rmd"}
+```{r, child = "source/longtable.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "pipe.Rmd"}
+```{r, child = "source/pipe.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "preview.Rmd"}
+```{r, child = "source/preview.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "sanitize.Rmd"}
+```{r, child = "source/sanitize.Rmd"}
 ```
 
 \clearpage
 
-```{r, child = "pmtable.Rmd"}
+```{r, child = "source/pmtable.Rmd"}
 
 ```
 
 \clearpage
 
 ```{r,include = FALSE}
-system("rm file*.tex")
-system("rm *.log")
+system("rm source/file*.tex")
+system("rm source/*.log")
 ```
 

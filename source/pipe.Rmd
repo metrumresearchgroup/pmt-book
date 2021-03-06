@@ -269,3 +269,18 @@ The `cols` argument limits the search to the `Summary` column; omit this
 argument to search the whole table.
 
 There is no equivalent call for this using straight `stable()`.
+
+## Clear replicate values
+
+To create groups by "clearing" replicate values in a column
+
+```{r, eval = FALSE}
+st_new(data) %>% st_clear_reps(STUDY) %>% stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, clear_reps = "STUDY")
+```
+
