@@ -51,6 +51,7 @@ version: "`r packageVersion('pmtables')`"
 
 ```
 
+\clearpage
 
 ```{r,include = FALSE}
 system("rm file*.tex")
