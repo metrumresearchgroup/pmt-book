@@ -276,6 +276,9 @@ out <- pt_cont_wide(
 out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
 ```
 
+
+\clearpage 
+
 ### Paneled
 
 ```{r}
