@@ -160,7 +160,7 @@ stable(data, drop = "WT, ALB, DOSE")
 ```{r, eval = FALSE}
 st_new(data) %>% 
   st_notes("first note") %>% 
-  st_nates("second note") %>% 
+  st_notes("second note") %>% 
   stable()
 ```
 

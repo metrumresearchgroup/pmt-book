@@ -39,7 +39,7 @@ your latex document with a simple input command
 
 *IMPORTANT*  
 
-- Do not warp the input in `\begin{table}` / `\end{table}`; the table
+- Do not wrap the input in `\begin{table}` / `\end{table}`; the table
 will not show up properly that way
 - Do not include any `\caption{...}` statement; the caption must be
 provided in a special way (see below)
