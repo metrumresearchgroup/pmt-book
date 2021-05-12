@@ -9,15 +9,15 @@ See the pdf [here](pmt-intro.pdf)
 
 # Examples
 
-Data inventory 
+### Data inventory 
 
 ![](source/images/data-inventory.png)
 
-Continuous data summary
+### Continuous data summary
 
 ![](source/images/continuous-summary.png)
 
 
-Categorical data summary
+### Categorical data summary
 
 ![](source/images/categorical-summary.png)
