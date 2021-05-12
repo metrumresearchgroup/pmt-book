@@ -7,3 +7,17 @@ reminder on the syntax.
 See the pdf [here](pmt-intro.pdf)
 
 
+# Examples
+
+Data inventory 
+
+![](source/images/data-inventory.png)
+
+Continuous data summary
+
+![](source/images/continuous-summary.png)
+
+
+Categorical data summary
+
+![](source/images/categorical-summary.png)
