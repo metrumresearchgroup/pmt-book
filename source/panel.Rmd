@@ -50,13 +50,23 @@ This is ok, but a more informative heading would be helpful. To do this, we'll
 call `as.panel()` to both name the panel column and set some options:
 
 ```{r}
-```{r}
 smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_asis()
 ```
 
 Note that the prefix is completely specified by the user (including any spaces
 or a colon.
 
+
+## panel: additional customization 
+
+See the `?rowpanel` help topic for arguments to `rowpanel()` that can be passed
+to customize the panel.  Some of the customizations include
+
+1. add a prefix to the panel title
+1. skip making panels for certain data in the panel column
+1. make the panel title bold
+1. make the panel title italics
+1. opt out from drawing `hline` above panels
 
 ## panel: important points
 

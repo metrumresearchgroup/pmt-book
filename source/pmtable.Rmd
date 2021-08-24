@@ -46,8 +46,6 @@ pt_cat_wide(data, cols = "SEXf,ASIANf", table = tab) %>%
 ```
 
 
-
-
 ## Data inventory tables
 
 - Count number of
