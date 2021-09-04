@@ -357,3 +357,79 @@ out <- pt_cont_long(
 
 out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
 ```
+
+\clearpage
+
+## Demographics table
+
+A demographics table summarizes both continuous and discrete data in a single 
+table. 
+
+- Both continuous columns (`cols_cont`) and discrete (`cols_cat`) are required
+- You can specify a `span` column (the table is pretty skinny without that)
+- You can opt out of the paneling too with `paneled` argument (the also makes 
+  the table wider
+- An `All data` summary is provided on the left (opt out with `summarize_all`)
+
+### With span
+
+
+```{r}
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL", 
+  cols_cat = "SEXf, CPf", 
+  span = c(Study = "STUDYf")
+) %>% st_asis()
+```
+
+\clearpage
+
+
+### No span
+
+- This table is skinny
+
+```{r}
+mini <- noteconf(type = "minipage", width = 0.5)
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf"
+) %>% stable(note_config = mini) %>% st_asis()
+```
+
+\clearpage
+
+### No span, not paneled
+
+- Opting out of the paneling also makes it wider
+
+```{r}
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf", 
+  paneled = FALSE, 
+  table = list(WT = "Weight (kg)", CRCL = "CLCR (ml/min)", 
+               AGE = "Age (years)", SEXf = "Sex", CPf = "Child-Pugh")
+) %>% st_asis()
+```
+
+
+\clearpage
+
+### No summary
+
+```{r}
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf", 
+  span = c(Study = "STUDYf")
+  summarize_all = FALSE
+) %>% st_asis()
+```
+
+\clearpage
+
