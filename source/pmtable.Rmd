@@ -426,7 +426,7 @@ pt_demographics(
   pmt_first, 
   cols_cont = "WT, CRCL, AGE", 
   cols_cat = "SEXf, CPf", 
-  span = c(Study = "STUDYf")
+  span = c(Study = "STUDYf"),
   summarize_all = FALSE
 ) %>% st_asis()
 ```
