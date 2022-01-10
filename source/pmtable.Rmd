@@ -199,14 +199,15 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
 - Long indicates that the covariates go down the table
 
 ### Ungrouped
-```{r}
+
+```{r, ungrouped-long-categorical}
 out <- pt_cat_long(
   data = data,
   cols = vars(Study = STUDYf, Sex = SEXf, "Race group" = ASIANf, "Child-Pugh" = CPf)
 )
 
 out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
-````
+```
 
 \clearpage
 

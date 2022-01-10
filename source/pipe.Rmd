@@ -284,3 +284,29 @@ Equivalent call
 stable(data, clear_reps = "STUDY")
 ```
 
+\clearpage
+
+# Pipe cheat table
+```{r, echo = FALSE}
+arg <- function(call) {
+  fun <- get(call, mode = "function")
+  form <- formals(fun)
+  value <- unlist(form, use.names=FALSE)
+  lbl <- names(formals(fun))
+  #lbl <- lbl[lbl != "..."]
+  lbl <- lbl[!lbl=="x"]
+  paste0(lbl, collapse = "  \\newline ")
+}
+funcs <- function(x) {
+  x <- paste0(x, "()")
+  x
+}
+
+df <- yaml_as_df("pipe.yml")
+df$args <- sapply(df$call, arg)
+df$call <- sapply(df$call, funcs)
+df <- select(df, Call = call, Arguments = args, Description = do)
+ali <- cols_left(Arguments = col_ragged(2.5), Call = col_ragged(3), Description = col_ragged(7))
+df %>% stable_long(align = ali , hline_from = "Call", cols_bold = TRUE) %>%
+st_asis()
+```
