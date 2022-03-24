@@ -108,3 +108,8 @@ table properly.
 out <- stable_long(data) %>% st_asis()
 ```
 
+## Page breaks
+
+Starting with version 0.4.1, pmtables will modify longtables so that panel 
+headers are kept on the same page as the first row of data underneath the 
+panel row. 

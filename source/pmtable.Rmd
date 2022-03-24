@@ -108,6 +108,34 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
 
 \clearpage
 
+### BQL / BLQ
+
+Beginning with version 0.4.1, pmtables can accommodate either `BQL`
+or `BLQ` as the name of the column indicating that observations were below
+the limit of quantitation. Table notes and output column headers will be adjusted
+based on the input. 
+
+For example
+
+```{r}
+data_ql <- pmt_obs
+data_lq <- dplyr::rename(pmt_obs, BLQ = BQL) 
+```
+
+
+```{r}
+pt_data_inventory(data_ql, by = "STUDYf") %>% 
+  st_asis()
+```
+
+
+```{r}
+pt_data_inventory(data_lq, by = "STUDYf") %>% 
+  st_asis()
+```
+
+\clearpage
+
 
 ## Wide categorical table
 

@@ -67,6 +67,26 @@ to customize the panel.  Some of the customizations include
 1. make the panel title bold
 1. make the panel title italics
 1. opt out from drawing `hline` above panels
+1. jut the panel titles so that the rows under the panel header are indented
+   (available starting with version 0.4.1)
+
+\clearpage
+
+### `jut`
+
+We recommend an value more than 1, otherwise the table looks mis-aligned rather
+than creating offset between panel row and underlying data.
+
+```{r}
+stable(
+  stdata(), 
+  panel = as.panel("STUDY", jut = 1)
+) %>% st_asis()
+```
+
+This feature requires pmtables 0.4.1 or greater.
+
+\clearpage
 
 ## panel: important points
 
