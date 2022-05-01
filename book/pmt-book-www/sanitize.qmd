@@ -1,0 +1,84 @@
+
+# A word about sanitizing table contents
+
+```{r}
+#| include: false
+source("global.R")
+```
+
+
+## Notes
+
+```{r}
+x <- ptdata() %>% st_new(notes = "EDA_summary = TRUE") %>% 
+  st_make(inspect = TRUE) %>% 
+  get_stable_data() 
+
+x$notes
+```
+
+## File names
+
+```{r}
+x <- ptdata() %>% st_new() %>% 
+  st_files(r = "my_script.R") %>% 
+  st_make(inspect = TRUE) %>% 
+  get_stable_data() 
+
+x$notes
+```
+
+
+## Column names 
+
+```{r}
+out <- 
+  tibble(a_1 = 5) %>% 
+  stable(inspect = TRUE) %>% 
+  get_stable_data()
+
+out$cols_tex
+```
+
+## Main table contents
+
+```{r}
+out <- 
+  tibble(a = "5_2") %>% 
+  stable(inspect = TRUE) %>% 
+  get_stable_data()
+
+out$tab
+```
+
+## Span titles
+
+```{r}
+out <- 
+  ptdata() %>% 
+  stable(inspect = TRUE, span = colgroup("foo_this", WT:SCR)) %>% 
+  get_stable_data()
+
+out$span_data$tex
+```
+
+
+## Panel names
+
+```{r}
+data <- tibble(a = c("a_1", "a_1", "a_1", "a_2", "a_2"), 
+               b = letters[1:5])
+
+out <- stable(data, panel = "a") 
+out[grepl("multicolumn", out)]
+```
+
+## `cols_extra` input
+
+```{r}
+x <- letters[1:5]
+data <- tibble(a = x, b = x, c = x)
+xtra <- tibble(a = "foo%", b = "$\\mu$g", c = "1234 \\% %")
+out <- stable(data, cols_extra = xtra)
+out[grepl("%", out, fixed = TRUE)]
+```

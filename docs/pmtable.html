@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.299">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>pmt-book - 8&nbsp; pmtable</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<link href="./sanitize.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">pmtable</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">pmt-book</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./stable.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">A simple table: stable</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./panel.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Group table rows with panel</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./spanners.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Group table columns with spanners</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./longtable.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tables that span multiple pages: longtable</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pipe.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">The pipe interface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./preview.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Options for previewing the table</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sanitize.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">A word about sanitizing table contents</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pmtable.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">pmtable</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#principles" id="toc-principles" class="nav-link active" data-scroll-target="#principles"> <span class="header-section-number">8.1</span> Principles</a></li>
+  <li><a href="#rename-cols" id="toc-rename-cols" class="nav-link" data-scroll-target="#rename-cols"> <span class="header-section-number">8.2</span> Rename cols</a></li>
+  <li><a href="#data-inventory-tables" id="toc-data-inventory-tables" class="nav-link" data-scroll-target="#data-inventory-tables"> <span class="header-section-number">8.3</span> Data inventory tables</a>
+  <ul class="collapse">
+  <li><a href="#stacked-by-endpoint" id="toc-stacked-by-endpoint" class="nav-link" data-scroll-target="#stacked-by-endpoint"> <span class="header-section-number">8.3.1</span> Stacked by endpoint</a></li>
+  <li><a href="#paneled" id="toc-paneled" class="nav-link" data-scroll-target="#paneled"> <span class="header-section-number">8.3.2</span> Paneled</a></li>
+  <li><a href="#grouped-by-study" id="toc-grouped-by-study" class="nav-link" data-scroll-target="#grouped-by-study"> <span class="header-section-number">8.3.3</span> Grouped (by study)</a></li>
+  <li><a href="#bql-blq" id="toc-bql-blq" class="nav-link" data-scroll-target="#bql-blq"> <span class="header-section-number">8.3.4</span> BQL / BLQ</a></li>
+  </ul></li>
+  <li><a href="#wide-categorical-table" id="toc-wide-categorical-table" class="nav-link" data-scroll-target="#wide-categorical-table"> <span class="header-section-number">8.4</span> Wide categorical table</a>
+  <ul class="collapse">
+  <li><a href="#paneled-limited-utility-imo" id="toc-paneled-limited-utility-imo" class="nav-link" data-scroll-target="#paneled-limited-utility-imo"> <span class="header-section-number">8.4.1</span> Paneled (limited utility, IMO)</a></li>
+  <li><a href="#grouped-by-male-female" id="toc-grouped-by-male-female" class="nav-link" data-scroll-target="#grouped-by-male-female"> <span class="header-section-number">8.4.2</span> Grouped (by male / female)</a></li>
+  <li><a href="#paneled-and-grouped" id="toc-paneled-and-grouped" class="nav-link" data-scroll-target="#paneled-and-grouped"> <span class="header-section-number">8.4.3</span> Paneled and grouped</a></li>
+  <li><a href="#no-summary" id="toc-no-summary" class="nav-link" data-scroll-target="#no-summary"> <span class="header-section-number">8.4.4</span> No summary</a></li>
+  </ul></li>
+  <li><a href="#long-categorical-table" id="toc-long-categorical-table" class="nav-link" data-scroll-target="#long-categorical-table"> <span class="header-section-number">8.5</span> Long categorical table</a>
+  <ul class="collapse">
+  <li><a href="#ungrouped-1" id="toc-ungrouped-1" class="nav-link" data-scroll-target="#ungrouped-1"> <span class="header-section-number">8.5.1</span> Ungrouped</a></li>
+  <li><a href="#grouped-by-formulation" id="toc-grouped-by-formulation" class="nav-link" data-scroll-target="#grouped-by-formulation"> <span class="header-section-number">8.5.2</span> Grouped (by formulation)</a></li>
+  <li><a href="#summary-on-bottom-and-right" id="toc-summary-on-bottom-and-right" class="nav-link" data-scroll-target="#summary-on-bottom-and-right"> <span class="header-section-number">8.5.3</span> Summary on bottom and right</a></li>
+  <li><a href="#no-summary-1" id="toc-no-summary-1" class="nav-link" data-scroll-target="#no-summary-1"> <span class="header-section-number">8.5.4</span> No summary</a></li>
+  </ul></li>
+  <li><a href="#wide-continuous-table" id="toc-wide-continuous-table" class="nav-link" data-scroll-target="#wide-continuous-table"> <span class="header-section-number">8.6</span> Wide continuous table</a>
+  <ul class="collapse">
+  <li><a href="#ungrouped-2" id="toc-ungrouped-2" class="nav-link" data-scroll-target="#ungrouped-2"> <span class="header-section-number">8.6.1</span> Ungrouped</a></li>
+  <li><a href="#paneled-1" id="toc-paneled-1" class="nav-link" data-scroll-target="#paneled-1"> <span class="header-section-number">8.6.2</span> Paneled</a></li>
+  <li><a href="#grouped-by-study-1" id="toc-grouped-by-study-1" class="nav-link" data-scroll-target="#grouped-by-study-1"> <span class="header-section-number">8.6.3</span> Grouped (by study)</a></li>
+  <li><a href="#paneled-and-grouped-1" id="toc-paneled-and-grouped-1" class="nav-link" data-scroll-target="#paneled-and-grouped-1"> <span class="header-section-number">8.6.4</span> Paneled and grouped</a></li>
+  </ul></li>
+  <li><a href="#long-continuous-table" id="toc-long-continuous-table" class="nav-link" data-scroll-target="#long-continuous-table"> <span class="header-section-number">8.7</span> Long continuous table</a>
+  <ul class="collapse">
+  <li><a href="#ungrouped-3" id="toc-ungrouped-3" class="nav-link" data-scroll-target="#ungrouped-3"> <span class="header-section-number">8.7.1</span> Ungrouped</a></li>
+  <li><a href="#paneled-2" id="toc-paneled-2" class="nav-link" data-scroll-target="#paneled-2"> <span class="header-section-number">8.7.2</span> Paneled</a></li>
+  </ul></li>
+  <li><a href="#demographics-table" id="toc-demographics-table" class="nav-link" data-scroll-target="#demographics-table"> <span class="header-section-number">8.8</span> Demographics table</a>
+  <ul class="collapse">
+  <li><a href="#with-span" id="toc-with-span" class="nav-link" data-scroll-target="#with-span"> <span class="header-section-number">8.8.1</span> With span</a></li>
+  <li><a href="#no-span" id="toc-no-span" class="nav-link" data-scroll-target="#no-span"> <span class="header-section-number">8.8.2</span> No span</a></li>
+  <li><a href="#no-span-not-paneled" id="toc-no-span-not-paneled" class="nav-link" data-scroll-target="#no-span-not-paneled"> <span class="header-section-number">8.8.3</span> No span, not paneled</a></li>
+  <li><a href="#no-summary-2" id="toc-no-summary-2" class="nav-link" data-scroll-target="#no-summary-2"> <span class="header-section-number">8.8.4</span> No summary</a></li>
+  </ul></li>
+  <li><a href="#customized-summary-functions" id="toc-customized-summary-functions" class="nav-link" data-scroll-target="#customized-summary-functions"> <span class="header-section-number">8.9</span> Customized summary functions</a>
+  <ul class="collapse">
+  <li><a href="#continuous-long-table" id="toc-continuous-long-table" class="nav-link" data-scroll-target="#continuous-long-table"> <span class="header-section-number">8.9.1</span> Continuous long table</a></li>
+  <li><a href="#continuous-wide-table" id="toc-continuous-wide-table" class="nav-link" data-scroll-target="#continuous-wide-table"> <span class="header-section-number">8.9.2</span> Continuous wide table</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">pmtable</span></h1>
+</div>
+
+
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Some setup</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>units <span class="ot">=</span> yspec<span class="sc">::</span><span class="fu">ys_get_unit</span>(yspec<span class="sc">::</span>ys_help<span class="sc">$</span><span class="fu">spec</span>(), <span class="at">parens =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="ot">&lt;-</span> pmt_first</span>
+<span id="cb2-2"><a href="#cb2-2"></a>data_pk <span class="ot">&lt;-</span> pmt_pk</span>
+<span id="cb2-3"><a href="#cb2-3"></a>data_all <span class="ot">&lt;-</span> pmt_obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="principles" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="principles"><span class="header-section-number">8.1</span> Principles</h2>
+<p>These functions expect that the user passes in all data that is to be summarized and nothing more. We will not filter your data.</p>
+</section>
+<section id="rename-cols" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="rename-cols"><span class="header-section-number">8.2</span> Rename cols</h2>
+<p>When you select columns to summarize, you can generally pass in alternate (nicer) names that you want to show up in the table. For example, if I have a column called <code>WT</code> in the data frame and I want it to show up as <code>Weight</code> this can be accomplished during the call</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">pt_cont_wide</span>(data, <span class="at">cols =</span> <span class="fu">c</span>(<span class="at">Weight =</span> <span class="st">"WT"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">stable</span>(<span class="at">notes =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+<p>Alternatively, you can use the <code>table</code> argument to enter rename info. Note that <code>table</code> is a list that should have names that match up with columns in the data frame and values that are the new names</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">SEXf =</span> <span class="st">"Sex"</span>, <span class="at">ASIANf =</span> <span class="st">"Race group"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">pt_cat_wide</span>(data, <span class="at">cols =</span> <span class="st">"SEXf,ASIANf"</span>, <span class="at">table =</span> tab) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="data-inventory-tables" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="data-inventory-tables"><span class="header-section-number">8.3</span> Data inventory tables</h2>
+<ul>
+<li>Count number of
+<ul>
+<li>individuals</li>
+<li>observations</li>
+<li>BQL observations</li>
+<li>missing values</li>
+</ul></li>
+<li>Calculate the percent of observations or BQL in different sub groups</li>
+</ul>
+<section id="stacked-by-endpoint" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="stacked-by-endpoint"><span class="header-section-number">8.3.1</span> Stacked by endpoint</h3>
+<ul>
+<li>The stacked plot creates multiple independent tables to summarize different endpoints; there is no single overall summary for the table because we are summarizing different endpoints</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_data_inventory</span>(</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  data_all,</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"SEQf"</span>, <span class="at">prefix =</span> <span class="st">"Endpoint: "</span>),</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="at">stacked =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7"></a></span>
+<span id="cb5-8"><a href="#cb5-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="paneled" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="paneled"><span class="header-section-number">8.3.2</span> Paneled</h3>
+<ul>
+<li>Just summarize a single endpoint</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_data_inventory</span>(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  data_pk,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>),</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="at">panel =</span> <span class="st">"ASIANf"</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="grouped-by-study" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="grouped-by-study"><span class="header-section-number">8.3.3</span> Grouped (by study)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_data_inventory</span>(</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  data_pk,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="bql-blq" class="level3" data-number="8.3.4">
+<h3 data-number="8.3.4" class="anchored" data-anchor-id="bql-blq"><span class="header-section-number">8.3.4</span> BQL / BLQ</h3>
+<p>Beginning with version 0.4.1, pmtables can accommodate either <code>BQL</code> or <code>BLQ</code> as the name of the column indicating that observations were below the limit of quantitation. Table notes and output column headers will be adjusted based on the input.</p>
+<p>For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data_ql <span class="ot">&lt;-</span> pmt_obs</span>
+<span id="cb8-2"><a href="#cb8-2"></a>data_lq <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(pmt_obs, <span class="at">BLQ =</span> BQL) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">pt_data_inventory</span>(data_ql, <span class="at">by =</span> <span class="st">"STUDYf"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">pt_data_inventory</span>(data_lq, <span class="at">by =</span> <span class="st">"STUDYf"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="wide-categorical-table" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="wide-categorical-table"><span class="header-section-number">8.4</span> Wide categorical table</h2>
+<ul>
+<li>Summary of categorical data in wide format</li>
+<li>The summary is <code>number (percent within group)</code></li>
+<li>Wide refers to the fact that the covariates go across the table</li>
+</ul>
+<section id="ungrouped" class="level4" data-number="8.4.0.1">
+<h4 data-number="8.4.0.1" class="anchored" data-anchor-id="ungrouped"><span class="header-section-number">8.4.0.1</span> Ungrouped</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="paneled-limited-utility-imo" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="paneled-limited-utility-imo"><span class="header-section-number">8.4.1</span> Paneled (limited utility, IMO)</h3>
+<ul>
+<li>Provided here for completeness</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDYf"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>)</span>
+<span id="cb12-6"><a href="#cb12-6"></a></span>
+<span id="cb12-7"><a href="#cb12-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="grouped-by-male-female" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="grouped-by-male-female"><span class="header-section-number">8.4.2</span> Grouped (by male / female)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Sex =</span> <span class="st">"SEXf"</span>),</span>
+<span id="cb13-4"><a href="#cb13-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="paneled-and-grouped" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="paneled-and-grouped"><span class="header-section-number">8.4.3</span> Paneled and grouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDYf"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>),</span>
+<span id="cb14-5"><a href="#cb14-5"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"RF Group"</span> <span class="ot">=</span> <span class="st">"RFf"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7"></a></span>
+<span id="cb14-8"><a href="#cb14-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="no-summary" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="no-summary"><span class="header-section-number">8.4.4</span> No summary</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="at">summarize =</span> <span class="st">"none"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb15-5"><a href="#cb15-5"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDYf"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>),</span>
+<span id="cb15-6"><a href="#cb15-6"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"RF Group"</span> <span class="ot">=</span> <span class="st">"RFf"</span>)</span>
+<span id="cb15-7"><a href="#cb15-7"></a>)</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="long-categorical-table" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="long-categorical-table"><span class="header-section-number">8.5</span> Long categorical table</h2>
+<ul>
+<li>Categorical table in long format</li>
+<li>Long indicates that the covariates go down the table</li>
+</ul>
+<section id="ungrouped-1" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="ungrouped-1"><span class="header-section-number">8.5.1</span> Ungrouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf, <span class="st">"Child-Pugh"</span> <span class="ot">=</span> CPf)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a></span>
+<span id="cb16-6"><a href="#cb16-6"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/ungrouped-long-categorical-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="grouped-by-formulation" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="grouped-by-formulation"><span class="header-section-number">8.5.2</span> Grouped (by formulation)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf,<span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf, <span class="st">"Child-Pugh"</span> <span class="ot">=</span> CPf),</span>
+<span id="cb17-4"><a href="#cb17-4"></a>  <span class="at">span =</span> <span class="fu">c</span>(<span class="at">Formulation =</span> <span class="st">"FORMf"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5"></a>)</span>
+<span id="cb17-6"><a href="#cb17-6"></a></span>
+<span id="cb17-7"><a href="#cb17-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="summary-on-bottom-and-right" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="summary-on-bottom-and-right"><span class="header-section-number">8.5.3</span> Summary on bottom and right</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">summarize =</span> <span class="st">"both"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb18-5"><a href="#cb18-5"></a>  <span class="at">span =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf)</span>
+<span id="cb18-6"><a href="#cb18-6"></a>  )</span>
+<span id="cb18-7"><a href="#cb18-7"></a></span>
+<span id="cb18-8"><a href="#cb18-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="no-summary-1" class="level3" data-number="8.5.4">
+<h3 data-number="8.5.4" class="anchored" data-anchor-id="no-summary-1"><span class="header-section-number">8.5.4</span> No summary</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="at">summarize =</span> <span class="st">"none"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb19-5"><a href="#cb19-5"></a>  <span class="at">span =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf)</span>
+<span id="cb19-6"><a href="#cb19-6"></a>  )</span>
+<span id="cb19-7"><a href="#cb19-7"></a></span>
+<span id="cb19-8"><a href="#cb19-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="wide-continuous-table" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="wide-continuous-table"><span class="header-section-number">8.6</span> Wide continuous table</h2>
+<ul>
+<li>Continuous table in wide format</li>
+<li>Wide means that the covariates go across the table</li>
+</ul>
+<section id="ungrouped-2" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="ungrouped-2"><span class="header-section-number">8.6.1</span> Ungrouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cont_wide</span>(</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">cols =</span> <span class="st">"WT,SCR,AGE,ALB,HT"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">units =</span> units</span>
+<span id="cb20-5"><a href="#cb20-5"></a>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a></span>
+<span id="cb20-7"><a href="#cb20-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="paneled-1" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="paneled-1"><span class="header-section-number">8.6.2</span> Paneled</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cont_wide</span>(</span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="at">cols =</span> <span class="st">"WT,SCR,AGE,ALB,HT"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="at">panel =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>),</span>
+<span id="cb21-5"><a href="#cb21-5"></a>  <span class="at">units =</span> units</span>
+<span id="cb21-6"><a href="#cb21-6"></a>)</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="grouped-by-study-1" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="grouped-by-study-1"><span class="header-section-number">8.6.3</span> Grouped (by study)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cont_wide</span>(</span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="at">cols =</span> <span class="st">"WT,SCR,AGE,ALB,HT"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>),</span>
+<span id="cb22-5"><a href="#cb22-5"></a>  <span class="at">units =</span> units</span>
+<span id="cb22-6"><a href="#cb22-6"></a>)</span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="paneled-and-grouped-1" class="level3" data-number="8.6.4">
+<h3 data-number="8.6.4" class="anchored" data-anchor-id="paneled-and-grouped-1"><span class="header-section-number">8.6.4</span> Paneled and grouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cont_wide</span>(</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="at">cols =</span> <span class="st">"WT,SCR,AGE,ALB,HT"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>),</span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="at">panel =</span> <span class="fu">c</span>(<span class="at">Formulation =</span> <span class="st">"FORMf"</span>),</span>
+<span id="cb23-6"><a href="#cb23-6"></a>  <span class="at">units =</span> units</span>
+<span id="cb23-7"><a href="#cb23-7"></a>)</span>
+<span id="cb23-8"><a href="#cb23-8"></a></span>
+<span id="cb23-9"><a href="#cb23-9"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="long-continuous-table" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="long-continuous-table"><span class="header-section-number">8.7</span> Long continuous table</h2>
+<ul>
+<li>Continuous summary table in long format</li>
+<li>Long indicates that covariates go down the table</li>
+</ul>
+<section id="ungrouped-3" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="ungrouped-3"><span class="header-section-number">8.7.1</span> Ungrouped</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cont_long</span>(</span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="at">cols =</span> <span class="st">"WT,SCR,AGE"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">units =</span> units</span>
+<span id="cb24-5"><a href="#cb24-5"></a>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a></span>
+<span id="cb24-7"><a href="#cb24-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="paneled-2" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="paneled-2"><span class="header-section-number">8.7.2</span> Paneled</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cont_long</span>(</span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="at">data =</span> data,</span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="at">cols =</span> <span class="st">"WT,SCR,AGE"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="at">panel =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf),</span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="at">units =</span> units</span>
+<span id="cb25-6"><a href="#cb25-6"></a>)</span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="demographics-table" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="demographics-table"><span class="header-section-number">8.8</span> Demographics table</h2>
+<p>A demographics table summarizes both continuous and discrete data in a single table.</p>
+<ul>
+<li>Both continuous columns (<code>cols_cont</code>) and discrete (<code>cols_cat</code>) are required</li>
+<li>You can specify a <code>span</code> column (the table is pretty skinny without that)</li>
+<li>You can opt out of the paneling too with <code>paneled</code> argument (the also makes the table wider</li>
+<li>An <code>All data</code> summary is provided on the left (opt out with <code>summarize_all</code>)</li>
+</ul>
+<section id="with-span" class="level3" data-number="8.8.1">
+<h3 data-number="8.8.1" class="anchored" data-anchor-id="with-span"><span class="header-section-number">8.8.1</span> With span</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">pt_demographics</span>(</span>
+<span id="cb26-2"><a href="#cb26-2"></a>  pmt_first, </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL"</span>, </span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span>, </span>
+<span id="cb26-5"><a href="#cb26-5"></a>  <span class="at">span =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>)</span>
+<span id="cb26-6"><a href="#cb26-6"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="no-span" class="level3" data-number="8.8.2">
+<h3 data-number="8.8.2" class="anchored" data-anchor-id="no-span"><span class="header-section-number">8.8.2</span> No span</h3>
+<ul>
+<li>This table is skinny</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>mini <span class="ot">&lt;-</span> <span class="fu">noteconf</span>(<span class="at">type =</span> <span class="st">"minipage"</span>, <span class="at">width =</span> <span class="fl">0.5</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">pt_demographics</span>(</span>
+<span id="cb27-3"><a href="#cb27-3"></a>  pmt_first, </span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL, AGE"</span>, </span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">note_config =</span> mini) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="no-span-not-paneled" class="level3" data-number="8.8.3">
+<h3 data-number="8.8.3" class="anchored" data-anchor-id="no-span-not-paneled"><span class="header-section-number">8.8.3</span> No span, not paneled</h3>
+<ul>
+<li>Opting out of the paneling also makes it wider</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">pt_demographics</span>(</span>
+<span id="cb28-2"><a href="#cb28-2"></a>  pmt_first, </span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL, AGE"</span>, </span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span>, </span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="at">paneled =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="at">table =</span> <span class="fu">list</span>(<span class="at">WT =</span> <span class="st">"Weight (kg)"</span>, <span class="at">CRCL =</span> <span class="st">"CLCR (ml/min)"</span>, </span>
+<span id="cb28-7"><a href="#cb28-7"></a>               <span class="at">AGE =</span> <span class="st">"Age (years)"</span>, <span class="at">SEXf =</span> <span class="st">"Sex"</span>, <span class="at">CPf =</span> <span class="st">"Child-Pugh"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+<section id="no-summary-2" class="level3" data-number="8.8.4">
+<h3 data-number="8.8.4" class="anchored" data-anchor-id="no-summary-2"><span class="header-section-number">8.8.4</span> No summary</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">pt_demographics</span>(</span>
+<span id="cb29-2"><a href="#cb29-2"></a>  pmt_first, </span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL, AGE"</span>, </span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span>, </span>
+<span id="cb29-5"><a href="#cb29-5"></a>  <span class="at">span =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>),</span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="at">summarize_all =</span> <span class="cn">FALSE</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="pmtable_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid" width="948"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="customized-summary-functions" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="customized-summary-functions"><span class="header-section-number">8.9</span> Customized summary functions</h2>
+<p>pmtables will summarize continuous data using a built-in function, producing standard summaries (e.g.&nbsp;mean, median, etc). Users can pass a function to replace this default, allowing totally customized summaries.</p>
+<p>Custom summary functions are not currently allowed for categorical data.</p>
+<section id="continuous-long-table" class="level3" data-number="8.9.1">
+<h3 data-number="8.9.1" class="anchored" data-anchor-id="continuous-long-table"><span class="header-section-number">8.9.1</span> Continuous long table</h3>
+<p>You can pass a custom summary function via <code>fun</code>. This function should have a first argument called <code>value</code> and should be able to absorb extra arguments via <code>...</code>. The function should return a <code>data.frame</code>, with a single row and summaries going across in the columns.</p>
+<p>For example, we can have <code>pt_cont_long()</code> return the geometric mean and variance by passing the following function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>cont_long_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(value, ...) {</span>
+<span id="cb30-2"><a href="#cb30-2"></a>  value <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(value)</span>
+<span id="cb30-3"><a href="#cb30-3"></a>  ans <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-4"><a href="#cb30-4"></a>    <span class="at">GeoMean =</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(value))), </span>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="at">Variance =</span> <span class="fu">var</span>(value)</span>
+<span id="cb30-6"><a href="#cb30-6"></a>  )</span>
+<span id="cb30-7"><a href="#cb30-7"></a>  <span class="fu">mutate</span>(ans, <span class="fu">across</span>(<span class="fu">everything</span>(), sig))</span>
+<span id="cb30-8"><a href="#cb30-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Test the function by passing some test data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">cont_long_custom</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  GeoMean Variance
+1    2.61     2.50</code></pre>
+</div>
+</div>
+<p>Then, pass this as <code>fun</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">pt_cont_long</span>(</span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="at">data =</span> pmt_first, </span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"ALB"</span>, <span class="st">"AGE"</span>), </span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="at">fun =</span> cont_long_custom</span>
+<span id="cb33-5"><a href="#cb33-5"></a>)<span class="sc">$</span>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  Variable GeoMean Variance
+  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;   
+1 WT       69.5    165     
+2 ALB      4.11    0.629   
+3 AGE      32.5    78.0    </code></pre>
+</div>
+</div>
+<p>See <code>pmtables:::cont_long_fun</code> (the default) for an example.</p>
+</section>
+<section id="continuous-wide-table" class="level3" data-number="8.9.2">
+<h3 data-number="8.9.2" class="anchored" data-anchor-id="continuous-wide-table"><span class="header-section-number">8.9.2</span> Continuous wide table</h3>
+<p>You can pass a custom summary function via <code>fun</code>. This function should have a first argument called <code>value</code> and should be able to absorb extra arguments via <code>...</code>. The continuous, wide table must return a <code>data.frame</code> with a single row and a single column named <code>summary</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>cont_wide_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(value, ...) {</span>
+<span id="cb35-2"><a href="#cb35-2"></a>  value <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(value)</span>
+<span id="cb35-3"><a href="#cb35-3"></a>  geo_mean <span class="ot">&lt;-</span> <span class="fu">sig</span>(<span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(value))))</span>
+<span id="cb35-4"><a href="#cb35-4"></a>  variance <span class="ot">&lt;-</span> <span class="fu">sig</span>(<span class="fu">var</span>(value))</span>
+<span id="cb35-5"><a href="#cb35-5"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(value)</span>
+<span id="cb35-6"><a href="#cb35-6"></a>  ans <span class="ot">&lt;-</span> <span class="fu">paste0</span>(geo_mean, <span class="st">" ["</span>, variance, <span class="st">"] ("</span>, n, <span class="st">")"</span>)</span>
+<span id="cb35-7"><a href="#cb35-7"></a>  <span class="fu">data.frame</span>(<span class="at">summary =</span> ans)</span>
+<span id="cb35-8"><a href="#cb35-8"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can test the function by passing some test data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">cont_wide_custom</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          summary
+1 2.47 [4.00] (3)</code></pre>
+</div>
+</div>
+<p>Then, pass this as <code>fun</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">pt_cont_wide</span>(</span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="at">data =</span> pmt_first, </span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"WT"</span>, <span class="st">"ALB"</span>, <span class="st">"AGE"</span>), </span>
+<span id="cb38-4"><a href="#cb38-4"></a>  <span class="at">fun =</span> cont_wide_custom</span>
+<span id="cb38-5"><a href="#cb38-5"></a>)<span class="sc">$</span>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  WT               ALB                AGE              
+  &lt;chr&gt;            &lt;chr&gt;              &lt;chr&gt;            
+1 69.5 [165] (157) 4.11 [0.629] (156) 32.5 [78.0] (160)</code></pre>
+</div>
+</div>
+<p>See <code>pmtables:::cont_wide_fun</code> (the default) for an example.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./sanitize.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">A word about sanitizing table contents</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

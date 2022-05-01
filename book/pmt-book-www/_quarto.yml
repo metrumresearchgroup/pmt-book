@@ -1,0 +1,35 @@
+project:
+  type: book
+
+execute:
+  freeze: auto
+
+book:
+  title: "pmt-book"
+  author: "Kyle Baron, Pharm.D., Ph.D."
+  date: "5/1/2022"
+  chapters:
+    - index.qmd
+    - stable.qmd
+    - panel.qmd
+    - spanners.qmd
+    - longtable.qmd
+    - pipe.qmd
+    - preview.qmd
+    - sanitize.qmd
+    - pmtable.qmd
+    #- intro.qmd
+    #- summary.qmd
+    #- references.qmd
+
+#bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    code-line-numbers: true
+
+  # pdf:
+  #   documentclass: scrreprt
