@@ -3,4 +3,4 @@ library(pmtables)
 library(purrr)
 library(yspec)
 library(tidyr)
-
+options(pmtables.textwidth = 6)

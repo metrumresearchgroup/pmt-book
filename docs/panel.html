@@ -289,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>smcars <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">panel =</span> <span class="st">"carb"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="panel_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="948"></p>
+<p><img src="panel_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Now, all of the <code>carb==1</code> rows are grouped with the heading <code>1</code> and similarly the <code>carb==2</code> rows are grouped with the heading <code>2</code> in bold.</p>
@@ -297,7 +297,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>smcars <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"carb"</span>, <span class="at">prefix =</span> <span class="st">"carb: "</span>)) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="panel_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="948"></p>
+<p><img src="panel_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Note that the prefix is completely specified by the user (including any spaces or a colon.</p>
@@ -322,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDY"</span>, <span class="at">jut =</span> <span class="dv">1</span>)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="panel_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="948"></p>
+<p><img src="panel_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>This feature requires pmtables 0.4.1 or greater.</p>

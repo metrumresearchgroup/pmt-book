@@ -72,7 +72,7 @@ We can render that table in `TeX` **in the current Rmarkdown document** by
 passing the text to `st_asis()`. 
 
 ```{r}
-out %>% st_as_image()
+out %>% st_as_image() 
 ```
 
 Remember to only call `st_asis()` when you are rendering tables inline in an 
