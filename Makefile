@@ -7,6 +7,6 @@ spelling:
 	Rscript -e 'spelling::spell_check_files(list.files("source", full.names = TRUE, pattern = "Rmd"), ignore = readLines("source/WORDLIST"))'
  
 move: 
-	cp -r book/docs/* $(METRUMIO)
+	cp -r book/docs/* docs/
 
 

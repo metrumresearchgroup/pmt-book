@@ -22,7 +22,7 @@ yet; but it will be available for the release after `0.4.1`.
 There is also a `pdf` version of this book available 
 [here](https://github.com/metrumresearchgroup/pmt-book/blob/master/pmt-intro.pdf). 
 
-# Source
+# Source {.unnumbered}
 
 The pmtables package is maintained [here](https://github.com/metrumresearchgroup/pmtables).
 
