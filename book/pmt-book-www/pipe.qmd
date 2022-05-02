@@ -1,4 +1,8 @@
-# The pipe interface
+---
+title: Pipe interface
+subtitle: > 
+  A better way to compose and style your table.
+---
 
 ```{r, include = FALSE}
 eval_pipe <- FALSE

@@ -1,5 +1,6 @@
-
-# Preface {.unnumbered}
+---
+title: Preface
+---
 
 <img src=pmt-hex.png align=right width=150px></img>This is a simple 
 introduction to the pmtables package for R. I hope this will be useful for 
@@ -7,10 +8,23 @@ those who are new to the package and those who just need a  reminder on the
 syntax. 
 
 
-## Version
+pmtables turns R data frames into tables for inclusion in a TeX document. Since
+the current book is rendered to `html` format, we cannot naturally render the 
+table outputs as we work examples. Instead, we process the output table code
+in a `pdf` snippet and include it into the `html` document as a `png` file. 
+This is accomplished using a new function called `st_as_image()`. The only 
+purpose for calling this function is to get the table to appear in the pages
+of this book. This function can be useful for previewing tables or having them
+appear in `html` documents but it should generally not be used if creating
+outputs for TeX reports. You will not find this function in a pmtables release 
+yet; but it will be available for the release after `0.4.1`. 
+
+There is also a `pdf` version of this book available 
+[here](https://github.com/metrumresearchgroup/pmt-book/blob/master/pmt-intro.pdf). 
+
+# Build {.unnumbered}
 
 ```{r}
 packageVersion("pmtables")
+date()
 ```
-  
-  

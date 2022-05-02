@@ -1,5 +1,8 @@
+---
+title: Sanitize
+subtitle: A brief word about sanitizing table contents.
+---
 
-# A word about sanitizing table contents
 
 ```{r}
 #| include: false

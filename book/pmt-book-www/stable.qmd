@@ -1,5 +1,8 @@
+---
+title: stable
+subtitle: Create a simple table from a data frame.
+---
 
-# A simple table: stable
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(comment = '.')

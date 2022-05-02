@@ -5,7 +5,8 @@ execute:
   freeze: auto
 
 book:
-  title: "pmt-book"
+  title: "The pmtables Book"
+  subtitle: "Tables for Pharmacometrics"
   author: "Kyle Baron, Pharm.D., Ph.D."
   date: "5/1/2022"
   chapters:
@@ -30,6 +31,8 @@ format:
     toc: true
     number-sections: true
     code-line-numbers: true
-
+    fontsize: "15pt"
+    linkcolor: "#0082b4"
+    title-block-banner: "#0082b4"
   # pdf:
   #   documentclass: scrreprt

@@ -1,4 +1,7 @@
-# Group table rows with panel  {#panel-intro}
+---
+title: Panel
+subtitle: Group table rows in panels.
+---
 
 ## Syntax
 

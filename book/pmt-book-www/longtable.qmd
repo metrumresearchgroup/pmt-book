@@ -1,4 +1,8 @@
-# Tables that span multiple pages: longtable
+---
+title: Longtable
+subtitle: Tables that span multiple pages.
+---
+
 
 ## Syntax
 

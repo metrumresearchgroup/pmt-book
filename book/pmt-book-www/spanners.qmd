@@ -1,8 +1,11 @@
+---
+title: Spanners
+subtitle: Group table columns with spanners.
+---
+
 ```{r, include = FALSE}
 source("global.R")
 ```
-
-# Group table columns with spanners
 
 
 ## Syntax

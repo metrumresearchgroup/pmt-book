@@ -1,4 +1,9 @@
-# pmtable
+---
+title: pmtable
+subtitle: > 
+  Standardized data summaries, rendered as a table.
+---
+
 
 ```{r, include = FALSE}
 source("global.R")

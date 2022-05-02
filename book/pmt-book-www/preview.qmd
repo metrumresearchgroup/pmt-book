@@ -1,5 +1,8 @@
+---
+title: Preview
+subtitle: Options for previewing your table.
+---
 
-# Options for previewing the table
 
 ## st2report
 
