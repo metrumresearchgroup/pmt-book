@@ -1,0 +1,42 @@
+\setlength{\tabcolsep}{5pt} 
+\begin{threeparttable}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}[h]{>{\raggedright\arraybackslash}p{3cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{7cm}}
+\hline
+\textbf{Call} & \textbf{Arguments} & \textbf{Description} \\
+\hline
+st\_new() & ... & Create an `st` object. \\ \hline
+st\_data() & ... & Create an `st` object. \\ \hline
+st\_files() & r  \newline output  \newline esc & Add file name information to an `st` object. \\ \hline
+st\_sizes() & ... & Resize various table elements.  \\ \hline
+st\_space() & row  \newline col & Add row and column spacing information to `st` object. \\ \hline
+st\_panel() & ... & Add panel (row group) information to `st` object. \\ \hline
+st\_hline() & pattern  \newline cols  \newline n  \newline at  \newline from  \newline nudge & Add horizontal lines to the table. \\newline
+Use pattern to search a column for the location.\\newline
+Use at to indicate row numbers or a logical vector indicating rows. 
+ \\ \hline
+st\_span() & ...  \newline split & Add spanner (column group) information to `st` object. \\ \hline
+st\_span\_split() & ...  \newline split & Add spanner data by splitting column names. \\ \hline
+st\_sumrow() & pattern  \newline cols  \newline rows  \newline ... & Identify a summary row for the table. \\ \hline
+st\_rename() & ...  \newline .list & Rename table columns. \\ \hline
+st\_drop() & ... & Drop entire columns from the table. \\ \hline
+st\_blank() & ... & Clear specific column names from the table header. \\ \hline
+st\_units() & ...  \newline parens & Add unit information to table header. \\ \hline
+st\_clear\_reps() & ...  \newline .now & Clear replicate data within a column. \\ \hline
+st\_left() & ... & Make columns left aligned. \\ \hline
+st\_right() & ... & Make columns right aligned. \\ \hline
+st\_center() & ... & Make columns centered. \\ \hline
+st\_align() & ... & Pass general alignment information. \\ \hline
+st\_notes() & ...  \newline esc  \newline config  \newline collapse  \newline append  \newline to\_string & Add note information to an `st` object. \\ \hline
+st\_noteconf() & ... & Add note configuration information to an `st` object. \\ \hline
+st\_select() & ... & Select columns in an `st` object. \\ \hline
+st\_mutate() & ... & Mutate columns in an `st` object. \\ \hline
+st\_edit() & ... & Edit table contents. \\ \hline
+st\_bold() & cols  \newline pattern & Render table data in bold font. \\ \hline
+st\_it() & cols  \newline pattern & Render table data in italic font. \\ \hline
+st\_args() & ... & Pass other arguments to `stable()`. \\ \hline
+stable() & data  \newline ... & Render table in tabular environment. \\ \hline
+stable\_long() & data  \newline ... & Render table in longtable environment. \\
+\hline
+\end{tabular}
+\end{threeparttable}

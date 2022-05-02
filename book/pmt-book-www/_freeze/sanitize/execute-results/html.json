@@ -1,0 +1,16 @@
+{
+  "hash": "a8369ec2d599f5772d5e0d517b2d457a",
+  "result": {
+    "markdown": "---\ntitle: Sanitize\nsubtitle: A brief word about sanitizing table contents.\n---\n\n\n\n\n\n## Notes\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- ptdata() %>% st_new(notes = \"EDA_summary = TRUE\") %>% \n  st_make(inspect = TRUE) %>% \n  get_stable_data() \n\nx$notes\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"EDA\\\\_summary = TRUE\"\n```\n:::\n:::\n\n## File names\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- ptdata() %>% st_new() %>% \n  st_files(r = \"my_script.R\") %>% \n  st_make(inspect = TRUE) %>% \n  get_stable_data() \n\nx$notes\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Source code: my\\\\_script.R\"\n```\n:::\n:::\n\n\n## Column names \n\n::: {.cell}\n\n```{.r .cell-code}\nout <- \n  tibble(a_1 = 5) %>% \n  stable(inspect = TRUE) %>% \n  get_stable_data()\n\nout$cols_tex\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"a\\\\_1 \\\\\\\\\"\n```\n:::\n:::\n\n## Main table contents\n\n::: {.cell}\n\n```{.r .cell-code}\nout <- \n  tibble(a = \"5_2\") %>% \n  stable(inspect = TRUE) %>% \n  get_stable_data()\n\nout$tab\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"5\\\\_2 \\\\\\\\\"\n```\n:::\n:::\n\n## Span titles\n\n::: {.cell}\n\n```{.r .cell-code}\nout <- \n  ptdata() %>% \n  stable(inspect = TRUE, span = colgroup(\"foo_this\", WT:SCR)) %>% \n  get_stable_data()\n\nout$span_data$tex\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"\\\\multicolumn{4}{c}{} & \\\\multicolumn{5}{c}{foo\\\\_this} \\\\\\\\\"\n[2] \"\\\\cmidrule(lr){5-9}\"                                         \n```\n:::\n:::\n\n\n## Panel names\n\n::: {.cell}\n\n```{.r .cell-code}\ndata <- tibble(a = c(\"a_1\", \"a_1\", \"a_1\", \"a_2\", \"a_2\"), \n               b = letters[1:5])\n\nout <- stable(data, panel = \"a\") \nout[grepl(\"multicolumn\", out)]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"\\\\multicolumn{1}{l}{\\\\textbf{a\\\\_1}}\\\\\\\\%--pmtables-insert-panel\"        \n[2] \"\\\\hline \\\\multicolumn{1}{l}{\\\\textbf{a\\\\_2}}\\\\\\\\%--pmtables-insert-panel\"\n```\n:::\n:::\n\n## `cols_extra` input\n\n::: {.cell}\n\n```{.r .cell-code}\nx <- letters[1:5]\ndata <- tibble(a = x, b = x, c = x)\nxtra <- tibble(a = \"foo%\", b = \"$\\\\mu$g\", c = \"1234 \\\\% %\")\nout <- stable(data, cols_extra = xtra)\nout[grepl(\"%\", out, fixed = TRUE)]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"foo\\\\% & $\\\\mu$g & 1234 \\\\% % \\\\\\\\\"\n```\n:::\n:::",
+    "supporting": [
+      "sanitize_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": null
+  }
+}
