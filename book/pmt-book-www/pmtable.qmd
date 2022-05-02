@@ -337,7 +337,7 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 ```{r}
 out <- pt_cont_wide(
   data = data,
-  cols = "WT,SCR,AGE,ALB,HT",
+  cols = "WT,SCR,AGE,ALB",
   by = c(Study = "STUDYf"),
   units = units
 )
@@ -352,7 +352,7 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 ```{r}
 out <- pt_cont_wide(
   data = data,
-  cols = "WT,SCR,AGE,ALB,HT",
+  cols = "WT,SCR,AGE,ALB",
   by = c(Study = "STUDYf"),
   panel = c(Formulation = "FORMf"),
   units = units
