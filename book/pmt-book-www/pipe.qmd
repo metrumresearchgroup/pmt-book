@@ -308,7 +308,7 @@ funcs <- function(x) {
   x
 }
 
-df <- yaml_as_df(here::here("pipe.yml"))
+df <- yaml_as_df("pipe.yml")
 df$args <- sapply(df$call, arg)
 df$call <- sapply(df$call, funcs)
 df <- select(df, Call = call, Arguments = args, Description = do)
