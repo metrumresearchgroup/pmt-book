@@ -1,5 +1,6 @@
 project:
   type: book
+  output-dir: docs
 
 execute:
   freeze: auto
@@ -8,7 +9,12 @@ book:
   title: "The pmtables Book"
   subtitle: "Tables for Pharmacometrics"
   author: "Kyle Baron, Pharm.D., Ph.D."
-  date: "5/1/2022"
+  date: today
+  date-format: medium
+  search: 
+    location: navbar
+    type: overlay
+  #repo-url: https://github.com/metrumresearchgroup/pmt-book
   chapters:
     - index.qmd
     - stable.qmd
@@ -22,8 +28,16 @@ book:
     #- intro.qmd
     #- summary.qmd
     #- references.qmd
-
-#bibliography: references.bib
+  navbar: 
+    background: white
+    foreground: darkgrey
+    right:
+      - text: metrumrg
+        href: https://metrumrg.com
+      - icon: github
+        href: https://github.com/metrumresearchgroup/pmtables
+      - icon: twitter
+        href: https://twitter.com/MetrumRG
 
 format:
   html:
@@ -34,5 +48,6 @@ format:
     fontsize: "15pt"
     linkcolor: "#0082b4"
     title-block-banner: "#0082b4"
+    title-block-banner-color: "white"
   # pdf:
   #   documentclass: scrreprt
