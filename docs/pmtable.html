@@ -301,7 +301,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When you select columns to summarize, you can generally pass in alternate (nicer) names that you want to show up in the table. For example, if I have a column called <code>WT</code> in the data frame and I want it to show up as <code>Weight</code> this can be accomplished during the call</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">pt_cont_wide</span>(data, <span class="at">cols =</span> <span class="fu">c</span>(<span class="at">Weight =</span> <span class="st">"WT"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">stable</span>(<span class="at">notes =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">stable</span>(<span class="at">notes =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -311,7 +312,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">SEXf =</span> <span class="st">"Sex"</span>, <span class="at">ASIANf =</span> <span class="st">"Race group"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2"></a></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">pt_cat_wide</span>(data, <span class="at">cols =</span> <span class="st">"SEXf,ASIANf"</span>, <span class="at">table =</span> tab) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -320,13 +322,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="data-inventory-tables" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="data-inventory-tables"><span class="header-section-number">9.3</span> Data inventory tables</h2>
 <ul>
-<li>Count number of
-<ul>
+<li>Count number of</li>
 <li>individuals</li>
 <li>observations</li>
 <li>BQL observations</li>
 <li>missing values</li>
-</ul></li>
 <li>Calculate the percent of observations or BQL in different sub groups</li>
 </ul>
 <section id="stacked-by-endpoint" class="level3" data-number="9.3.1">
@@ -342,7 +342,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-5"><a href="#cb5-5"></a>  <span class="at">stacked =</span> <span class="cn">TRUE</span></span>
 <span id="cb5-6"><a href="#cb5-6"></a>)</span>
 <span id="cb5-7"><a href="#cb5-7"></a></span>
-<span id="cb5-8"><a href="#cb5-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="fu">stable</span>(</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  out, </span>
+<span id="cb5-10"><a href="#cb5-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb5-11"><a href="#cb5-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -360,7 +364,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="at">panel =</span> <span class="st">"ASIANf"</span></span>
 <span id="cb6-5"><a href="#cb6-5"></a>)</span>
 <span id="cb6-6"><a href="#cb6-6"></a></span>
-<span id="cb6-7"><a href="#cb6-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="fu">stable</span>(</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  out, </span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -374,7 +382,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>)</span>
 <span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">stable</span>(</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  out, </span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -386,7 +398,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For example</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data_ql <span class="ot">&lt;-</span> pmt_obs</span>
-<span id="cb8-2"><a href="#cb8-2"></a>data_lq <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">rename</span>(pmt_obs, <span class="at">BLQ =</span> BQL) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a>data_lq <span class="ot">&lt;-</span> <span class="fu">rename</span>(pmt_obs, <span class="at">BLQ =</span> BQL) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">pt_data_inventory</span>(data_ql, <span class="at">by =</span> <span class="st">"STUDYf"</span>) <span class="sc">%&gt;%</span> </span>
@@ -421,7 +433,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf)</span>
 <span id="cb11-4"><a href="#cb11-4"></a>)</span>
 <span id="cb11-5"><a href="#cb11-5"></a></span>
-<span id="cb11-6"><a href="#cb11-6"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="fu">stable</span>(</span>
+<span id="cb11-7"><a href="#cb11-7"></a>  out, </span>
+<span id="cb11-8"><a href="#cb11-8"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb11-9"><a href="#cb11-9"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -439,7 +455,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDYf"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>)</span>
 <span id="cb12-5"><a href="#cb12-5"></a>)</span>
 <span id="cb12-6"><a href="#cb12-6"></a></span>
-<span id="cb12-7"><a href="#cb12-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="fu">stable</span>(</span>
+<span id="cb12-8"><a href="#cb12-8"></a>  out, </span>
+<span id="cb12-9"><a href="#cb12-9"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb12-10"><a href="#cb12-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -454,7 +474,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-4"><a href="#cb13-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf)</span>
 <span id="cb13-5"><a href="#cb13-5"></a>)</span>
 <span id="cb13-6"><a href="#cb13-6"></a></span>
-<span id="cb13-7"><a href="#cb13-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="fu">stable</span>(</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  out, </span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -465,12 +489,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
 <span id="cb14-2"><a href="#cb14-2"></a>  <span class="at">data =</span> data,</span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
 <span id="cb14-4"><a href="#cb14-4"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDYf"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>),</span>
 <span id="cb14-5"><a href="#cb14-5"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"RF Group"</span> <span class="ot">=</span> <span class="st">"RFf"</span>)</span>
 <span id="cb14-6"><a href="#cb14-6"></a>)</span>
 <span id="cb14-7"><a href="#cb14-7"></a></span>
-<span id="cb14-8"><a href="#cb14-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-8"><a href="#cb14-8"></a><span class="fu">stable</span>(</span>
+<span id="cb14-9"><a href="#cb14-9"></a>  out, </span>
+<span id="cb14-10"><a href="#cb14-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb14-11"><a href="#cb14-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb14-12"><a href="#cb14-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -482,12 +510,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_wide</span>(</span>
 <span id="cb15-2"><a href="#cb15-2"></a>  <span class="at">data =</span> data,</span>
 <span id="cb15-3"><a href="#cb15-3"></a>  <span class="at">summarize =</span> <span class="st">"none"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb15-4"><a href="#cb15-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
 <span id="cb15-5"><a href="#cb15-5"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDYf"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>),</span>
 <span id="cb15-6"><a href="#cb15-6"></a>  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"RF Group"</span> <span class="ot">=</span> <span class="st">"RFf"</span>)</span>
 <span id="cb15-7"><a href="#cb15-7"></a>)</span>
 <span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="fu">stable</span>(</span>
+<span id="cb15-10"><a href="#cb15-10"></a>  out, </span>
+<span id="cb15-11"><a href="#cb15-11"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -508,7 +540,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-3"><a href="#cb16-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf, <span class="st">"Child-Pugh"</span> <span class="ot">=</span> CPf)</span>
 <span id="cb16-4"><a href="#cb16-4"></a>)</span>
 <span id="cb16-5"><a href="#cb16-5"></a></span>
-<span id="cb16-6"><a href="#cb16-6"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="fu">stable</span>(</span>
+<span id="cb16-7"><a href="#cb16-7"></a>  out, </span>
+<span id="cb16-8"><a href="#cb16-8"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb16-9"><a href="#cb16-9"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb16-10"><a href="#cb16-10"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/ungrouped-long-categorical-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -519,11 +555,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
 <span id="cb17-2"><a href="#cb17-2"></a>  <span class="at">data =</span> data,</span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf,<span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf, <span class="st">"Child-Pugh"</span> <span class="ot">=</span> CPf),</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf, <span class="st">"Child-Pugh"</span> <span class="ot">=</span> CPf),</span>
 <span id="cb17-4"><a href="#cb17-4"></a>  <span class="at">span =</span> <span class="fu">c</span>(<span class="at">Formulation =</span> <span class="st">"FORMf"</span>)</span>
 <span id="cb17-5"><a href="#cb17-5"></a>)</span>
 <span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="fu">stable</span>(</span>
+<span id="cb17-8"><a href="#cb17-8"></a>  out, </span>
+<span id="cb17-9"><a href="#cb17-9"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb17-10"><a href="#cb17-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -535,11 +575,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  <span class="at">data =</span> data,</span>
 <span id="cb18-3"><a href="#cb18-3"></a>  <span class="at">summarize =</span> <span class="st">"both"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb18-4"><a href="#cb18-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
 <span id="cb18-5"><a href="#cb18-5"></a>  <span class="at">span =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf)</span>
-<span id="cb18-6"><a href="#cb18-6"></a>  )</span>
+<span id="cb18-6"><a href="#cb18-6"></a>)</span>
 <span id="cb18-7"><a href="#cb18-7"></a></span>
-<span id="cb18-8"><a href="#cb18-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="fu">stable</span>(</span>
+<span id="cb18-9"><a href="#cb18-9"></a>  out, </span>
+<span id="cb18-10"><a href="#cb18-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb18-11"><a href="#cb18-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb18-12"><a href="#cb18-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -551,11 +595,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>out <span class="ot">&lt;-</span> <span class="fu">pt_cat_long</span>(</span>
 <span id="cb19-2"><a href="#cb19-2"></a>  <span class="at">data =</span> data,</span>
 <span id="cb19-3"><a href="#cb19-3"></a>  <span class="at">summarize =</span> <span class="st">"none"</span>,</span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf,<span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
+<span id="cb19-4"><a href="#cb19-4"></a>  <span class="at">cols =</span> <span class="fu">vars</span>(<span class="at">Formulation =</span> FORMf, <span class="at">Sex =</span> SEXf, <span class="st">"Race group"</span> <span class="ot">=</span> ASIANf),</span>
 <span id="cb19-5"><a href="#cb19-5"></a>  <span class="at">span =</span> <span class="fu">vars</span>(<span class="at">Study =</span> STUDYf)</span>
-<span id="cb19-6"><a href="#cb19-6"></a>  )</span>
+<span id="cb19-6"><a href="#cb19-6"></a>)</span>
 <span id="cb19-7"><a href="#cb19-7"></a></span>
-<span id="cb19-8"><a href="#cb19-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="fu">stable</span>(</span>
+<span id="cb19-9"><a href="#cb19-9"></a>  out, </span>
+<span id="cb19-10"><a href="#cb19-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb19-11"><a href="#cb19-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb19-12"><a href="#cb19-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -577,7 +625,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb20-4"><a href="#cb20-4"></a>  <span class="at">units =</span> units</span>
 <span id="cb20-5"><a href="#cb20-5"></a>)</span>
 <span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-7"><a href="#cb20-7"></a><span class="fu">stable</span>(</span>
+<span id="cb20-8"><a href="#cb20-8"></a>  out, </span>
+<span id="cb20-9"><a href="#cb20-9"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -593,7 +645,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb21-5"><a href="#cb21-5"></a>  <span class="at">units =</span> units</span>
 <span id="cb21-6"><a href="#cb21-6"></a>)</span>
 <span id="cb21-7"><a href="#cb21-7"></a></span>
-<span id="cb21-8"><a href="#cb21-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="fu">stable</span>(</span>
+<span id="cb21-9"><a href="#cb21-9"></a>  out, </span>
+<span id="cb21-10"><a href="#cb21-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb21-11"><a href="#cb21-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb21-12"><a href="#cb21-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -609,7 +665,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb22-5"><a href="#cb22-5"></a>  <span class="at">units =</span> units</span>
 <span id="cb22-6"><a href="#cb22-6"></a>)</span>
 <span id="cb22-7"><a href="#cb22-7"></a></span>
-<span id="cb22-8"><a href="#cb22-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="fu">stable</span>(</span>
+<span id="cb22-9"><a href="#cb22-9"></a>  out, </span>
+<span id="cb22-10"><a href="#cb22-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb22-11"><a href="#cb22-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb22-12"><a href="#cb22-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -626,7 +686,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb23-6"><a href="#cb23-6"></a>  <span class="at">units =</span> units</span>
 <span id="cb23-7"><a href="#cb23-7"></a>)</span>
 <span id="cb23-8"><a href="#cb23-8"></a></span>
-<span id="cb23-9"><a href="#cb23-9"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-9"><a href="#cb23-9"></a><span class="fu">stable</span>(</span>
+<span id="cb23-10"><a href="#cb23-10"></a>  out, </span>
+<span id="cb23-11"><a href="#cb23-11"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb23-12"><a href="#cb23-12"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb23-13"><a href="#cb23-13"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -648,7 +712,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb24-4"><a href="#cb24-4"></a>  <span class="at">units =</span> units</span>
 <span id="cb24-5"><a href="#cb24-5"></a>)</span>
 <span id="cb24-6"><a href="#cb24-6"></a></span>
-<span id="cb24-7"><a href="#cb24-7"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-7"><a href="#cb24-7"></a><span class="fu">stable</span>(</span>
+<span id="cb24-8"><a href="#cb24-8"></a>  out, </span>
+<span id="cb24-9"><a href="#cb24-9"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb24-10"><a href="#cb24-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb24-11"><a href="#cb24-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -664,7 +732,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb25-5"><a href="#cb25-5"></a>  <span class="at">units =</span> units</span>
 <span id="cb25-6"><a href="#cb25-6"></a>)</span>
 <span id="cb25-7"><a href="#cb25-7"></a></span>
-<span id="cb25-8"><a href="#cb25-8"></a>out <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">r_file =</span> <span class="st">"test.R"</span>, <span class="at">output_file =</span> <span class="st">"test.tex"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="fu">stable</span>(</span>
+<span id="cb25-9"><a href="#cb25-9"></a>  out, </span>
+<span id="cb25-10"><a href="#cb25-10"></a>  <span class="at">r_file =</span> <span class="st">"test.R"</span>, </span>
+<span id="cb25-11"><a href="#cb25-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -701,11 +773,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>mini <span class="ot">&lt;-</span> <span class="fu">noteconf</span>(<span class="at">type =</span> <span class="st">"minipage"</span>, <span class="at">width =</span> <span class="fl">0.5</span>)</span>
-<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">pt_demographics</span>(</span>
-<span id="cb27-3"><a href="#cb27-3"></a>  pmt_first, </span>
-<span id="cb27-4"><a href="#cb27-4"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL, AGE"</span>, </span>
-<span id="cb27-5"><a href="#cb27-5"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span></span>
-<span id="cb27-6"><a href="#cb27-6"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">note_config =</span> mini) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">pt_demographics</span>(</span>
+<span id="cb27-4"><a href="#cb27-4"></a>  pmt_first, </span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL, AGE"</span>, </span>
+<span id="cb27-6"><a href="#cb27-6"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">note_config =</span> mini) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -722,9 +795,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb28-3"><a href="#cb28-3"></a>  <span class="at">cols_cont =</span> <span class="st">"WT, CRCL, AGE"</span>, </span>
 <span id="cb28-4"><a href="#cb28-4"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span>, </span>
 <span id="cb28-5"><a href="#cb28-5"></a>  <span class="at">paneled =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb28-6"><a href="#cb28-6"></a>  <span class="at">table =</span> <span class="fu">list</span>(<span class="at">WT =</span> <span class="st">"Weight (kg)"</span>, <span class="at">CRCL =</span> <span class="st">"CLCR (ml/min)"</span>, </span>
-<span id="cb28-7"><a href="#cb28-7"></a>               <span class="at">AGE =</span> <span class="st">"Age (years)"</span>, <span class="at">SEXf =</span> <span class="st">"Sex"</span>, <span class="at">CPf =</span> <span class="st">"Child-Pugh"</span>)</span>
-<span id="cb28-8"><a href="#cb28-8"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-6"><a href="#cb28-6"></a>  <span class="at">table =</span> <span class="fu">list</span>(</span>
+<span id="cb28-7"><a href="#cb28-7"></a>    <span class="at">WT   =</span> <span class="st">"Weight (kg)"</span>, </span>
+<span id="cb28-8"><a href="#cb28-8"></a>    <span class="at">CRCL =</span> <span class="st">"CLCR (ml/min)"</span>, </span>
+<span id="cb28-9"><a href="#cb28-9"></a>    <span class="at">AGE  =</span> <span class="st">"Age (years)"</span>, </span>
+<span id="cb28-10"><a href="#cb28-10"></a>    <span class="at">SEXf =</span> <span class="st">"Sex"</span>, </span>
+<span id="cb28-11"><a href="#cb28-11"></a>    <span class="at">CPf  =</span> <span class="st">"Child-Pugh"</span></span>
+<span id="cb28-12"><a href="#cb28-12"></a>  )</span>
+<span id="cb28-13"><a href="#cb28-13"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="pmtable_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid" width="856"></p>
 </div>

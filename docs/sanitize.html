@@ -247,11 +247,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="notes" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="notes"><span class="header-section-number">8.1</span> Notes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="fu">ptdata</span>() <span class="sc">%&gt;%</span> <span class="fu">st_new</span>(<span class="at">notes =</span> <span class="st">"EDA_summary = TRUE"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">st_make</span>(<span class="at">inspect =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">get_stable_data</span>() </span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>x<span class="sc">$</span>notes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>x <span class="ot">&lt;-</span> <span class="fu">ptdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">st_new</span>(<span class="at">notes =</span> <span class="st">"EDA_summary = TRUE"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">st_make</span>(<span class="at">inspect =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">get_stable_data</span>() </span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a>x<span class="sc">$</span>notes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "EDA\\_summary = TRUE"</code></pre>
 </div>
@@ -304,10 +305,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>out <span class="ot">&lt;-</span> </span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">ptdata</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">stable</span>(<span class="at">inspect =</span> <span class="cn">TRUE</span>, <span class="at">span =</span> <span class="fu">colgroup</span>(<span class="st">"foo_this"</span>, WT<span class="sc">:</span>SCR)) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">get_stable_data</span>()</span>
-<span id="cb9-5"><a href="#cb9-5"></a></span>
-<span id="cb9-6"><a href="#cb9-6"></a>out<span class="sc">$</span>span_data<span class="sc">$</span>tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">stable</span>(</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="at">inspect =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="at">span =</span> <span class="fu">colgroup</span>(<span class="st">"foo_this"</span>, WT<span class="sc">:</span>SCR)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  ) <span class="sc">%&gt;%</span> <span class="fu">get_stable_data</span>()</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>out<span class="sc">$</span>span_data<span class="sc">$</span>tex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "\\multicolumn{4}{c}{} &amp; \\multicolumn{5}{c}{foo\\_this} \\\\"
 [2] "\\cmidrule(lr){5-9}"                                         </code></pre>
@@ -317,11 +320,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="panel-names" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="panel-names"><span class="header-section-number">8.6</span> Panel names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a =</span> <span class="fu">c</span>(<span class="st">"a_1"</span>, <span class="st">"a_1"</span>, <span class="st">"a_1"</span>, <span class="st">"a_2"</span>, <span class="st">"a_2"</span>), </span>
-<span id="cb11-2"><a href="#cb11-2"></a>               <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb11-3"><a href="#cb11-3"></a></span>
-<span id="cb11-4"><a href="#cb11-4"></a>out <span class="ot">&lt;-</span> <span class="fu">stable</span>(data, <span class="at">panel =</span> <span class="st">"a"</span>) </span>
-<span id="cb11-5"><a href="#cb11-5"></a>out[<span class="fu">grepl</span>(<span class="st">"multicolumn"</span>, out)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="at">a =</span> <span class="fu">c</span>(<span class="st">"a_1"</span>, <span class="st">"a_1"</span>, <span class="st">"a_1"</span>, <span class="st">"a_2"</span>, <span class="st">"a_2"</span>), </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">b =</span> letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb11-4"><a href="#cb11-4"></a>)</span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>out <span class="ot">&lt;-</span> <span class="fu">stable</span>(data, <span class="at">panel =</span> <span class="st">"a"</span>) </span>
+<span id="cb11-7"><a href="#cb11-7"></a>out[<span class="fu">grepl</span>(<span class="st">"multicolumn"</span>, out)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "\\multicolumn{1}{l}{\\textbf{a\\_1}}\\\\%--pmtables-insert-panel"        
 [2] "\\hline \\multicolumn{1}{l}{\\textbf{a\\_2}}\\\\%--pmtables-insert-panel"</code></pre>

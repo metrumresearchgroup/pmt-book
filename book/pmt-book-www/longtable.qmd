@@ -15,13 +15,15 @@ stable_long(stdata())
 To create a long table from pipeline
 
 ```{r, eval = FALSE}
-st_new(data) %>% stable_long()
+st_new(data) %>% 
+  stable_long()
 ```
 
 To create a long table from `pmtable`
 
 ```{r, eval = FALSE}
-pt_cont_long(data, cols = "WT,EGFR") %>% stable_long()
+pt_cont_long(data, cols = "WT,EGFR") %>% 
+  stable_long()
 ```
 
 
@@ -62,7 +64,10 @@ to provide the text for the caption. This text must be passed to the
 `stable_long()` call (or `st_make()`)
 
 ```{r, eval = FALSE}
-out <- stable_long(data, lt_cap_text = "A long table (example 3)")
+out <- stable_long(
+  data, 
+  lt_cap_text = "A long table (example 3)"
+)
 ```
 
 You will see in the TeX code that a caption is included in the longtable
@@ -78,7 +83,10 @@ document.
 Use the `lt_cap_macro` argument:
 
 ```{r, eval = FALSE}
-out <- stable_long(data, lt_cap_macro = "ltexfourcap")
+out <- stable_long(
+  data, 
+  lt_cap_macro = "ltexfourcap"
+)
 ```
 
 Now, there is a call to that macro in the table and you **must** define that 
@@ -99,7 +107,10 @@ then use the `lt_cap_label` argument:
 
 ```{r, eval = FALSE}
 data %>% 
-  stable_long(lt_cap_label = "tab:example", lt_cap_macro = "example") 
+  stable_long(
+    lt_cap_label = "tab:example", 
+    lt_cap_macro = "example"
+  ) 
 ```
 
 ## Include a longtable in an Rmd document
@@ -109,7 +120,10 @@ If you want to dump a table into an R markdown document, pass it to
 table properly.
 
 ```{r, eval = FALSE}
-out <- stable_long(data) %>% st_as_image()
+out <- 
+  data %>%
+  stable_long() %>% 
+  st_as_image()
 ```
 
 ## Page breaks

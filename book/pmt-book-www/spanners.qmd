@@ -15,13 +15,17 @@ for `as.span()` are the spanner title and the names of the columns
 over which you want the spanner to run
 
 ```{r, eval = FALSE}
-stable(stdata(), span = as.span("Covariates", WT:SCR))
+stable(
+  stdata(), 
+  span = as.span("Covariates", WT:SCR)
+)
 ```
 
 The equivalent pipe syntax is
 
 ```{r, eval = FALSE}
-st_new(stdata()) %>% st_span("Covariates", WT:SCR)
+st_new(stdata()) %>% 
+  st_span("Covariates", WT:SCR)
 ```
 
 
@@ -36,11 +40,16 @@ As a trivial example:
 ```{r}
 data <- 
   tibble(
-    Tariffville = "06081",  Connecticut= "CT", 
-    Minnesota = "MN", Minneapolis = "55455"
+    Tariffville = "06081",  
+    Connecticut= "CT", 
+    Minnesota = "MN", 
+    Minneapolis = "55455"
   ) 
 
-data %>% stable(span = as.span("States", Connecticut:Minnesota)) %>%  st_as_image()
+stable(
+  data, 
+  span = as.span("States", Connecticut:Minnesota)
+) %>%  st_as_image()
 ```
 
 ## Multiple spanners
@@ -54,7 +63,9 @@ sp <- list(
   as.span("States", Connecticut:Minnesota), 
   as.span("Important Locations", Tariffville:Minneapolis, level = 2)
 )
-data %>% stable(span = sp) %>% st_as_image()
+
+stable(data, span = sp) %>% 
+  st_as_image()
 ```
 
 Note that to specify multiple spanners, we pass a list of span objects. I've 
@@ -79,7 +90,9 @@ data %>%
 We can make the title of the span break across multiple lines by using `...`
 
 ```{r}
-stable(data, span = as.span("Important ... States", Connecticut:Minnesota)) %>%
+stable(
+  data, 
+  span = as.span("Important ... States", Connecticut:Minnesota)) %>%
   st_as_image()
 ```
 
@@ -109,7 +122,12 @@ and the other is taken as the column name.
 Consider this data
 
 ```{r, echo = FALSE}
-dd <- data.frame(A.first = 1, A.second = 2, B.third = 3, B.fourth = 4)
+dd <- data.frame(
+  A.first = 1, 
+  A.second = 2, 
+  B.third = 3, 
+  B.fourth = 4
+)
 dd
 ```
 
@@ -121,7 +139,8 @@ We can make table with spanners by passing a call to `colsplit()` as
 `span_split`
 
 ```{r}
-dd  %>% stable(span_split = colsplit(sep = '.')) %>% st_as_image()
+stable(dd, span_split = colsplit(sep = '.')) %>% 
+  st_as_image()
 ```
 
 ### pivot_longer workflow
@@ -136,7 +155,8 @@ summ <-
   filter(!is.na(value)) %>%
   group_by(STUDYf, name) %>% 
   summarise(Mean = mean(value), Sd = sd(value), N = n(), .groups = "drop") %>%
-  mutate(across(Mean:N, sig)) %>% mutate(across(Mean:N, as.character))
+  mutate(across(Mean:N, sig)) %>% 
+  mutate(across(Mean:N, as.character))
 
 summ
 ```
@@ -152,20 +172,28 @@ head(long)
 **Second**, we'll make `name` more appealing / informative
 
 ```{r}
-long <- mutate(long, name = recode(name, WT = "Weight (kg)", AGE = "Age (years)"))
+long <- mutate(
+  long, 
+  name = recode(name, WT = "Weight (kg)", AGE = "Age (years)")
+)
 ```
 
 **Third**, pivot this `wider` using the covariate `name` and `stat` 
 
 ```{r}
-wide <- pivot_wider(long, names_from = c("name", "stat"), names_sep = "---")
+wide <- pivot_wider(
+  long, 
+  names_from = c("name", "stat"), 
+  names_sep = "---"
+)
 wide
 ```
 
 Now we have column names set up to create the spanners
 
 ```{r}
-wide %>% stable(span_split = colsplit(sep = "---")) %>% st_as_image()
+stable(wide, span_split = colsplit(sep = "---")) %>% 
+  st_as_image()
 ```
 
 This workflow takes several steps to complete, but once you identify the pattern

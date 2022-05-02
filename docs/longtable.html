@@ -256,11 +256,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>To create a long table from pipeline</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> <span class="fu">stable_long</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">stable_long</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To create a long table from <code>pmtable</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">pt_cont_long</span>(data, <span class="at">cols =</span> <span class="st">"WT,EGFR"</span>) <span class="sc">%&gt;%</span> <span class="fu">stable_long</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">pt_cont_long</span>(data, <span class="at">cols =</span> <span class="st">"WT,EGFR"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">stable_long</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="basics" class="level2" data-number="5.2">
@@ -286,7 +288,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="method-1-in-the-r-script"><span class="header-section-number">5.4.1</span> Method 1: in the R script</h3>
 <p><code>stable_long()</code> has an argument called <code>lt_cap_text</code> that will allow you to provide the text for the caption. This text must be passed to the <code>stable_long()</code> call (or <code>st_make()</code>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable_long</span>(data, <span class="at">lt_cap_text =</span> <span class="st">"A long table (example 3)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable_long</span>(</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  data, </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="at">lt_cap_text =</span> <span class="st">"A long table (example 3)"</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will see in the TeX code that a caption is included in the longtable environment.</p>
 </section>
@@ -295,7 +300,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Rather than passing the text for the caption, you can name a macro that should (will) be defined at the time the table is rendered in the TeX document.</p>
 <p>Use the <code>lt_cap_macro</code> argument:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable_long</span>(data, <span class="at">lt_cap_macro =</span> <span class="st">"ltexfourcap"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable_long</span>(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  data, </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">lt_cap_macro =</span> <span class="st">"ltexfourcap"</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, there is a call to that macro in the table and you <strong>must</strong> define that macro prior to sourcing in your tex document.</p>
 <div class="cell">
@@ -312,14 +320,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To add a label, pass in a caption (either as text or as a macro) and then use the <code>lt_cap_label</code> argument:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">stable_long</span>(<span class="at">lt_cap_label =</span> <span class="st">"tab:example"</span>, <span class="at">lt_cap_macro =</span> <span class="st">"example"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">stable_long</span>(</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="at">lt_cap_label =</span> <span class="st">"tab:example"</span>, </span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="at">lt_cap_macro =</span> <span class="st">"example"</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="include-a-longtable-in-an-rmd-document" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="include-a-longtable-in-an-rmd-document"><span class="header-section-number">5.6</span> Include a longtable in an Rmd document</h2>
 <p>If you want to dump a table into an R markdown document, pass it to <code>st_asis()</code>. There is a method for <code>stable_long()</code> and it will wrap the table properly.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable_long</span>(data) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>out <span class="ot">&lt;-</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">stable_long</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="page-breaks" class="level2" data-number="5.7">

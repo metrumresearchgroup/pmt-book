@@ -252,7 +252,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>To set a prefix for the panel header:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">stable</span>(<span class="fu">stdata</span>(), <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDY"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">stable</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">stdata</span>(), </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDY"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="basics" class="level2" data-number="3.2">
@@ -287,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Then we pass into <code>stable()</code> and name the paneling column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>smcars <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">panel =</span> <span class="st">"carb"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">stable</span>(smcars, <span class="at">panel =</span> <span class="st">"carb"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="panel_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="856"></p>
 </div>
@@ -295,7 +298,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now, all of the <code>carb==1</code> rows are grouped with the heading <code>1</code> and similarly the <code>carb==2</code> rows are grouped with the heading <code>2</code> in bold.</p>
 <p>This is ok, but a more informative heading would be helpful. To do this, we’ll call <code>as.panel()</code> to both name the panel column and set some options</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>smcars <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"carb"</span>, <span class="at">prefix =</span> <span class="st">"carb: "</span>)) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">stable</span>(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  smcars, </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"carb"</span>, <span class="at">prefix =</span> <span class="st">"carb: "</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="panel_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="856"></p>
 </div>

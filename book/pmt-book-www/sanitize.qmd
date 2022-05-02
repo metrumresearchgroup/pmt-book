@@ -13,7 +13,8 @@ source("global.R")
 ## Notes
 
 ```{r}
-x <- ptdata() %>% st_new(notes = "EDA_summary = TRUE") %>% 
+x <- ptdata() %>% 
+  st_new(notes = "EDA_summary = TRUE") %>% 
   st_make(inspect = TRUE) %>% 
   get_stable_data() 
 
@@ -59,8 +60,10 @@ out$tab
 ```{r}
 out <- 
   ptdata() %>% 
-  stable(inspect = TRUE, span = colgroup("foo_this", WT:SCR)) %>% 
-  get_stable_data()
+  stable(
+    inspect = TRUE, 
+    span = colgroup("foo_this", WT:SCR)
+  ) %>% get_stable_data()
 
 out$span_data$tex
 ```
@@ -69,8 +72,10 @@ out$span_data$tex
 ## Panel names
 
 ```{r}
-data <- tibble(a = c("a_1", "a_1", "a_1", "a_2", "a_2"), 
-               b = letters[1:5])
+data <- tibble(
+  a = c("a_1", "a_1", "a_1", "a_2", "a_2"), 
+  b = letters[1:5]
+)
 
 out <- stable(data, panel = "a") 
 out[grepl("multicolumn", out)]

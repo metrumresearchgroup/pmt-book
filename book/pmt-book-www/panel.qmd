@@ -14,7 +14,10 @@ stable(stdata(), panel = "STUDY")
 To set a prefix for the panel header:
 
 ```{r, eval = FALSE}
-stable(stdata(), panel = as.panel("STUDY", prefix = "Study: "))
+stable(
+  stdata(), 
+  panel = as.panel("STUDY", prefix = "Study: ")
+)
 ```
 
 
@@ -45,7 +48,7 @@ smcars
 Then we pass into `stable()` and name the paneling column
 
 ```{r}
-smcars %>% stable(panel = "carb") %>% st_as_image()
+stable(smcars, panel = "carb") %>% st_as_image()
 ```
 
 Now, all of the `carb==1` rows are grouped with the heading `1` and similarly 
@@ -55,7 +58,10 @@ This is ok, but a more informative heading would be helpful. To do this, we'll
 call `as.panel()` to both name the panel column and set some options
 
 ```{r}
-smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_as_image()
+stable(
+  smcars, 
+  panel = as.panel("carb", prefix = "carb: ")
+) %>% st_as_image()
 ```
 
 Note that the prefix is completely specified by the user (including any spaces
@@ -73,7 +79,7 @@ to customize the panel.  Some of the customizations include
 1. make the panel title italics
 1. opt out from drawing `hline` above panels
 1. jut the panel titles so that the rows under the panel header are indented
-   (available starting with version 0.4.1)
+(available starting with version 0.4.1)
 
 \clearpage
 
@@ -97,8 +103,8 @@ This feature requires pmtables 0.4.1 or greater.
 
 1. Most of the time, the data frame should be sorted by the `panel` column
 1. pmtables creates panels by non-repeating values in the panel column; there 
-   will be an error if duplicate panel names are found and this can be 
-   overridden by passing `duplicates_ok` to `as.panel()`.  
+will be an error if duplicate panel names are found and this can be 
+overridden by passing `duplicates_ok` to `as.panel()`.  
 
 
 \clearpage

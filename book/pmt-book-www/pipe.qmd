@@ -40,7 +40,10 @@ For the final step in the pipeline, we'll send the object to `stable()` to
 create the table
 
 ```{r}
-data %>% st_new() %>% stable() %>% head(n=9)
+data %>% 
+  st_new() %>% 
+  stable() %>% 
+  head(n=9)
 ```
 
 
@@ -52,7 +55,9 @@ You can terminate the pipeline and create a tabular table by sending to
 `stable()`
 
 ```{r, eval = eval_pipe}
-data %>% st_new() %>% stable()
+data %>% 
+  st_new() %>% 
+  stable()
 ```
 
 Equivalent call
@@ -66,7 +71,9 @@ data %>% stable()
 You can also pipe to `stable_long()` to make a long table
 
 ```{r, eval = FALSE}
-data %>% st_new() %>% stable_long()
+data %>% 
+  st_new() %>% 
+  stable_long()
 ```
 
 
@@ -80,7 +87,11 @@ st_new(data) %>% st_files(r = "foo.R", output = "foo.tex")
 Equivalent call
 
 ```{r, eval = FALSE}
-stable(data, r_file = "foo.R", output_file = "foo.tex")
+stable(
+  data, 
+  r_file = "foo.R", 
+  output_file = "foo.tex"
+)
 ```
 
 Note that in the pipe version, we already have `file` in the function 
@@ -134,7 +145,9 @@ stable(data, cols_rename = c(Weight = "WT"))
 ## Blank columns 
 
 ```{r, eval = FALSE}
-st_new(data) %>% st_blank(WT, ALB, DOSE) %>% stable()
+st_new(data) %>% 
+  st_blank(WT, ALB, DOSE) %>% 
+  stable()
 ```
 
 Equivalent call
@@ -148,7 +161,9 @@ stable(data, cols_blank = "WT,ALB,DOSE")
 ## Drop columns
 
 ```{r, eval = FALSE}
-st_new(data) %>% st_drop(WT, ALB, DOSE) %>% stable()
+st_new(data) %>% 
+  st_drop(WT, ALB, DOSE) %>% 
+  stable()
 ```
 
 Equivalent call
@@ -229,7 +244,10 @@ st_new(data) %>%
 Equivalent call
 
 ```{r, eval = FALSE}
-stable(data, span = as.span("Covariates", c(WT, ALB, EGFR)))
+stable(
+  data, 
+  span = as.span("Covariates", c(WT, ALB, EGFR))
+)
 ```
 
 ## hlines - at
@@ -237,7 +255,8 @@ stable(data, span = as.span("Covariates", c(WT, ALB, EGFR)))
 To put horizontal lines at specific rows
 
 ```{r, eval = FALSE}
-st_new(data) %>% st_hline(at = c(2,4,6))
+st_new(data) %>% 
+  st_hline(at = c(2,4,6))
 ```
 
 Equivalent call
@@ -252,7 +271,8 @@ To calculate hlines based on data frame column values (for example, to break
 the table by changing values of `STUDYf`)
 
 ```{r, eval = FALSE}
-st_new(data) %>% st_hline(from = "STUDYf")
+st_new(data) %>% 
+  st_hline(from = "STUDYf")
 ```
 
 Equivalent call
@@ -266,7 +286,8 @@ stable(data, hline_from = "STUDYf")
 To search the table for a pattern and add hlines above matches
 
 ```{r, eval = FALSE}
-st_new(data) %>% st_hline(pattern  = "All", cols = "Summary")
+st_new(data) %>% 
+  st_hline(pattern  = "All", cols = "Summary")
 ```
 
 The `cols` argument limits the search to the `Summary` column; omit this 
@@ -279,7 +300,9 @@ There is no equivalent call for this using straight `stable()`.
 To create groups by "clearing" replicate values in a column
 
 ```{r, eval = FALSE}
-st_new(data) %>% st_clear_reps(STUDY) %>% stable()
+st_new(data) %>% 
+  st_clear_reps(STUDY) %>% 
+  stable()
 ```
 
 Equivalent call

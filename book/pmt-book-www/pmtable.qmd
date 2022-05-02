@@ -39,7 +39,8 @@ this can be accomplished during the call
 
 ```{r}
 pt_cont_wide(data, cols = c(Weight = "WT")) %>% 
-  stable(notes = NULL) %>% st_as_image()
+  stable(notes = NULL) %>% 
+  st_as_image()
 ```
 
 Alternatively, you can use the `table` argument to enter rename info. Note that
@@ -50,17 +51,18 @@ frame and values that are the new names
 tab <- list(SEXf = "Sex", ASIANf = "Race group")
 
 pt_cat_wide(data, cols = "SEXf,ASIANf", table = tab) %>% 
-  stable() %>% st_as_image()
+  stable() %>% 
+  st_as_image()
 ```
 
 
 ## Data inventory tables
 
 - Count number of
-  - individuals
-  - observations
-  - BQL observations
-  - missing values
+- individuals
+- observations
+- BQL observations
+- missing values
 - Calculate the percent  of observations or BQL in different sub groups
 
 
@@ -82,7 +84,11 @@ out <- pt_data_inventory(
   stacked = TRUE
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -98,7 +104,11 @@ out <- pt_data_inventory(
   panel = "ASIANf"
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -111,7 +121,11 @@ out <- pt_data_inventory(
   by = c(Study = "STUDYf")
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -127,7 +141,7 @@ For example
 
 ```{r}
 data_ql <- pmt_obs
-data_lq <- dplyr::rename(pmt_obs, BLQ = BQL) 
+data_lq <- rename(pmt_obs, BLQ = BQL) 
 ```
 
 
@@ -162,7 +176,11 @@ out <- pt_cat_wide(
   cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf)
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -178,7 +196,11 @@ out <- pt_cat_wide(
   panel = as.panel("STUDYf", prefix = "Study: ")
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 
@@ -194,7 +216,11 @@ out <- pt_cat_wide(
   cols = vars(Formulation = FORMf, "Race group" = ASIANf)
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -204,12 +230,16 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 ```{r}
 out <- pt_cat_wide(
   data = data,
-  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
   panel = as.panel("STUDYf", prefix = "Study: "),
   by = c("RF Group" = "RFf")
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -220,12 +250,16 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 out <- pt_cat_wide(
   data = data,
   summarize = "none",
-  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
   panel = as.panel("STUDYf", prefix = "Study: "),
   by = c("RF Group" = "RFf")
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -244,7 +278,11 @@ out <- pt_cat_long(
   cols = vars(Study = STUDYf, Sex = SEXf, "Race group" = ASIANf, "Child-Pugh" = CPf)
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -254,11 +292,15 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 ```{r}
 out <- pt_cat_long(
   data = data,
-  cols = vars(Study = STUDYf,Sex = SEXf,"Race group" = ASIANf, "Child-Pugh" = CPf),
+  cols = vars(Study = STUDYf, Sex = SEXf, "Race group" = ASIANf, "Child-Pugh" = CPf),
   span = c(Formulation = "FORMf")
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -269,11 +311,15 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 out <- pt_cat_long(
   data = data,
   summarize = "both",
-  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
   span = vars(Study = STUDYf)
-  )
+)
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -284,11 +330,15 @@ out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
 out <- pt_cat_long(
   data = data,
   summarize = "none",
-  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
   span = vars(Study = STUDYf)
-  )
+)
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -310,7 +360,11 @@ out <- pt_cont_wide(
   units = units
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 
@@ -326,7 +380,11 @@ out <- pt_cont_wide(
   units = units
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -342,7 +400,11 @@ out <- pt_cont_wide(
   units = units
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -358,7 +420,11 @@ out <- pt_cont_wide(
   units = units
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -379,7 +445,11 @@ out <- pt_cont_long(
   units = units
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -394,7 +464,11 @@ out <- pt_cont_long(
   units = units
 )
 
-out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_as_image()
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
 ```
 
 \clearpage
@@ -407,7 +481,7 @@ table.
 - Both continuous columns (`cols_cont`) and discrete (`cols_cat`) are required
 - You can specify a `span` column (the table is pretty skinny without that)
 - You can opt out of the paneling too with `paneled` argument (the also makes 
-  the table wider
+the table wider
 - An `All data` summary is provided on the left (opt out with `summarize_all`)
 
 ### With span
@@ -431,6 +505,7 @@ pt_demographics(
 
 ```{r}
 mini <- noteconf(type = "minipage", width = 0.5)
+
 pt_demographics(
   pmt_first, 
   cols_cont = "WT, CRCL, AGE", 
@@ -450,8 +525,13 @@ pt_demographics(
   cols_cont = "WT, CRCL, AGE", 
   cols_cat = "SEXf, CPf", 
   paneled = FALSE, 
-  table = list(WT = "Weight (kg)", CRCL = "CLCR (ml/min)", 
-               AGE = "Age (years)", SEXf = "Sex", CPf = "Child-Pugh")
+  table = list(
+    WT   = "Weight (kg)", 
+    CRCL = "CLCR (ml/min)", 
+    AGE  = "Age (years)", 
+    SEXf = "Sex", 
+    CPf  = "Child-Pugh"
+  )
 ) %>% stable() %>% st_as_image()
 ```
 
