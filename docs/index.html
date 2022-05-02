@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kyle Baron, Pharm.D., Ph.D.">
+<meta name="dcterms.date" content="2022-05-02">
 
 <title>The pmtables Book</title>
 <style>
@@ -99,11 +100,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -119,17 +120,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script>
 <style>
     .quarto-title-banner {
-      background: #0082b4;
+      color: white;
+background: #0082b4;
     }
     </style>
 
 
 </head>
 
-<body class="floating">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">The pmtables Book</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://metrumrg.com">metrumrg</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmtables"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/MetrumRG"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title">The pmtables Book</h1>
@@ -164,21 +194,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">5/1/2022</p>
+        <p class="date">May 2, 2022</p>
       </div>
     </div>
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">The pmtables Book</a> 
-    </div>
-      </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -240,7 +265,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#build" id="toc-build" class="nav-link active" data-scroll-target="#build">Build</a></li>
+  <li><a href="#source" id="toc-source" class="nav-link active" data-scroll-target="#source"> <span class="header-section-number">1</span> Source</a></li>
+  <li><a href="#build" id="toc-build" class="nav-link" data-scroll-target="#build">Build</a></li>
   </ul>
 </nav>
     </div>
@@ -253,6 +279,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="pmt-hex.png" align="right" width="150px">This is a simple introduction to the pmtables package for R. I hope this will be useful for those who are new to the package and those who just need a reminder on the syntax.</p>
 <p>pmtables turns R data frames into tables for inclusion in a TeX document. Since the current book is rendered to <code>html</code> format, we cannot naturally render the table outputs as we work examples. Instead, we process the output table code in a <code>pdf</code> snippet and include it into the <code>html</code> document as a <code>png</code> file. This is accomplished using a new function called <code>st_as_image()</code>. The only purpose for calling this function is to get the table to appear in the pages of this book. This function can be useful for previewing tables or having them appear in <code>html</code> documents but it should generally not be used if creating outputs for TeX reports. You will not find this function in a pmtables release yet; but it will be available for the release after <code>0.4.1</code>.</p>
 <p>There is also a <code>pdf</code> version of this book available <a href="https://github.com/metrumresearchgroup/pmt-book/blob/master/pmt-intro.pdf">here</a>.</p>
+<section id="source" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Source</h1>
+<p>The pmtables package is maintained <a href="https://github.com/metrumresearchgroup/pmtables">here</a>.</p>
+<p>The code for this book is maintained <a href="https://github.com/metrumresearchgroup/pmt-book">here</a>.</p>
+</section>
 <section id="build" class="level1 unnumbered">
 <h1 class="unnumbered">Build</h1>
 <div class="cell">
@@ -262,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">date</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "Mon May  2 07:13:08 2022"</code></pre>
+<pre><code>[1] "Mon May  2 08:29:46 2022"</code></pre>
 </div>
 </div>
 
