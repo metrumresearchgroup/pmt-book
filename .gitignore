@@ -1,5 +1,7 @@
+
 .DS_Store
 source/tables.tex
+book/docs/
 pmt-book.log
 stable.pdf
 *.log
