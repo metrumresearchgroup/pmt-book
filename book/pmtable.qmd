@@ -23,6 +23,8 @@ units <- yspec::ys_get_unit(
 )
 ```
 
+Data sets that come with `pmtables`; we'll re-name them for later
+
 ```{r}
 data <- pmt_first
 data_pk <- pmt_pk
