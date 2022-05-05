@@ -39,6 +39,9 @@ book:
       - icon: twitter
         href: https://twitter.com/MetrumRG
 
+# Hex colors
+# aqua 03b9b4
+# blue 0082b4
 format:
   html:
     theme: cosmo

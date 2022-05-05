@@ -14,8 +14,13 @@ source("global.R")
 
 __Some setup__
 
+Please see the [yspec](https://github.com/metrumresearchgroup/yspec) package. 
+
 ```{r}
-units = yspec::ys_get_unit(yspec::ys_help$spec(), parens = TRUE)
+units <- yspec::ys_get_unit(
+  yspec::ys_help$spec(), 
+  parens = TRUE
+)
 ```
 
 ```{r}
