@@ -258,18 +258,20 @@ background: #0082b4;
   <li><a href="#annotate-with-file-names" id="toc-annotate-with-file-names" class="nav-link" data-scroll-target="#annotate-with-file-names"> <span class="header-section-number">6.4</span> Annotate with file names</a></li>
   <li><a href="#save-a-table" id="toc-save-a-table" class="nav-link" data-scroll-target="#save-a-table"> <span class="header-section-number">6.5</span> Save a table</a></li>
   <li><a href="#align-columns" id="toc-align-columns" class="nav-link" data-scroll-target="#align-columns"> <span class="header-section-number">6.6</span> Align columns</a></li>
-  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns"> <span class="header-section-number">6.7</span> Rename columns</a></li>
-  <li><a href="#blank-columns" id="toc-blank-columns" class="nav-link" data-scroll-target="#blank-columns"> <span class="header-section-number">6.8</span> Blank columns</a></li>
-  <li><a href="#drop-columns" id="toc-drop-columns" class="nav-link" data-scroll-target="#drop-columns"> <span class="header-section-number">6.9</span> Drop columns</a></li>
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"> <span class="header-section-number">6.10</span> Notes</a></li>
-  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units"> <span class="header-section-number">6.11</span> Units</a></li>
-  <li><a href="#panel" id="toc-panel" class="nav-link" data-scroll-target="#panel"> <span class="header-section-number">6.12</span> panel</a></li>
-  <li><a href="#span" id="toc-span" class="nav-link" data-scroll-target="#span"> <span class="header-section-number">6.13</span> span</a></li>
-  <li><a href="#hlines---at" id="toc-hlines---at" class="nav-link" data-scroll-target="#hlines---at"> <span class="header-section-number">6.14</span> hlines - at</a></li>
-  <li><a href="#hlines---from" id="toc-hlines---from" class="nav-link" data-scroll-target="#hlines---from"> <span class="header-section-number">6.15</span> hlines - from</a></li>
-  <li><a href="#hlines---pattern" id="toc-hlines---pattern" class="nav-link" data-scroll-target="#hlines---pattern"> <span class="header-section-number">6.16</span> hlines - pattern</a></li>
-  <li><a href="#clear-replicate-values" id="toc-clear-replicate-values" class="nav-link" data-scroll-target="#clear-replicate-values"> <span class="header-section-number">6.17</span> Clear replicate values</a></li>
-  <li><a href="#pipe-cheat-table" id="toc-pipe-cheat-table" class="nav-link" data-scroll-target="#pipe-cheat-table"> <span class="header-section-number">7</span> Pipe cheat table</a></li>
+  <li><a href="#fix-a-column-width" id="toc-fix-a-column-width" class="nav-link" data-scroll-target="#fix-a-column-width"> <span class="header-section-number">6.7</span> Fix a column width</a></li>
+  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns"> <span class="header-section-number">6.8</span> Rename columns</a></li>
+  <li><a href="#blank-columns" id="toc-blank-columns" class="nav-link" data-scroll-target="#blank-columns"> <span class="header-section-number">6.9</span> Blank columns</a></li>
+  <li><a href="#drop-columns" id="toc-drop-columns" class="nav-link" data-scroll-target="#drop-columns"> <span class="header-section-number">6.10</span> Drop columns</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"> <span class="header-section-number">6.11</span> Notes</a></li>
+  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units"> <span class="header-section-number">6.12</span> Units</a></li>
+  <li><a href="#panel" id="toc-panel" class="nav-link" data-scroll-target="#panel"> <span class="header-section-number">6.13</span> panel</a></li>
+  <li><a href="#span" id="toc-span" class="nav-link" data-scroll-target="#span"> <span class="header-section-number">6.14</span> span</a></li>
+  <li><a href="#hlines---at" id="toc-hlines---at" class="nav-link" data-scroll-target="#hlines---at"> <span class="header-section-number">6.15</span> hlines - at</a></li>
+  <li><a href="#hlines---from" id="toc-hlines---from" class="nav-link" data-scroll-target="#hlines---from"> <span class="header-section-number">6.16</span> hlines - from</a></li>
+  <li><a href="#hlines---pattern" id="toc-hlines---pattern" class="nav-link" data-scroll-target="#hlines---pattern"> <span class="header-section-number">6.17</span> hlines - pattern</a></li>
+  <li><a href="#clear-replicate-values" id="toc-clear-replicate-values" class="nav-link" data-scroll-target="#clear-replicate-values"> <span class="header-section-number">6.18</span> Clear replicate values</a></li>
+  <li><a href="#row-and-column-padding" id="toc-row-and-column-padding" class="nav-link" data-scroll-target="#row-and-column-padding"> <span class="header-section-number">7</span> Row and column padding</a></li>
+  <li><a href="#pipe-cheat-table" id="toc-pipe-cheat-table" class="nav-link" data-scroll-target="#pipe-cheat-table"> <span class="header-section-number">8</span> Pipe cheat table</a></li>
   </ul>
 </nav>
     </div>
@@ -389,161 +391,211 @@ background: #0082b4;
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">stable</span>(data, <span class="at">align =</span> <span class="fu">cols_center</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="rename-columns" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="rename-columns"><span class="header-section-number">6.7</span> Rename columns</h2>
+<section id="fix-a-column-width" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="fix-a-column-width"><span class="header-section-number">6.7</span> Fix a column width</h2>
+<p>This is an aspect of aligning columns and uses <code>col_ragged()</code> most of the time. for example, if we want columns left-justified but the <code>Title</code> column is to be capped at 5 cm</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">st_rename</span>(<span class="at">Weight =</span> <span class="st">"WT"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">st_left</span>(<span class="at">Title =</span> <span class="fu">col_ragged</span>(<span class="dv">5</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Equivalent call</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">stable</span>(data, <span class="at">cols_rename =</span> <span class="fu">c</span>(<span class="at">Weight =</span> <span class="st">"WT"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </section>
-<section id="blank-columns" class="level2" data-number="6.8">
-<h2 data-number="6.8" class="anchored" data-anchor-id="blank-columns"><span class="header-section-number">6.8</span> Blank columns</h2>
+<section id="rename-columns" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="rename-columns"><span class="header-section-number">6.8</span> Rename columns</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">st_blank</span>(WT, ALB, DOSE) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">st_rename</span>(<span class="at">Weight =</span> <span class="st">"WT"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">stable</span>(data, <span class="at">cols_blank =</span> <span class="st">"WT,ALB,DOSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">stable</span>(data, <span class="at">cols_rename =</span> <span class="fu">c</span>(<span class="at">Weight =</span> <span class="st">"WT"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="drop-columns" class="level2" data-number="6.9">
-<h2 data-number="6.9" class="anchored" data-anchor-id="drop-columns"><span class="header-section-number">6.9</span> Drop columns</h2>
+<section id="blank-columns" class="level2" data-number="6.9">
+<h2 data-number="6.9" class="anchored" data-anchor-id="blank-columns"><span class="header-section-number">6.9</span> Blank columns</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">st_drop</span>(WT, ALB, DOSE) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">st_blank</span>(WT, ALB, DOSE) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">stable</span>(data, <span class="at">drop =</span> <span class="st">"WT, ALB, DOSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">stable</span>(data, <span class="at">cols_blank =</span> <span class="st">"WT,ALB,DOSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="notes" class="level2" data-number="6.10">
-<h2 data-number="6.10" class="anchored" data-anchor-id="notes"><span class="header-section-number">6.10</span> Notes</h2>
+<section id="drop-columns" class="level2" data-number="6.10">
+<h2 data-number="6.10" class="anchored" data-anchor-id="drop-columns"><span class="header-section-number">6.10</span> Drop columns</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">st_drop</span>(WT, ALB, DOSE) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Equivalent call</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">stable</span>(data, <span class="at">drop =</span> <span class="st">"WT, ALB, DOSE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="notes" class="level2" data-number="6.11">
+<h2 data-number="6.11" class="anchored" data-anchor-id="notes"><span class="header-section-number">6.11</span> Notes</h2>
 <ul>
 <li>Multiple calls are allowed; notes will accumulate</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">st_notes</span>(<span class="st">"first note"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">st_notes</span>(<span class="st">"second note"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">st_notes</span>(<span class="st">"first note"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">st_notes</span>(<span class="st">"second note"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">stable</span>(</span>
-<span id="cb22-2"><a href="#cb22-2"></a>  data, </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="at">notes =</span> <span class="fu">c</span>(<span class="st">"first note"</span>, <span class="st">"second note"</span>)</span>
-<span id="cb22-4"><a href="#cb22-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">stable</span>(</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  data, </span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="at">notes =</span> <span class="fu">c</span>(<span class="st">"first note"</span>, <span class="st">"second note"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="units" class="level2" data-number="6.11">
-<h2 data-number="6.11" class="anchored" data-anchor-id="units"><span class="header-section-number">6.11</span> Units</h2>
+<section id="units" class="level2" data-number="6.12">
+<h2 data-number="6.12" class="anchored" data-anchor-id="units"><span class="header-section-number">6.12</span> Units</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">st_units</span>(<span class="at">WT =</span> <span class="st">"kg"</span>, <span class="at">AGE =</span> <span class="st">"years"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">st_units</span>(<span class="at">WT =</span> <span class="st">"kg"</span>, <span class="at">AGE =</span> <span class="st">"years"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that <code>st_units()</code> will automatically add parens to your units; this can be suppressed with the <code>parens</code> argument.</p>
 <p>Units can also be added as a list</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>u <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">WT =</span> <span class="st">"kg"</span>, <span class="at">AGE =</span> <span class="st">"years"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a></span>
-<span id="cb24-3"><a href="#cb24-3"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">st_units</span>(u) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>u <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">WT =</span> <span class="st">"kg"</span>, <span class="at">AGE =</span> <span class="st">"years"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">st_units</span>(u) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">stable</span>(data, <span class="at">units =</span> u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">stable</span>(data, <span class="at">units =</span> u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="panel" class="level2" data-number="6.12">
-<h2 data-number="6.12" class="anchored" data-anchor-id="panel"><span class="header-section-number">6.12</span> panel</h2>
+<section id="panel" class="level2" data-number="6.13">
+<h2 data-number="6.13" class="anchored" data-anchor-id="panel"><span class="header-section-number">6.13</span> panel</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">st_panel</span>(<span class="st">"STUDY"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">st_panel</span>(<span class="st">"STUDY"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">stable</span>(data, <span class="at">panel =</span> <span class="st">"STUDY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">stable</span>(data, <span class="at">panel =</span> <span class="st">"STUDY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="span" class="level2" data-number="6.13">
-<h2 data-number="6.13" class="anchored" data-anchor-id="span"><span class="header-section-number">6.13</span> span</h2>
+<section id="span" class="level2" data-number="6.14">
+<h2 data-number="6.14" class="anchored" data-anchor-id="span"><span class="header-section-number">6.14</span> span</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">st_span</span>(<span class="st">"Covariates"</span>, <span class="fu">c</span>(WT, ALB, EGFR)) <span class="sc">%&gt;%</span> </span>
-<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">st_span</span>(<span class="st">"Covariates"</span>, <span class="fu">c</span>(WT, ALB, EGFR)) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">stable</span>(</span>
-<span id="cb29-2"><a href="#cb29-2"></a>  data, </span>
-<span id="cb29-3"><a href="#cb29-3"></a>  <span class="at">span =</span> <span class="fu">as.span</span>(<span class="st">"Covariates"</span>, <span class="fu">c</span>(WT, ALB, EGFR))</span>
-<span id="cb29-4"><a href="#cb29-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">stable</span>(</span>
+<span id="cb30-2"><a href="#cb30-2"></a>  data, </span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="at">span =</span> <span class="fu">as.span</span>(<span class="st">"Covariates"</span>, <span class="fu">c</span>(WT, ALB, EGFR))</span>
+<span id="cb30-4"><a href="#cb30-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="hlines---at" class="level2" data-number="6.14">
-<h2 data-number="6.14" class="anchored" data-anchor-id="hlines---at"><span class="header-section-number">6.14</span> hlines - at</h2>
+<section id="hlines---at" class="level2" data-number="6.15">
+<h2 data-number="6.15" class="anchored" data-anchor-id="hlines---at"><span class="header-section-number">6.15</span> hlines - at</h2>
 <p>To put horizontal lines at specific rows</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">st_hline</span>(<span class="at">at =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">st_hline</span>(<span class="at">at =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">stable</span>(data, <span class="at">hline_at =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">stable</span>(data, <span class="at">hline_at =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="hlines---from" class="level2" data-number="6.15">
-<h2 data-number="6.15" class="anchored" data-anchor-id="hlines---from"><span class="header-section-number">6.15</span> hlines - from</h2>
+<section id="hlines---from" class="level2" data-number="6.16">
+<h2 data-number="6.16" class="anchored" data-anchor-id="hlines---from"><span class="header-section-number">6.16</span> hlines - from</h2>
 <p>To calculate hlines based on data frame column values (for example, to break the table by changing values of <code>STUDYf</code>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">st_hline</span>(<span class="at">from =</span> <span class="st">"STUDYf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">st_hline</span>(<span class="at">from =</span> <span class="st">"STUDYf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">stable</span>(data, <span class="at">hline_from =</span> <span class="st">"STUDYf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">stable</span>(data, <span class="at">hline_from =</span> <span class="st">"STUDYf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="hlines---pattern" class="level2" data-number="6.16">
-<h2 data-number="6.16" class="anchored" data-anchor-id="hlines---pattern"><span class="header-section-number">6.16</span> hlines - pattern</h2>
+<section id="hlines---pattern" class="level2" data-number="6.17">
+<h2 data-number="6.17" class="anchored" data-anchor-id="hlines---pattern"><span class="header-section-number">6.17</span> hlines - pattern</h2>
 <p>To search the table for a pattern and add hlines above matches</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">st_hline</span>(<span class="at">pattern  =</span> <span class="st">"All"</span>, <span class="at">cols =</span> <span class="st">"Summary"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">st_hline</span>(<span class="at">pattern  =</span> <span class="st">"All"</span>, <span class="at">cols =</span> <span class="st">"Summary"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>cols</code> argument limits the search to the <code>Summary</code> column; omit this argument to search the whole table.</p>
 <p>There is no equivalent call for this using straight <code>stable()</code>.</p>
 </section>
-<section id="clear-replicate-values" class="level2" data-number="6.17">
-<h2 data-number="6.17" class="anchored" data-anchor-id="clear-replicate-values"><span class="header-section-number">6.17</span> Clear replicate values</h2>
+<section id="clear-replicate-values" class="level2" data-number="6.18">
+<h2 data-number="6.18" class="anchored" data-anchor-id="clear-replicate-values"><span class="header-section-number">6.18</span> Clear replicate values</h2>
 <p>To create groups by “clearing” replicate values in a column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">st_clear_reps</span>(STUDY) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-3"><a href="#cb35-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">st_clear_reps</span>(STUDY) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Equivalent call</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">stable</span>(data, <span class="at">clear_reps =</span> <span class="st">"STUDY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">stable</span>(data, <span class="at">clear_reps =</span> <span class="st">"STUDY"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pipe-cheat-table" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Pipe cheat table</h1>
+<section id="row-and-column-padding" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Row and column padding</h1>
+<p>Use <code>st_sizes()</code> to change padding in rows or columns or adjust other aspects of table sizes</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">st_sizes</span>(<span class="at">row =</span> <span class="fl">1.1</span>, <span class="at">col =</span> <span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Equivalent call</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">stable</span>(data, <span class="at">sizes =</span> <span class="fu">tab_size</span>(<span class="at">row =</span> <span class="fl">1.1</span>, <span class="at">col =</span> <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "\\setlength{\\tabcolsep}{6pt} "                                             
+ [2] "\\begin{threeparttable}"                                                    
+ [3] "\\renewcommand{\\arraystretch}{1.1}"                                        
+ [4] "\\begin{tabular}[h]{lllllllll}"                                             
+ [5] "\\hline"                                                                    
+ [6] "STUDY &amp; DOSE &amp; FORM &amp; N &amp; WT &amp; CRCL &amp; AGE &amp; ALB &amp; SCR \\\\"                 
+ [7] "\\hline"                                                                    
+ [8] "12-DEMO-001 &amp; 100 mg &amp; tablet &amp; 80 &amp; 71.4 &amp; 104 &amp; 33.7 &amp; 4.20 &amp; 1.06 \\\\"  
+ [9] "12-DEMO-001 &amp; 150 mg &amp; capsule &amp; 16 &amp; 89.4 &amp; 122 &amp; 24.4 &amp; 4.63 &amp; 1.12 \\\\" 
+[10] "12-DEMO-001 &amp; 150 mg &amp; tablet &amp; 48 &amp; 81.7 &amp; 104 &amp; 34.4 &amp; 3.83 &amp; 0.910 \\\\" 
+[11] "12-DEMO-001 &amp; 150 mg &amp; troche &amp; 16 &amp; 94.0 &amp; 93.2 &amp; 27.4 &amp; 4.94 &amp; 1.25 \\\\" 
+[12] "12-DEMO-001 &amp; 200 mg &amp; tablet &amp; 64 &amp; 67.9 &amp; 100 &amp; 27.5 &amp; 4.25 &amp; 1.10 \\\\"  
+[13] "12-DEMO-001 &amp; 200 mg &amp; troche &amp; 16 &amp; 76.6 &amp; 99.2 &amp; 22.8 &amp; 4.54 &amp; 1.15 \\\\" 
+[14] "12-DEMO-002 &amp; 100 mg &amp; capsule &amp; 36 &amp; 61.3 &amp; 113 &amp; 38.3 &amp; 4.04 &amp; 1.28 \\\\" 
+[15] "12-DEMO-002 &amp; 100 mg &amp; tablet &amp; 324 &amp; 77.6 &amp; 106 &amp; 29.9 &amp; 4.31 &amp; 0.981 \\\\"
+[16] "12-DEMO-002 &amp; 50 mg &amp; capsule &amp; 36 &amp; 74.1 &amp; 112 &amp; 37.1 &amp; 4.44 &amp; 0.900 \\\\" 
+[17] "12-DEMO-002 &amp; 50 mg &amp; tablet &amp; 324 &amp; 71.2 &amp; 106 &amp; 34.1 &amp; 4.63 &amp; 0.868 \\\\" 
+[18] "12-DEMO-002 &amp; 75 mg &amp; capsule &amp; 36 &amp; 72.4 &amp; 105 &amp; 38.2 &amp; 3.89 &amp; 0.900 \\\\" 
+[19] "12-DEMO-002 &amp; 75 mg &amp; tablet &amp; 288 &amp; 71.6 &amp; 98.9 &amp; 34.2 &amp; 4.49 &amp; 0.991 \\\\"
+[20] "12-DEMO-002 &amp; 75 mg &amp; troche &amp; 36 &amp; 73.6 &amp; 103 &amp; 49.2 &amp; 4.52 &amp; 0.930 \\\\"  
+[21] "\\hline"                                                                    
+[22] "\\end{tabular}"                                                             
+[23] "\\end{threeparttable}"                                                      
+attr(,"class")
+[1] "stable"</code></pre>
+</div>
+</div>
+<p>The arguments to <code>st_sizes()</code> get passed to <code>tab_size()</code>.</p>
+</section>
+<section id="pipe-cheat-table" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Pipe cheat table</h1>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="pipe_files/figure-html/unnamed-chunk-70-1.png" class="img-fluid" width="998"></p>
+<p><img src="pipe_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid" width="998"></p>
 </div>
 </div>
 

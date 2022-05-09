@@ -217,109 +217,116 @@
     "text": "6.6 Align columns\n\nst_center(...)\nst_left(...)\nst_right(...)\nst_align(...)\n\n\nst_new(data) %>% \n  st_center() %>% \n  stable() \n\nEquivalent call\n\nstable(data, align = cols_center())"
   },
   {
+    "objectID": "pipe.html#fix-a-column-width",
+    "href": "pipe.html#fix-a-column-width",
+    "title": "6  Pipe interface",
+    "section": "6.7 Fix a column width",
+    "text": "6.7 Fix a column width\nThis is an aspect of aligning columns and uses col_ragged() most of the time. for example, if we want columns left-justified but the Title column is to be capped at 5 cm\n\nst_new(data) %>% \n  st_left(Title = col_ragged(5)) %>%\n  stable()"
+  },
+  {
     "objectID": "pipe.html#rename-columns",
     "href": "pipe.html#rename-columns",
     "title": "6  Pipe interface",
-    "section": "6.7 Rename columns",
-    "text": "6.7 Rename columns\n\nst_new(data) %>% \n  st_rename(Weight = \"WT\") %>% \n  stable()\n\nEquivalent call\n\nstable(data, cols_rename = c(Weight = \"WT\"))"
+    "section": "6.8 Rename columns",
+    "text": "6.8 Rename columns\n\nst_new(data) %>% \n  st_rename(Weight = \"WT\") %>% \n  stable()\n\nEquivalent call\n\nstable(data, cols_rename = c(Weight = \"WT\"))"
   },
   {
     "objectID": "pipe.html#blank-columns",
     "href": "pipe.html#blank-columns",
     "title": "6  Pipe interface",
-    "section": "6.8 Blank columns",
-    "text": "6.8 Blank columns\n\nst_new(data) %>% \n  st_blank(WT, ALB, DOSE) %>% \n  stable()\n\nEquivalent call\n\nstable(data, cols_blank = \"WT,ALB,DOSE\")"
+    "section": "6.9 Blank columns",
+    "text": "6.9 Blank columns\n\nst_new(data) %>% \n  st_blank(WT, ALB, DOSE) %>% \n  stable()\n\nEquivalent call\n\nstable(data, cols_blank = \"WT,ALB,DOSE\")"
   },
   {
     "objectID": "pipe.html#drop-columns",
     "href": "pipe.html#drop-columns",
     "title": "6  Pipe interface",
-    "section": "6.9 Drop columns",
-    "text": "6.9 Drop columns\n\nst_new(data) %>% \n  st_drop(WT, ALB, DOSE) %>% \n  stable()\n\nEquivalent call\n\nstable(data, drop = \"WT, ALB, DOSE\")"
+    "section": "6.10 Drop columns",
+    "text": "6.10 Drop columns\n\nst_new(data) %>% \n  st_drop(WT, ALB, DOSE) %>% \n  stable()\n\nEquivalent call\n\nstable(data, drop = \"WT, ALB, DOSE\")"
   },
   {
     "objectID": "pipe.html#notes",
     "href": "pipe.html#notes",
     "title": "6  Pipe interface",
-    "section": "6.10 Notes",
-    "text": "6.10 Notes\n\nMultiple calls are allowed; notes will accumulate\n\n\nst_new(data) %>% \n  st_notes(\"first note\") %>% \n  st_notes(\"second note\") %>% \n  stable()\n\nEquivalent call\n\nstable(\n  data, \n  notes = c(\"first note\", \"second note\")\n)"
+    "section": "6.11 Notes",
+    "text": "6.11 Notes\n\nMultiple calls are allowed; notes will accumulate\n\n\nst_new(data) %>% \n  st_notes(\"first note\") %>% \n  st_notes(\"second note\") %>% \n  stable()\n\nEquivalent call\n\nstable(\n  data, \n  notes = c(\"first note\", \"second note\")\n)"
   },
   {
     "objectID": "pipe.html#units",
     "href": "pipe.html#units",
     "title": "6  Pipe interface",
-    "section": "6.11 Units",
-    "text": "6.11 Units\n\nst_new(data) %>% \n  st_units(WT = \"kg\", AGE = \"years\") %>% \n  stable()\n\nNote that st_units() will automatically add parens to your units; this can be suppressed with the parens argument.\nUnits can also be added as a list\n\nu <- list(WT = \"kg\", AGE = \"years\")\n\nst_new(data) %>% \n  st_units(u) %>% \n  stable()\n\nEquivalent call\n\nstable(data, units = u)"
+    "section": "6.12 Units",
+    "text": "6.12 Units\n\nst_new(data) %>% \n  st_units(WT = \"kg\", AGE = \"years\") %>% \n  stable()\n\nNote that st_units() will automatically add parens to your units; this can be suppressed with the parens argument.\nUnits can also be added as a list\n\nu <- list(WT = \"kg\", AGE = \"years\")\n\nst_new(data) %>% \n  st_units(u) %>% \n  stable()\n\nEquivalent call\n\nstable(data, units = u)"
   },
   {
     "objectID": "pipe.html#panel",
     "href": "pipe.html#panel",
     "title": "6  Pipe interface",
-    "section": "6.12 panel",
-    "text": "6.12 panel\n\nst_new(data) %>% \n  st_panel(\"STUDY\") %>% \n  stable()\n\nEquivalent call\n\nstable(data, panel = \"STUDY\")"
+    "section": "6.13 panel",
+    "text": "6.13 panel\n\nst_new(data) %>% \n  st_panel(\"STUDY\") %>% \n  stable()\n\nEquivalent call\n\nstable(data, panel = \"STUDY\")"
   },
   {
     "objectID": "pipe.html#span",
     "href": "pipe.html#span",
     "title": "6  Pipe interface",
-    "section": "6.13 span",
-    "text": "6.13 span\n\nst_new(data) %>% \n  st_span(\"Covariates\", c(WT, ALB, EGFR)) %>% \n  stable()\n\nEquivalent call\n\nstable(\n  data, \n  span = as.span(\"Covariates\", c(WT, ALB, EGFR))\n)"
+    "section": "6.14 span",
+    "text": "6.14 span\n\nst_new(data) %>% \n  st_span(\"Covariates\", c(WT, ALB, EGFR)) %>% \n  stable()\n\nEquivalent call\n\nstable(\n  data, \n  span = as.span(\"Covariates\", c(WT, ALB, EGFR))\n)"
   },
   {
     "objectID": "pipe.html#hlines---at",
     "href": "pipe.html#hlines---at",
     "title": "6  Pipe interface",
-    "section": "6.14 hlines - at",
-    "text": "6.14 hlines - at\nTo put horizontal lines at specific rows\n\nst_new(data) %>% \n  st_hline(at = c(2,4,6))\n\nEquivalent call\n\nstable(data, hline_at = c(2,4,6))"
+    "section": "6.15 hlines - at",
+    "text": "6.15 hlines - at\nTo put horizontal lines at specific rows\n\nst_new(data) %>% \n  st_hline(at = c(2,4,6))\n\nEquivalent call\n\nstable(data, hline_at = c(2,4,6))"
   },
   {
     "objectID": "pipe.html#hlines---from",
     "href": "pipe.html#hlines---from",
     "title": "6  Pipe interface",
-    "section": "6.15 hlines - from",
-    "text": "6.15 hlines - from\nTo calculate hlines based on data frame column values (for example, to break the table by changing values of STUDYf)\n\nst_new(data) %>% \n  st_hline(from = \"STUDYf\")\n\nEquivalent call\n\nstable(data, hline_from = \"STUDYf\")"
+    "section": "6.16 hlines - from",
+    "text": "6.16 hlines - from\nTo calculate hlines based on data frame column values (for example, to break the table by changing values of STUDYf)\n\nst_new(data) %>% \n  st_hline(from = \"STUDYf\")\n\nEquivalent call\n\nstable(data, hline_from = \"STUDYf\")"
   },
   {
     "objectID": "pipe.html#hlines---pattern",
     "href": "pipe.html#hlines---pattern",
     "title": "6  Pipe interface",
-    "section": "6.16 hlines - pattern",
-    "text": "6.16 hlines - pattern\nTo search the table for a pattern and add hlines above matches\n\nst_new(data) %>% \n  st_hline(pattern  = \"All\", cols = \"Summary\")\n\nThe cols argument limits the search to the Summary column; omit this argument to search the whole table.\nThere is no equivalent call for this using straight stable()."
+    "section": "6.17 hlines - pattern",
+    "text": "6.17 hlines - pattern\nTo search the table for a pattern and add hlines above matches\n\nst_new(data) %>% \n  st_hline(pattern  = \"All\", cols = \"Summary\")\n\nThe cols argument limits the search to the Summary column; omit this argument to search the whole table.\nThere is no equivalent call for this using straight stable()."
   },
   {
     "objectID": "pipe.html#clear-replicate-values",
     "href": "pipe.html#clear-replicate-values",
     "title": "6  Pipe interface",
-    "section": "6.17 Clear replicate values",
-    "text": "6.17 Clear replicate values\nTo create groups by “clearing” replicate values in a column\n\nst_new(data) %>% \n  st_clear_reps(STUDY) %>% \n  stable()\n\nEquivalent call\n\nstable(data, clear_reps = \"STUDY\")"
+    "section": "6.18 Clear replicate values",
+    "text": "6.18 Clear replicate values\nTo create groups by “clearing” replicate values in a column\n\nst_new(data) %>% \n  st_clear_reps(STUDY) %>% \n  stable()\n\nEquivalent call\n\nstable(data, clear_reps = \"STUDY\")"
   },
   {
     "objectID": "preview.html",
     "href": "preview.html",
     "title": "7  Preview",
     "section": "",
-    "text": "Take a table or a list of tables and render them in a report-like document with a table of contents and a (faux) caption for each table\n\ndata %>% stable() %>% st2report()\n\nYou might try passing ntex to force the document to build more than once (sometimes the layout settles down after the second build\n\ndata %>% stable() %>% st2report(ntex = 2)\n\nPass in a list of tables and you will get one table on each page with a listing of tables in the table of contents\n\nlist(table1, table2, table3) %>% st2report()"
+    "text": "Take a table or a list of tables and render them in a report-like document with a table of contents and a (faux) caption for each table\n\ndata %>% stable() %>% st2report()\n\nYou might try passing ntex to force the document to build more than once (sometimes the layout settles down after the second build\n\ndata %>% stable() %>% st2report(ntex = 2)"
   },
   {
-    "objectID": "preview.html#st2viewer",
-    "href": "preview.html#st2viewer",
+    "objectID": "preview.html#multiple-tables",
+    "href": "preview.html#multiple-tables",
     "title": "7  Preview",
-    "section": "7.2 st2viewer",
-    "text": "7.2 st2viewer\nThis function relies on texPreview() to render your table and display it as a graphic in the viewer window\n\ndata %>% stable() %>% st2viewer()\n\nThis method is more convenient because the tables always go to the viewer. But the rendering will not be like what you will see in the report."
+    "section": "7.2 Multiple tables",
+    "text": "7.2 Multiple tables\nPass in a list of tables and you will get one table on each page with a listing of tables in the table of contents\n\nlist(table1, table2, table3) %>% st2report()\n\nWhen you pass a named list, those names will propagate into the preview table of contents. For example\n\ntab <- stable(stdata())\n\ntablist <- list(\"first table\" = tab, \"second table\" = tab)\n\ntablist %>% st2report(ntex = 2)\n\nYou will most likely need to run pdflatex x2 to get the table of contents right."
   },
   {
-    "objectID": "preview.html#st2article",
-    "href": "preview.html#st2article",
+    "objectID": "preview.html#landscape",
+    "href": "preview.html#landscape",
     "title": "7  Preview",
-    "section": "7.3 st2article",
-    "text": "7.3 st2article\nLike st2report() but less report-like. You should use st2report() instead.\n\ndata %>% stable() %>% st2article()"
+    "section": "7.3 Landscape",
+    "text": "7.3 Landscape\nPass the stable() output through as_lscape() to have the preview page render in landscape orientation\n\nstdata() %>% stable() %>% as_lscape() %>% st2report()\n\nNote that this landscaping only operates in the preview; if you want your table to render in landscape mode in a standalone report, you will have to code that in the report document."
   },
   {
-    "objectID": "preview.html#st2doc",
-    "href": "preview.html#st2doc",
+    "objectID": "preview.html#preview-other",
+    "href": "preview.html#preview-other",
     "title": "7  Preview",
-    "section": "7.4 st2doc",
-    "text": "7.4 st2doc\nThe original. Rather than building a TeX article, it runs the table in a Rmd document via pandoc. Not recommended; it is much slower to get the preview because there has to be a call to pandoc\n\ndata %>% stable() %>% st2doc()"
+    "section": "7.4 Preview other",
+    "text": "7.4 Preview other\n\n7.4.1 st2viewer\nThis function relies on texPreview() to render your table and display it as a graphic in the viewer window\n\ndata %>% stable() %>% st2viewer()\n\nThis method is more convenient because the tables always go to the viewer. But the rendering will not be like what you will see in the report.\n\n\n7.4.2 st2article\nLike st2report() but less report-like. You should use st2report() instead.\n\ndata %>% stable() %>% st2article()\n\n\n\n7.4.3 st2doc\nThe original. Rather than building a TeX article, it runs the table in a Rmd document via pandoc. Not recommended; it is much slower to get the preview because there has to be a call to pandoc\n\ndata %>% stable() %>% st2doc()"
   },
   {
     "objectID": "sanitize.html",

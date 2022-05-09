@@ -253,9 +253,14 @@ background: #0082b4;
    
   <ul>
   <li><a href="#st2report" id="toc-st2report" class="nav-link active" data-scroll-target="#st2report"> <span class="header-section-number">7.1</span> st2report</a></li>
-  <li><a href="#st2viewer" id="toc-st2viewer" class="nav-link" data-scroll-target="#st2viewer"> <span class="header-section-number">7.2</span> st2viewer</a></li>
-  <li><a href="#st2article" id="toc-st2article" class="nav-link" data-scroll-target="#st2article"> <span class="header-section-number">7.3</span> st2article</a></li>
-  <li><a href="#st2doc" id="toc-st2doc" class="nav-link" data-scroll-target="#st2doc"> <span class="header-section-number">7.4</span> st2doc</a></li>
+  <li><a href="#multiple-tables" id="toc-multiple-tables" class="nav-link" data-scroll-target="#multiple-tables"> <span class="header-section-number">7.2</span> Multiple tables</a></li>
+  <li><a href="#landscape" id="toc-landscape" class="nav-link" data-scroll-target="#landscape"> <span class="header-section-number">7.3</span> Landscape</a></li>
+  <li><a href="#preview-other" id="toc-preview-other" class="nav-link" data-scroll-target="#preview-other"> <span class="header-section-number">7.4</span> Preview other</a>
+  <ul class="collapse">
+  <li><a href="#st2viewer" id="toc-st2viewer" class="nav-link" data-scroll-target="#st2viewer"> <span class="header-section-number">7.4.1</span> st2viewer</a></li>
+  <li><a href="#st2article" id="toc-st2article" class="nav-link" data-scroll-target="#st2article"> <span class="header-section-number">7.4.2</span> st2article</a></li>
+  <li><a href="#st2doc" id="toc-st2doc" class="nav-link" data-scroll-target="#st2doc"> <span class="header-section-number">7.4.3</span> st2doc</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -275,34 +280,57 @@ background: #0082b4;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2report</span>(<span class="at">ntex =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="multiple-tables" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="multiple-tables"><span class="header-section-number">7.2</span> Multiple tables</h2>
 <p>Pass in a list of tables and you will get one table on each page with a listing of tables in the table of contents</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">list</span>(table1, table2, table3) <span class="sc">%&gt;%</span> <span class="fu">st2report</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>When you pass a named list, those names will propagate into the preview table of contents. For example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">stable</span>(<span class="fu">stdata</span>())</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>tablist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"first table"</span> <span class="ot">=</span> tab, <span class="st">"second table"</span> <span class="ot">=</span> tab)</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>tablist <span class="sc">%&gt;%</span> <span class="fu">st2report</span>(<span class="at">ntex =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You will most likely need to run <code>pdflatex</code> x2 to get the table of contents right.</p>
 </section>
-<section id="st2viewer" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="st2viewer"><span class="header-section-number">7.2</span> st2viewer</h2>
+<section id="landscape" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="landscape"><span class="header-section-number">7.3</span> Landscape</h2>
+<p>Pass the <code>stable()</code> output through <code>as_lscape()</code> to have the preview page render in landscape orientation</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">as_lscape</span>() <span class="sc">%&gt;%</span> <span class="fu">st2report</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that this landscaping only operates in the preview; if you want your table to render in landscape mode in a standalone report, you will have to code that in the report document.</p>
+</section>
+<section id="preview-other" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="preview-other"><span class="header-section-number">7.4</span> Preview other</h2>
+<section id="st2viewer" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="st2viewer"><span class="header-section-number">7.4.1</span> st2viewer</h3>
 <p>This function relies on <code>texPreview()</code> to render your table and display it as a graphic in the viewer window</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2viewer</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2viewer</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This method is more convenient because the tables always go to the viewer. But the rendering will not be like what you will see in the report.</p>
 </section>
-<section id="st2article" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="st2article"><span class="header-section-number">7.3</span> st2article</h2>
+<section id="st2article" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="st2article"><span class="header-section-number">7.4.2</span> st2article</h3>
 <p>Like <code>st2report()</code> but less report-like. You should use <code>st2report()</code> instead.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2article</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2article</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="st2doc" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="st2doc"><span class="header-section-number">7.4</span> st2doc</h2>
+<section id="st2doc" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="st2doc"><span class="header-section-number">7.4.3</span> st2doc</h3>
 <p>The original. Rather than building a TeX article, it runs the table in a <code>Rmd</code> document via pandoc. Not recommended; it is much slower to get the preview because there has to be a call to <code>pandoc</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2doc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st2doc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

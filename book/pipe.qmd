@@ -127,6 +127,19 @@ Equivalent call
 stable(data, align = cols_center()) 
 ```
 
+## Fix a column width
+
+This is an aspect of aligning columns and uses `col_ragged()` most of the time.
+for example, if we want columns left-justified but the `Title` column is to be 
+capped at 5 cm 
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_left(Title = col_ragged(5)) %>%
+  stable()
+```
+
+
 
 ## Rename columns
 
@@ -311,7 +324,25 @@ Equivalent call
 stable(data, clear_reps = "STUDY")
 ```
 
-\clearpage
+# Row and column padding
+
+Use `st_sizes()` to change padding in rows or columns or adjust other 
+aspects of table sizes
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_sizes(row = 1.1, col = 6) %>%
+  stable()
+```
+
+Equivalent call
+
+```{r}
+stable(data, sizes = tab_size(row = 1.1, col = 6))
+```
+
+
+The arguments to `st_sizes()` get passed to `tab_size()`.
 
 # Pipe cheat table
 
