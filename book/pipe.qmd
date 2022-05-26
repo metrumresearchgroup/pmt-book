@@ -130,7 +130,7 @@ stable(data, align = cols_center())
 ## Fix a column width
 
 This is an aspect of aligning columns and uses `col_ragged()` most of the time.
-for example, if we want columns left-justified but the `Title` column is to be 
+For example, if we want columns left-justified but the `Title` column is to be 
 capped at 5 cm 
 
 ```{r, eval = FALSE}
@@ -365,8 +365,13 @@ funcs <- function(x) {
 df <- yaml_as_df("pipe.yml")
 df$args <- sapply(df$call, arg)
 df$call <- sapply(df$call, funcs)
+#df$do <- gsub("\n", "", df$do)
 df <- select(df, Call = call, Arguments = args, Description = do)
-ali <- cols_left(Arguments = col_ragged(2.5), Call = col_ragged(3), Description = col_ragged(7))
+ali <- cols_left(
+  Arguments = col_ragged(2.5), 
+  Call = col_ragged(3), 
+  Description = col_ragged(7)
+)
 
 df %>% stable(align = ali , hline_from = "Call", cols_bold = TRUE) %>%
   st_as_image(dir = "build", width = 1)

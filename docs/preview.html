@@ -301,7 +301,7 @@ background: #0082b4;
 <h2 data-number="7.3" class="anchored" data-anchor-id="landscape"><span class="header-section-number">7.3</span> Landscape</h2>
 <p>Pass the <code>stable()</code> output through <code>as_lscape()</code> to have the preview page render in landscape orientation</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">as_lscape</span>() <span class="sc">%&gt;%</span> <span class="fu">st2report</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">as_lscape</span>() <span class="sc">%&gt;%</span> <span class="fu">st2report</span>(<span class="at">ntex =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that this landscaping only operates in the preview; if you want your table to render in landscape mode in a standalone report, you will have to code that in the report document.</p>
 </section>

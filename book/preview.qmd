@@ -53,7 +53,7 @@ Pass the `stable()` output through `as_lscape()` to have the preview page
 render in landscape orientation
 
 ```{r, eval = FALSE}
-stdata() %>% stable() %>% as_lscape() %>% st2report()
+stdata() %>% stable() %>% as_lscape() %>% st2report(ntex = 2)
 ```
 
 Note that this landscaping only operates in the preview; if you want your 

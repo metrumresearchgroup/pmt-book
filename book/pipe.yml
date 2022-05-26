@@ -19,8 +19,8 @@ bb:
 bbbb: 
   call: st_hline
   do: |
-    Add horizontal lines to the table. \\newline
-    Use pattern to search a column for the location.\\newline
+    Add horizontal lines to the table. \newline\newline
+    Use pattern to search a column for the location.\newline\newline
     Use at to indicate row numbers or a logical vector indicating rows. 
 bbb: 
   call: st_span

@@ -1,60 +1,1126 @@
----
-title: "\\color{mrgreen}Introducing pmtables"
-date: "`r Sys.Date()`"
-author: Metrum Research Group
-comment: > 
-  This is a simple introduction to the pmtables package for R. I hope this will 
-  be useful for those who are new to the package and those who just need a 
-  reminder on the syntax. 
-version: "`r packageVersion('pmtables')`"
----
 
-\clearpage
-
-
-```{r, child = "source/stable.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/panel.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/spanners.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/longtable.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/pipe.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/preview.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/sanitize.Rmd"}
-```
-
-\clearpage
-
-```{r, child = "source/pmtable.Rmd"}
+```{r child = "source/stable.Rmd"}
 
 ```
+```{r include = FALSE}
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
 
-\clearpage
+
+```
+```{r eval = FALSE}
+## stable(data)
 
 
-```{r,include = FALSE}
+```
+```{r }
+
+data <- stdata()
+
+head(data)
+
+
+```
+```{r }
+out <- stable(data)
+
+head(out, n = 10)
+
+
+```
+```{r }
+out %>% st_asis()
+
+
+```
+```{r }
+out <- stable(data, r_file = "tables.R", output_file = "tables.tex")
+
+
+```
+```{r }
+out %>% st_asis()
+
+
+```
+```{r }
+writeLines(out, con = tempfile(tmpdir = '.', fileext = ".tex"))
+
+
+```
+```{r }
+attributes(out)
+
+
+```
+```{r }
+stable_save(out)
+
+
+```
+```{r }
+stable_save(out, dir = tempdir())
+
+
+```
+```{r eval=FALSE}
+## options(pmtables.dir = tempdir())
+## 
+## stable_save(out)
+
+
+```
+```{r include = FALSE}
+options(pmtables.dir = NULL)
+
+
+```
+```{r }
+tmp <- tibble(AB = 1, CDEFGHIJ = 2, KL = 3)
+stable(tmp, align = cols_center()) %>% st_asis()
+
+
+```
+```{r }
+stable(tmp, align = cols_center(CDEFGHIJ = "r")) %>% st_asis()
+
+
+```
+```{r }
+stable(tmp, align = cols_center(.l = "AB,KL")) %>% st_asis()
+
+
+```
+```{r }
+stable(tmp, align = cols_center(.outer = "lr")) %>% st_asis()
+
+
+```
+```{r }
+stable(tmp, align = cols_center(AB = col_ragged(2))) %>% st_asis()
+
+
+```
+```{r }
+data %>% 
+  slice(1:3) %>% 
+  stable(cols_rename = c(Age = "AGE", Weight = "WT")) %>%
+  st_asis()
+
+
+```
+```{r }
+data %>% 
+  slice(1:3) %>% 
+  stable(cols_blank = "WT,ALB,SCR") %>% 
+  st_asis()
+
+
+```
+```{r }
+data %>% 
+  slice(1:3) %>% 
+  stable(cols_omit = TRUE) %>% 
+  st_asis()
+
+
+```
+```{r }
+tmp <- tibble(a.A = 1, b.A = 2, c.A = 3)
+
+
+```
+```{r }
+tmp %>% stable(cols_split = '.') %>% st_asis()
+
+
+```
+```{r }
+data %>% slice(1:2) %>% stable(cols_bold = TRUE) %>% st_asis()
+
+
+```
+```{r }
+head(data)
+
+
+```
+```{r }
+stable(data, drop = "FORM") %>% st_asis()
+
+
+```
+```{r eval = FALSE}
+## data %>% select(-FORM) %>% stable()
+
+
+```
+```{r }
+data %>% 
+  slice(1:3) %>% 
+  stable(notes = "Showing just the first three rows") %>% 
+  st_asis()
+
+
+```
+```{r }
+u <- list(
+  WT = "kg", CRCL = "ml/min", AGE = "year", ALB = "g/dL", 
+  SCR = "mg\\%"
+) %>% map(~paste0("(", .x, ")"))
+
+
+```
+```{r }
+stable(data, units = u) %>% st_asis()
+
+
+```
+```{r }
+tibble(`First line ... Second line` = 123456789) %>% 
+  stable() %>% st_asis() 
+
+
+```
+```{r }
+tibble(a = 1) %>% 
+  stable(cols_rename =  c(`First ... Second` = "a")) %>% 
+  st_asis()
+
+
+```
+```{r }
+stable(stdata(), hline_at = c(3,5)) %>% st_asis()
+
+
+```
+```{r }
+stable(stdata(), hline_at = data$FORM == "tablet") %>% st_asis()
+
+
+```
+```{r }
+stable(stdata(), hline_from = "DOSE") %>% st_asis()
+
+
+```
+```{r }
+stable(stdata(), clear_reps = "STUDY") %>% st_asis()
+
+
+```
+```{r }
+stable(stdata(), clear_reps = "STUDY", hline_from = "STUDY") %>% 
+  st_asis()
+
+
+
+
+```
+```{r child = "source/panel.Rmd"}
+
+```
+```{r eval = FALSE}
+## stable(stdata(), panel = "STUDY")
+
+
+```
+```{r eval = FALSE}
+## stable(stdata(), panel = as.panel("STUDY", prefix = "Study: "))
+
+
+```
+```{r include = FALSE}
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
+
+
+```
+```{r include = FALSE}
+smcars <- mutate(mtcars, name = rownames(mtcars))
+smcars <- select(smcars, name, everything())
+smcars <- filter(smcars, cyl < 8)
+smcars <- arrange(smcars, carb)
+smcars <- slice(smcars, 1:10)
+
+
+```
+```{r }
+smcars
+
+
+```
+```{r }
+smcars %>% stable(panel = "carb") %>% st_asis()
+
+
+```
+```{r }
+smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_asis()
+
+
+```
+```{r }
+stable(
+  stdata(), 
+  panel = as.panel("STUDY", jut = 1)
+) %>% st_asis()
+
+
+
+```
+```{r child = "source/spanners.Rmd"}
+
+```
+```{r include = FALSE}
+source("global.R")
+
+
+```
+```{r eval = FALSE}
+## stable(stdata(), span = as.span("Covariates", WT:SCR))
+
+
+```
+```{r eval = FALSE}
+## st_new(stdata()) %>% st_span("Covariates", WT:SCR)
+
+
+```
+```{r }
+data <- 
+  tibble(
+    Tariffville = "06081",  Connecticut= "CT", 
+    Minnesota = "MN", Minneapolis = "55455"
+  ) 
+
+data %>% stable(span = as.span("States", Connecticut:Minnesota)) %>%  st_asis()
+
+
+```
+```{r }
+sp <- list(
+  as.span("States", Connecticut:Minnesota), 
+  as.span("Important Locations", Tariffville:Minneapolis, level = 2)
+)
+data %>% stable(span = sp) %>% st_asis()
+
+
+```
+```{r }
+data %>%
+  st_new() %>% 
+  st_span("States", Connecticut:Minnesota) %>% 
+  st_span("Important Locations", Tariffville:Minneapolis, level = 2) %>% 
+  stable() %>% 
+  st_asis()
+
+
+```
+```{r }
+stable(data, span = as.span("Important ... States", Connecticut:Minnesota)) %>%
+  st_asis()
+
+
+```
+```{r }
+stable(
+  stdata(), 
+  span = as.span("Covariates", WT:SCR, align = 'l')
+) %>% st_asis()
+
+
+```
+```{r echo = FALSE}
+dd <- data.frame(A.first = 1, A.second = 2, B.third = 3, B.fourth = 4)
+dd
+
+
+```
+```{r }
+dd  %>% stable(span_split = colsplit(sep = '.')) %>% st_asis()
+
+
+```
+```{r }
+summ <- 
+  pmt_first %>%
+  pivot_longer(cols = c("WT", "AGE")) %>% 
+  filter(!is.na(value)) %>%
+  group_by(STUDYf, name) %>% 
+  summarise(Mean = mean(value), Sd = sd(value), N = n(), .groups = "drop") %>%
+  mutate(across(Mean:N, sig)) %>% mutate(across(Mean:N, as.character))
+
+summ
+
+
+```
+```{r }
+long <- pivot_longer(summ, cols = c("Mean", "Sd", "N"), names_to = "stat")
+head(long)
+
+
+```
+```{r }
+long <- mutate(long, name = recode(name, WT = "Weight (kg)", AGE = "Age (years)"))
+
+
+```
+```{r }
+wide <- pivot_wider(long, names_from = c("name", "stat"), names_sep = "---")
+wide
+
+
+```
+```{r }
+wide %>% stable(span_split = colsplit(sep = "---")) %>% st_asis()
+
+
+
+```
+```{r child = "source/longtable.Rmd"}
+
+```
+```{r eval = FALSE}
+## stable_long(stdata())
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% stable_long()
+
+
+```
+```{r eval = FALSE}
+## pt_cont_long(data, cols = "WT,EGFR") %>% stable_long()
+
+
+## \input{my-table.tex}
+
+
+```
+```{r eval = FALSE}
+## out <- stable_long(data, lt_cap_text = "A long table (example 3)")
+
+
+```
+```{r eval = FALSE}
+## out <- stable_long(data, lt_cap_macro = "ltexfourcap")
+
+
+## \newcommand{\ltexfourcap}{
+
+##   Another long table - example 4
+
+## }
+
+## 
+## \input{example4.tex}
+
+
+```
+```{r eval = FALSE}
+## data %>%
+##   stable_long(lt_cap_label = "tab:example", lt_cap_macro = "example")
+
+
+```
+```{r eval = FALSE}
+## out <- stable_long(data) %>% st_asis()
+
+
+
+```
+```{r child = "source/pipe.Rmd"}
+
+```
+```{r include = FALSE}
+eval_pipe <- FALSE
+library(yspec)
+library(pmtables)
+spec <- ys_help$spec()
+library(dplyr)
+# knitr::knit_hooks$set(output = function(x,options) {
+#   if(isTRUE(options$as.is)) {
+#     return(st_asis(x))  
+#   }
+#   return(x)
+# })
+
+
+```
+```{r }
+data <- pmt_summarized
+head(data)
+
+
+```
+```{r }
+data %>% st_new() %>% class
+
+
+```
+```{r }
+data %>% st_new() %>% stable() %>% head(n=9)
+
+
+
+
+```
+```{r eval = FALSE}
+## data %>% stable()
+
+
+```
+```{r eval = FALSE}
+## data %>% st_new() %>% stable_long()
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_files(r = "foo.R", output = "foo.tex")
+
+
+```
+```{r eval = FALSE}
+## stable(data, r_file = "foo.R", output_file = "foo.tex")
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_files(output = "foo.tex") %>%
+##   stable() %>%
+##   stable_save()
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_center() %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, align = cols_center())
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_rename(Weight = "WT") %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, cols_rename = c(Weight = "WT"))
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_blank(WT, ALB, DOSE) %>% stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, cols_blank = "WT,ALB,DOSE")
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_drop(WT, ALB, DOSE) %>% stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, drop = "WT, ALB, DOSE")
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_notes("first note") %>%
+##   st_notes("second note") %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## stable(
+##   data,
+##   notes = c("first note", "second note")
+## )
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_units(WT = "kg", AGE = "years") %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## u <- list(WT = "kg", AGE = "years")
+## 
+## st_new(data) %>%
+##   st_units(u) %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, units = u)
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_panel("STUDY") %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, panel = "STUDY")
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>%
+##   st_span("Covariates", c(WT, ALB, EGFR)) %>%
+##   stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, span = as.span("Covariates", c(WT, ALB, EGFR)))
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_hline(at = c(2,4,6))
+
+
+```
+```{r eval = FALSE}
+## stable(data, hline_at = c(2,4,6))
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_hline(from = "STUDYf")
+
+
+```
+```{r eval = FALSE}
+## stable(data, hline_from = "STUDYf")
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_hline(pattern  = "All", cols = "Summary")
+
+
+```
+```{r eval = FALSE}
+## st_new(data) %>% st_clear_reps(STUDY) %>% stable()
+
+
+```
+```{r eval = FALSE}
+## stable(data, clear_reps = "STUDY")
+
+
+```
+```{r echo = FALSE}
+arg <- function(call) {
+  fun <- get(call, mode = "function")
+  form <- formals(fun)
+  value <- unlist(form, use.names=FALSE)
+  lbl <- names(formals(fun))
+  #lbl <- lbl[lbl != "..."]
+  lbl <- lbl[!lbl=="x"]
+  paste0(lbl, collapse = "  \\newline ")
+}
+funcs <- function(x) {
+  x <- paste0(x, "()")
+  x
+}
+
+df <- yaml_as_df("pipe.yml")
+df$args <- sapply(df$call, arg)
+df$call <- sapply(df$call, funcs)
+df <- select(df, Call = call, Arguments = args, Description = do)
+ali <- cols_left(Arguments = col_ragged(2.5), Call = col_ragged(3), Description = col_ragged(7))
+df %>% stable_long(align = ali , hline_from = "Call", cols_bold = TRUE) %>%
+st_asis()
+
+
+
+```
+```{r child = "source/preview.Rmd"}
+
+```
+```{r eval = FALSE}
+## data %>% stable() %>% st2report()
+
+
+```
+```{r eval = FALSE}
+## data %>% stable() %>% st2report(ntex = 2)
+
+
+```
+```{r eval = FALSE}
+## list(table1, table2, table3) %>% st2report()
+
+
+```
+```{r eval = FALSE}
+## data %>% stable() %>% st2viewer()
+
+
+```
+```{r eval = FALSE}
+## data %>% stable() %>% st2article()
+
+
+```
+```{r eval = FALSE}
+## data %>% stable() %>% st2doc()
+
+
+
+```
+```{r child = "source/sanitize.Rmd"}
+
+```
+```{r }
+x <- ptdata() %>% st_new(notes = "EDA_summary = TRUE") %>% 
+  st_make(inspect = TRUE) %>% 
+  get_stable_data() 
+
+x$notes
+
+
+```
+```{r }
+x <- ptdata() %>% st_new() %>% 
+  st_files(r = "my_script.R") %>% 
+  st_make(inspect = TRUE) %>% 
+  get_stable_data() 
+
+x$notes
+
+
+```
+```{r }
+out <- 
+  tibble(a_1 = 5) %>% 
+  stable(inspect = TRUE) %>% 
+  get_stable_data()
+
+out$cols_tex
+
+
+```
+```{r }
+out <- 
+  tibble(a = "5_2") %>% 
+  stable(inspect = TRUE) %>% 
+  get_stable_data()
+
+out$tab
+
+
+```
+```{r }
+out <- 
+  ptdata() %>% 
+  stable(inspect = TRUE, span = colgroup("foo_this", WT:SCR)) %>% 
+  get_stable_data()
+
+out$span_data$tex
+
+
+```
+```{r }
+data <- tibble(a = c("a_1", "a_1", "a_1", "a_2", "a_2"), 
+               b = letters[1:5])
+
+out <- stable(data, panel = "a") 
+out[grepl("multicolumn", out)]
+
+
+```
+```{r }
+x <- letters[1:5]
+data <- tibble(a = x, b = x, c = x)
+xtra <- tibble(a = "foo%", b = "$\\mu$g", c = "1234 \\% %")
+out <- stable(data, cols_extra = xtra)
+out[grepl("%", out, fixed = TRUE)]
+
+
+
+```
+```{r child = "source/pmtable.Rmd"}
+
+```
+```{r include = FALSE}
+source("global.R")
+
+
+```
+```{r }
+units = yspec::ys_get_unit(yspec::ys_help$spec(), parens = TRUE)
+
+
+```
+```{r }
+data <- pmt_first
+data_pk <- pmt_pk
+data_all <- pmt_obs
+
+
+```
+```{r }
+pt_cont_wide(data, cols = c(Weight = "WT")) %>% 
+  stable(notes = NULL) %>% st_asis()
+
+
+```
+```{r }
+tab <- list(SEXf = "Sex", ASIANf = "Race group")
+
+pt_cat_wide(data, cols = "SEXf,ASIANf", table = tab) %>% 
+  stable() %>% st_asis()
+
+
+```
+```{r }
+out <- pt_data_inventory(
+  data_all,
+  by = c(Study = "STUDYf"),
+  panel = as.panel("SEQf", prefix = "Endpoint: "),
+  stacked = TRUE
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_data_inventory(
+  data_pk,
+  by = c(Study = "STUDYf"),
+  panel = "ASIANf"
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_data_inventory(
+  data_pk,
+  by = c(Study = "STUDYf")
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+data_ql <- pmt_obs
+data_lq <- dplyr::rename(pmt_obs, BLQ = BQL) 
+
+
+```
+```{r }
+pt_data_inventory(data_ql, by = "STUDYf") %>% 
+  st_asis()
+
+
+```
+```{r }
+pt_data_inventory(data_lq, by = "STUDYf") %>% 
+  st_asis()
+
+
+```
+```{r }
+out <- pt_cat_wide(
+  data = data,
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf)
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_wide(
+  data = data,
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
+  panel = as.panel("STUDYf", prefix = "Study: ")
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_wide(
+  data = data,
+  by = c(Sex = "SEXf"),
+  cols = vars(Formulation = FORMf, "Race group" = ASIANf)
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_wide(
+  data = data,
+  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  panel = as.panel("STUDYf", prefix = "Study: "),
+  by = c("RF Group" = "RFf")
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_wide(
+  data = data,
+  summarize = "none",
+  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  panel = as.panel("STUDYf", prefix = "Study: "),
+  by = c("RF Group" = "RFf")
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r ungrouped-long-categorical}
+out <- pt_cat_long(
+  data = data,
+  cols = vars(Study = STUDYf, Sex = SEXf, "Race group" = ASIANf, "Child-Pugh" = CPf)
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_long(
+  data = data,
+  cols = vars(Study = STUDYf,Sex = SEXf,"Race group" = ASIANf, "Child-Pugh" = CPf),
+  span = c(Formulation = "FORMf")
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_long(
+  data = data,
+  summarize = "both",
+  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  span = vars(Study = STUDYf)
+  )
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cat_long(
+  data = data,
+  summarize = "none",
+  cols = vars(Formulation = FORMf, Sex = SEXf,"Race group" = ASIANf),
+  span = vars(Study = STUDYf)
+  )
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB,HT",
+  units = units
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB,HT",
+  panel = c(Study = "STUDYf"),
+  units = units
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB,HT",
+  by = c(Study = "STUDYf"),
+  units = units
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB,HT",
+  by = c(Study = "STUDYf"),
+  panel = c(Formulation = "FORMf"),
+  units = units
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cont_long(
+  data = data,
+  cols = "WT,SCR,AGE",
+  units = units
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+out <- pt_cont_long(
+  data = data,
+  cols = "WT,SCR,AGE",
+  panel = vars(Study = STUDYf),
+  units = units
+)
+
+out %>% stable(r_file = "test.R", output_file = "test.tex") %>% st_asis()
+
+
+```
+```{r }
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL", 
+  cols_cat = "SEXf, CPf", 
+  span = c(Study = "STUDYf")
+) %>% st_asis()
+
+
+```
+```{r }
+mini <- noteconf(type = "minipage", width = 0.5)
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf"
+) %>% stable(note_config = mini) %>% st_asis()
+
+
+```
+```{r }
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf", 
+  paneled = FALSE, 
+  table = list(WT = "Weight (kg)", CRCL = "CLCR (ml/min)", 
+               AGE = "Age (years)", SEXf = "Sex", CPf = "Child-Pugh")
+) %>% st_asis()
+
+
+```
+```{r }
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf", 
+  span = c(Study = "STUDYf"),
+  summarize_all = FALSE
+) %>% st_asis()
+
+
+```
+```{r }
+cont_long_custom <- function(value, ...) {
+  value <- na.omit(value)
+  ans <- data.frame(
+    GeoMean = exp(mean(log(value))), 
+    Variance = var(value)
+  )
+  mutate(ans, across(everything(), sig))
+}
+
+
+```
+```{r }
+cont_long_custom(c(1,2,3,4,5))
+
+
+```
+```{r }
+pt_cont_long(
+  data = pmt_first, 
+  cols = c("WT", "ALB", "AGE"), 
+  fun = cont_long_custom
+)$data
+
+
+```
+```{r }
+cont_wide_custom <- function(value, ...) {
+  value <- na.omit(value)
+  geo_mean <- sig(exp(mean(log(value))))
+  variance <- sig(var(value))
+  n <- length(value)
+  ans <- paste0(geo_mean, " [", variance, "] (", n, ")")
+  data.frame(summary = ans)
+}
+
+
+```
+```{r }
+cont_wide_custom(c(1, 3, 5))
+
+
+```
+```{r warning = FALSE}
+pt_cont_wide(
+  data = pmt_first, 
+  cols = c("WT", "ALB", "AGE"), 
+  fun = cont_wide_custom
+)$data
+
+
+
+```
+```{r include = FALSE}
 system("rm source/file*.tex")
 system("rm source/*.log")
 ```

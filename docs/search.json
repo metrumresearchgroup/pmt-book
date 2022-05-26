@@ -221,7 +221,7 @@
     "href": "pipe.html#fix-a-column-width",
     "title": "6  Pipe interface",
     "section": "6.7 Fix a column width",
-    "text": "6.7 Fix a column width\nThis is an aspect of aligning columns and uses col_ragged() most of the time. for example, if we want columns left-justified but the Title column is to be capped at 5 cm\n\nst_new(data) %>% \n  st_left(Title = col_ragged(5)) %>%\n  stable()"
+    "text": "6.7 Fix a column width\nThis is an aspect of aligning columns and uses col_ragged() most of the time. For example, if we want columns left-justified but the Title column is to be capped at 5 cm\n\nst_new(data) %>% \n  st_left(Title = col_ragged(5)) %>%\n  stable()"
   },
   {
     "objectID": "pipe.html#rename-columns",
@@ -319,7 +319,7 @@
     "href": "preview.html#landscape",
     "title": "7  Preview",
     "section": "7.3 Landscape",
-    "text": "7.3 Landscape\nPass the stable() output through as_lscape() to have the preview page render in landscape orientation\n\nstdata() %>% stable() %>% as_lscape() %>% st2report()\n\nNote that this landscaping only operates in the preview; if you want your table to render in landscape mode in a standalone report, you will have to code that in the report document."
+    "text": "7.3 Landscape\nPass the stable() output through as_lscape() to have the preview page render in landscape orientation\n\nstdata() %>% stable() %>% as_lscape() %>% st2report(ntex = 2)\n\nNote that this landscaping only operates in the preview; if you want your table to render in landscape mode in a standalone report, you will have to code that in the report document."
   },
   {
     "objectID": "preview.html#preview-other",
