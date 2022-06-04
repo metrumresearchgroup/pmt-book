@@ -17,11 +17,11 @@ This is accomplished using a new function called `st_as_image()`. The only
 purpose for calling this function is to get the table to appear in the pages
 of this book. This function can be useful for previewing tables or having them
 appear in `html` documents but it should generally not be used if creating
-outputs for TeX reports. You will not find this function in a pmtables release 
-yet; but it will be available for the release after `0.4.1`. 
+outputs for TeX reports. You will  find this function in pmtables release 
+`0.4.1` and later.
 
 There is also a `pdf` version of this book available 
-[here](https://github.com/metrumresearchgroup/pmt-book/blob/master/pmt-intro.pdf). 
+[here](https://github.com/metrumresearchgroup/pmt-book/blob/main/pmt-intro.pdf). 
 
 # Source {.unnumbered}
 
