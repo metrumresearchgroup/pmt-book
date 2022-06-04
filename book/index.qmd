@@ -1,5 +1,6 @@
 ---
 title: Preface
+toc: false
 ---
 
 <img src=pmt-hex.png align=right width=150px></img>This is a simple 
