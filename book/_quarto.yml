@@ -11,6 +11,10 @@ book:
   author: "Kyle Baron, Pharm.D., Ph.D."
   date: today
   date-format: medium
+  repo-url: https://github.com/metrumresearchgroup/pmt-book
+  repo-subdir: book
+  repo-branch: main
+  repo-actions: [source, issue]
   search: 
     location: navbar
     type: overlay
@@ -32,12 +36,10 @@ book:
     background: white
     foreground: darkgrey
     right:
-      - text: metrumrg
+      - icon: globe2
         href: https://metrumrg.com
       - icon: github
-        href: https://github.com/metrumresearchgroup/pmtables
-      - icon: twitter
-        href: https://twitter.com/MetrumRG
+        href: https://github.com/metrumresearchgroup/pmplots
 
 # Hex colors
 # aqua 03b9b4
