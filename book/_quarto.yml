@@ -18,7 +18,6 @@ book:
   search: 
     location: navbar
     type: overlay
-  #repo-url: https://github.com/metrumresearchgroup/pmt-book
   chapters:
     - index.qmd
     - stable.qmd
@@ -29,17 +28,13 @@ book:
     - preview.qmd
     - sanitize.qmd
     - pmtable.qmd
-    #- intro.qmd
-    #- summary.qmd
-    #- references.qmd
   navbar: 
     background: white
     foreground: darkgrey
     right:
       - icon: globe2
         href: https://metrumrg.com
-      - icon: github
-        href: https://github.com/metrumresearchgroup/pmplots
+
 
 # Hex colors
 # aqua 03b9b4
