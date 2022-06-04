@@ -9,4 +9,7 @@ spelling:
 move: 
 	cp -r book/docs/* docs/
 
-
+publish:
+	quarto render book
+	make move
+	
