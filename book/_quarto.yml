@@ -34,6 +34,8 @@ book:
     right:
       - text: pmplots
         href: https://metrumresearchgroup.github.io/pmp-book
+      - icon: book
+        href: https://metrumresearchgroup.github.io/ptables
       - icon: globe2
         href: https://metrumrg.com
 

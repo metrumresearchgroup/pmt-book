@@ -20,8 +20,13 @@ appear in `html` documents but it should generally not be used if creating
 outputs for TeX reports. You will  find this function in pmtables release 
 `0.4.1` and later.
 
+
 There is also a `pdf` version of this book available 
 [here](https://github.com/metrumresearchgroup/pmt-book/blob/main/pmt-intro.pdf). 
+
+
+You can find `documentation` for pmtables [here](https://metrumresearchgroup.github.io/pmtables/).
+
 
 # Source {.unnumbered}
 
