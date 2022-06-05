@@ -15,8 +15,14 @@ book:
   repo-subdir: book
   repo-branch: main
   repo-actions: [source, issue]
+  twitter-card:
+    image: "https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png"
+    creator: "@kylebtwin"
+    description: Latex tables for pharmacometrics.
+  open-graph:
+    image: "https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png"
+    description: Latex tables for pharmacometrics.
   search: 
-    location: navbar
     type: overlay
   chapters:
     - index.qmd
@@ -51,6 +57,7 @@ format:
     code-line-numbers: true
     fontsize: "15pt"
     linkcolor: "#0082b4"
+    fig-align: center
     title-block-banner: "#0082b4"
     title-block-banner-color: "white"
   # pdf:

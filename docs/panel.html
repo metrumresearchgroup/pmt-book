@@ -126,6 +126,15 @@ background: #0082b4;
     </style>
 
 
+<meta property="og:title" content="The pmtables Book - 3&nbsp; Panel">
+<meta property="og:description" content="Latex tables for pharmacometrics.">
+<meta property="og:image" content="https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png">
+<meta property="og:site-name" content="The pmtables Book">
+<meta name="twitter:title" content="The pmtables Book - 3&nbsp; Panel">
+<meta name="twitter:description" content="Latex tables for pharmacometrics.">
+<meta name="twitter:image" content="https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png">
+<meta name="twitter:creator" content="@kylebtwin">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -320,7 +329,12 @@ background: #0082b4;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">stable</span>(smcars, <span class="at">panel =</span> <span class="st">"carb"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="panel_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="878"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="panel_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="878"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now, all of the <code>carb==1</code> rows are grouped with the heading <code>1</code> and similarly the <code>carb==2</code> rows are grouped with the heading <code>2</code> in bold.</p>
@@ -331,7 +345,12 @@ background: #0082b4;
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"carb"</span>, <span class="at">prefix =</span> <span class="st">"carb: "</span>)</span>
 <span id="cb6-4"><a href="#cb6-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="panel_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="878"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="panel_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="878"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Note that the prefix is completely specified by the user (including any spaces or a colon.</p>
@@ -356,7 +375,12 @@ background: #0082b4;
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDY"</span>, <span class="at">jut =</span> <span class="dv">1</span>)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="panel_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="878"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="panel_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="878"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This feature requires pmtables 0.4.1 or greater.</p>
