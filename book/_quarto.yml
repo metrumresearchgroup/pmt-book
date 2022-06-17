@@ -23,7 +23,8 @@ book:
     image: "https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png"
     description: Latex tables for pharmacometrics.
   search: 
-    type: overlay
+    #type: overlay
+    location: sidebar
   chapters:
     - index.qmd
     - stable.qmd
