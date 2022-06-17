@@ -38,8 +38,12 @@ book:
     background: white
     foreground: darkgrey
     right:
-      - text: pmplots
-        href: https://metrumresearchgroup.github.io/pmp-book
+      - text: Related
+        menu:
+          - text: pmplots
+            href: https://metrumresearchgroup.github.io/pmp-book
+          - text: yspec
+            href: https://metrumresearchgroup.github.io/ysp-book
       - icon: book
         href: https://metrumresearchgroup.github.io/pmtables
       - icon: globe2
