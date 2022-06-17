@@ -1,0 +1,90 @@
+a: 
+  call: st_new
+  do: "Create an `st` object."
+b: 
+  call: st_data
+  do: "Create an `st` object."
+f: 
+  call: st_files
+  do: "Add file name information to an `st` object."
+g: 
+  call: st_sizes
+  do: "Resize various table elements. "
+ggg: 
+  call: st_space
+  do: "Add row and column spacing information to `st` object."
+bb: 
+  call: st_panel
+  do: "Add panel (row group) information to `st` object."
+bbbb: 
+  call: st_hline
+  do: |
+    Add horizontal lines to the table. \newline\newline
+    Use pattern to search a column for the location.\newline\newline
+    Use at to indicate row numbers or a logical vector indicating rows. 
+bbb: 
+  call: st_span
+  do: "Add spanner (column group) information to `st` object."
+bbbbb:
+  call: st_span_split
+  do: "Add spanner data by splitting column names."
+w:
+  call: st_sumrow
+  do: "Identify a summary row for the table."
+c: 
+  call: st_rename
+  do: "Rename table columns."
+e: 
+  call: st_drop
+  do: "Drop entire columns from the table."
+ee: 
+  call: st_blank
+  do: "Clear specific column names from the table header."
+eee: 
+  call: st_units
+  do: "Add unit information to table header."
+eeee: 
+  call: st_clear_reps
+  do: "Clear replicate data within a column."
+gg: 
+  call: st_left
+  do: "Make columns left aligned."
+h: 
+  call: st_right
+  do: "Make columns right aligned."
+i: 
+  call: st_center
+  do: "Make columns centered."
+ii: 
+  call: st_align
+  do: "Pass general alignment information."
+d: 
+  call: st_notes
+  do: "Add note information to an `st` object."
+k:
+  call: st_noteconf
+  do: "Add note configuration information to an `st` object."
+l:
+  call: st_select
+  do: "Select columns in an `st` object."
+m: 
+  call: st_mutate
+  do: "Mutate columns in an `st` object."
+mm:
+  call: st_edit
+  do: "Edit table contents."
+mmm: 
+  call: st_bold
+  do: "Render table data in bold font."
+mmmm:
+  call: st_it
+  do: "Render table data in italic font."
+n: 
+  call: st_args
+  do: "Pass other arguments to `stable()`."
+z: 
+  call: stable
+  do: "Render table in tabular environment."
+zz:
+  call: stable_long
+  do: "Render table in longtable environment."

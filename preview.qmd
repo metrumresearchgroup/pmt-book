@@ -1,0 +1,95 @@
+---
+title: Preview
+subtitle: Options for previewing your table.
+toc-depth: 3
+---
+
+
+## st2report
+
+
+Take a table or a list of tables and render them in a report-like document with 
+a table of contents and a (faux) caption for each table
+
+```{r, eval = FALSE}
+data %>% stable() %>% st2report()
+```
+
+You might try passing `ntex` to force the document to build more than once
+(sometimes the layout settles down after the second build
+
+```{r, eval = FALSE}
+data %>% stable() %>% st2report(ntex = 2)
+```
+
+## Multiple tables 
+
+
+Pass in a list of tables and you will get one table on each page with a listing
+of tables in the table of contents
+
+```{r, eval = FALSE}
+list(table1, table2, table3) %>% st2report()
+```
+
+When you pass a named list, those names will propagate into the preview 
+table of contents. For example
+
+```{r, eval = FALSE}
+tab <- stable(stdata())
+
+tablist <- list("first table" = tab, "second table" = tab)
+
+tablist %>% st2report(ntex = 2)
+```
+
+You will most likely need to run `pdflatex` x2 to get the table of contents 
+right.
+
+
+## Landscape
+
+Pass the `stable()` output through `as_lscape()` to have the preview page
+render in landscape orientation
+
+```{r, eval = FALSE}
+stdata() %>% stable() %>% as_lscape() %>% st2report(ntex = 2)
+```
+
+Note that this landscaping only operates in the preview; if you want your 
+table to render in landscape mode in a standalone report, you will have to
+code that in the report document.
+
+## Preview other
+
+
+### st2viewer
+
+This function relies on `texPreview()` to render your table and display it as 
+a graphic in the viewer window
+
+```{r, eval = FALSE}
+data %>% stable() %>% st2viewer()
+```
+
+This method is more convenient because the tables always go to the viewer. But 
+the rendering will not be like what you will see in the report. 
+
+### st2article
+
+Like `st2report()` but less report-like. You should use `st2report()` instead.
+
+```{r, eval = FALSE}
+data %>% stable() %>% st2article()
+```
+
+
+### st2doc
+
+The original.  Rather than building a TeX article, it runs the table in a 
+`Rmd` document via pandoc.  Not recommended; it is much slower to get the 
+preview because there has to be a call to `pandoc`
+
+```{r, eval = FALSE}
+data %>% stable() %>% st2doc()
+```

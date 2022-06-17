@@ -1,0 +1,644 @@
+---
+title: pmtable
+subtitle: > 
+  Standardized data summaries, rendered as a table.
+---
+
+
+```{r, include = FALSE}
+source("global.R")
+# knitr::opts_chunk$set(
+#   cache = "auto"  
+# )
+```
+
+__Some setup__
+
+Please see the [yspec](https://github.com/metrumresearchgroup/yspec) package. 
+
+```{r}
+units <- yspec::ys_get_unit(
+  yspec::ys_help$spec(), 
+  parens = TRUE
+)
+```
+
+Data sets that come with `pmtables`; we'll re-name them for later
+
+```{r}
+data <- pmt_first
+data_pk <- pmt_pk
+data_all <- pmt_obs
+```
+
+## Principles
+
+These functions expect that the user passes in all data that is to be summarized
+and nothing more.  We will not filter your data. 
+
+
+## Rename cols
+
+When you select columns to summarize, you can generally pass in alternate 
+(nicer) names that you want to show up in the table.  For example, if I have 
+a column called `WT` in the data frame and I want it to show up as `Weight`
+this can be accomplished during the call
+
+```{r}
+pt_cont_wide(data, cols = c(Weight = "WT")) %>% 
+  stable(notes = NULL) %>% 
+  st_as_image()
+```
+
+Alternatively, you can use the `table` argument to enter rename info. Note that
+`table` is a list that should have names that match up with columns in the data
+frame and values that are the new names
+
+```{r}
+tab <- list(SEXf = "Sex", ASIANf = "Race group")
+
+pt_cat_wide(data, cols = "SEXf,ASIANf", table = tab) %>% 
+  stable() %>% 
+  st_as_image()
+```
+
+
+## Data inventory tables
+
+- Count number of
+- individuals
+- observations
+- BQL observations
+- missing values
+- Calculate the percent  of observations or BQL in different sub groups
+
+
+\clearpage
+
+### Stacked by endpoint
+
+- The stacked plot creates multiple independent tables to summarize different
+endpoints; there is no single overall summary for the table because we
+are summarizing different endpoints
+
+
+
+```{r}
+out <- pt_data_inventory(
+  data_all,
+  by = c(Study = "STUDYf"),
+  panel = as.panel("SEQf", prefix = "Endpoint: "),
+  stacked = TRUE
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Paneled
+
+- Just summarize a single endpoint
+
+```{r}
+out <- pt_data_inventory(
+  data_pk,
+  by = c(Study = "STUDYf"),
+  panel = "ASIANf"
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Grouped (by study)
+
+```{r}
+out <- pt_data_inventory(
+  data_pk,
+  by = c(Study = "STUDYf")
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### BQL / BLQ
+
+Beginning with version 0.4.1, pmtables can accommodate either `BQL`
+or `BLQ` as the name of the column indicating that observations were below
+the limit of quantitation. Table notes and output column headers will be adjusted
+based on the input. 
+
+For example
+
+```{r}
+data_ql <- pmt_obs
+data_lq <- rename(pmt_obs, BLQ = BQL) 
+```
+
+
+```{r}
+pt_data_inventory(data_ql, by = "STUDYf") %>% 
+  stable() %>%
+  st_as_image()
+```
+
+
+```{r}
+pt_data_inventory(data_lq, by = "STUDYf") %>% 
+  stable() %>%
+  st_as_image()
+```
+
+\clearpage
+
+
+## Wide categorical table
+
+- Summary of categorical data in wide format
+- The summary is `number (percent within group)`
+- Wide refers to the fact that the covariates go across the table
+
+
+#### Ungrouped
+
+```{r}
+out <- pt_cat_wide(
+  data = data,
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf)
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Paneled (limited utility, IMO)
+
+- Provided here for completeness
+
+```{r}
+out <- pt_cat_wide(
+  data = data,
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
+  panel = as.panel("STUDYf", prefix = "Study: ")
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+
+
+\clearpage
+
+### Grouped (by male / female)
+
+```{r}
+out <- pt_cat_wide(
+  data = data,
+  by = c(Sex = "SEXf"),
+  cols = vars(Formulation = FORMf, "Race group" = ASIANf)
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Paneled and grouped
+
+```{r}
+out <- pt_cat_wide(
+  data = data,
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
+  panel = as.panel("STUDYf", prefix = "Study: "),
+  by = c("RF Group" = "RFf")
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### No summary
+
+```{r}
+out <- pt_cat_wide(
+  data = data,
+  summarize = "none",
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
+  panel = as.panel("STUDYf", prefix = "Study: "),
+  by = c("RF Group" = "RFf")
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+
+## Long categorical table
+
+- Categorical table in long format
+- Long indicates that the covariates go down the table
+
+### Ungrouped
+
+```{r, ungrouped-long-categorical}
+out <- pt_cat_long(
+  data = data,
+  cols = vars(Study = STUDYf, Sex = SEXf, "Race group" = ASIANf, "Child-Pugh" = CPf)
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Grouped (by formulation)
+
+```{r}
+out <- pt_cat_long(
+  data = data,
+  cols = vars(Study = STUDYf, Sex = SEXf, "Race group" = ASIANf, "Child-Pugh" = CPf),
+  span = c(Formulation = "FORMf")
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Summary on bottom and right
+
+```{r}
+out <- pt_cat_long(
+  data = data,
+  summarize = "both",
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
+  span = vars(Study = STUDYf)
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### No summary
+
+```{r}
+out <- pt_cat_long(
+  data = data,
+  summarize = "none",
+  cols = vars(Formulation = FORMf, Sex = SEXf, "Race group" = ASIANf),
+  span = vars(Study = STUDYf)
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+
+
+## Wide continuous table
+
+- Continuous table in wide format
+- Wide means that the covariates go across the table
+
+
+### Ungrouped
+
+```{r}
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB,HT",
+  units = units
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+
+\clearpage 
+
+### Paneled
+
+```{r}
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB,HT",
+  panel = c(Study = "STUDYf"),
+  units = units
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Grouped (by study)
+
+
+```{r}
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB",
+  by = c(Study = "STUDYf"),
+  units = units
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Paneled and grouped
+
+```{r}
+out <- pt_cont_wide(
+  data = data,
+  cols = "WT,SCR,AGE,ALB",
+  by = c(Study = "STUDYf"),
+  panel = c(Formulation = "FORMf"),
+  units = units
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+
+## Long continuous table
+
+- Continuous summary table in long format
+- Long indicates that covariates go down the table
+
+
+### Ungrouped
+
+```{r}
+out <- pt_cont_long(
+  data = data,
+  cols = "WT,SCR,AGE",
+  units = units
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+### Paneled
+
+```{r}
+out <- pt_cont_long(
+  data = data,
+  cols = "WT,SCR,AGE",
+  panel = vars(Study = STUDYf),
+  units = units
+)
+
+stable(
+  out, 
+  r_file = "test.R", 
+  output_file = "test.tex"
+) %>% st_as_image()
+```
+
+\clearpage
+
+## Demographics table
+
+A demographics table summarizes both continuous and discrete data in a single 
+table. 
+
+- Both continuous columns (`cols_cont`) and discrete (`cols_cat`) are required
+- You can specify a `span` column (the table is pretty skinny without that)
+- You can opt out of the paneling too with `paneled` argument (the also makes 
+the table wider
+- An `All data` summary is provided on the left (opt out with `summarize_all`)
+
+### With span
+
+
+```{r}
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL", 
+  cols_cat = "SEXf, CPf", 
+  span = c(Study = "STUDYf")
+) %>% stable() %>% st_as_image()
+```
+
+\clearpage
+
+
+### No span
+
+- This table is skinny
+
+```{r}
+mini <- noteconf(type = "minipage", width = 0.5)
+
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf"
+) %>% stable(note_config = mini) %>% st_as_image()
+```
+
+\clearpage
+
+### No span, not paneled
+
+- Opting out of the paneling also makes it wider
+
+```{r}
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf", 
+  paneled = FALSE, 
+  table = list(
+    WT   = "Weight (kg)", 
+    CRCL = "CLCR (ml/min)", 
+    AGE  = "Age (years)", 
+    SEXf = "Sex", 
+    CPf  = "Child-Pugh"
+  )
+) %>% stable() %>% st_as_image()
+```
+
+
+\clearpage
+
+### No summary
+
+```{r}
+pt_demographics(
+  pmt_first, 
+  cols_cont = "WT, CRCL, AGE", 
+  cols_cat = "SEXf, CPf", 
+  span = c(Study = "STUDYf"),
+  summarize_all = FALSE
+) %>% stable() %>% st_as_image()
+```
+
+\clearpage
+
+## Customized summary functions
+
+pmtables will summarize continuous data using a built-in function, producing
+standard summaries (e.g. mean, median, etc). Users can pass a function to 
+replace this default, allowing totally customized summaries. 
+
+Custom summary functions are not currently allowed for categorical data.
+
+### Continuous long table
+
+You can pass a custom summary function via `fun`. This function should have a
+first argument called `value` and should be able to absorb extra arguments 
+via `...`. The function should return a `data.frame`, with a single row
+and summaries going across in the columns.
+
+For example, we can have `pt_cont_long()` return the geometric mean and 
+variance by passing the following function
+
+```{r}
+cont_long_custom <- function(value, ...) {
+  value <- na.omit(value)
+  ans <- data.frame(
+    GeoMean = exp(mean(log(value))), 
+    Variance = var(value)
+  )
+  mutate(ans, across(everything(), sig))
+}
+```
+
+Test the function by passing some test data
+
+```{r}
+cont_long_custom(c(1,2,3,4,5))
+```
+
+Then, pass this as `fun`
+
+```{r}
+pt_cont_long(
+  data = pmt_first, 
+  cols = c("WT", "ALB", "AGE"), 
+  fun = cont_long_custom
+)$data
+```
+
+See `pmtables:::cont_long_fun` (the default) for an example.   
+
+### Continuous wide table
+
+You can pass a custom summary function via `fun`. This function should have a
+first argument called `value` and should be able to absorb extra arguments 
+via `...`. The continuous, wide table must return a `data.frame` with a single 
+row and a single column named `summary`
+
+```{r}
+cont_wide_custom <- function(value, ...) {
+  value <- na.omit(value)
+  geo_mean <- sig(exp(mean(log(value))))
+  variance <- sig(var(value))
+  n <- length(value)
+  ans <- paste0(geo_mean, " [", variance, "] (", n, ")")
+  data.frame(summary = ans)
+}
+```
+
+You can test the function by passing some test data
+
+```{r}
+cont_wide_custom(c(1, 3, 5))
+```
+
+
+Then, pass this as `fun`
+
+```{r, warning = FALSE}
+pt_cont_wide(
+  data = pmt_first, 
+  cols = c("WT", "ALB", "AGE"), 
+  fun = cont_wide_custom
+)$data
+```
+
+See `pmtables:::cont_wide_fun` (the default) for an example.   

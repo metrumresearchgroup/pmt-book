@@ -1,0 +1,110 @@
+---
+title: Panel
+subtitle: Group table rows in panels.
+---
+
+## Syntax
+
+To panel a table by `STUDY` 
+
+```{r, eval = FALSE}
+stable(stdata(), panel = "STUDY") 
+```
+
+To set a prefix for the panel header:
+
+```{r, eval = FALSE}
+stable(
+  stdata(), 
+  panel = as.panel("STUDY", prefix = "Study: ")
+)
+```
+
+
+## Basics
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
+```
+
+```{r, include = FALSE}
+smcars <- mutate(mtcars, name = rownames(mtcars))
+smcars <- select(smcars, name, everything())
+smcars <- filter(smcars, cyl < 8)
+smcars <- arrange(smcars, carb)
+smcars <- slice(smcars, 1:10)
+```
+
+Paneling your table is a way to group sets of rows together into a "panel" 
+with a panel header rendered in bold font. For example, we can panel a table 
+of `mtcars` by `carb`.  We will be working with an abbreviated version of 
+`mtcars`
+
+```{r}
+smcars
+```
+
+Then we pass into `stable()` and name the paneling column
+
+```{r}
+stable(smcars, panel = "carb") %>% st_as_image()
+```
+
+Now, all of the `carb==1` rows are grouped with the heading `1` and similarly 
+the `carb==2` rows are grouped with the heading `2` in bold. 
+
+This is ok, but a more informative heading would be helpful. To do this, we'll 
+call `as.panel()` to both name the panel column and set some options
+
+```{r}
+stable(
+  smcars, 
+  panel = as.panel("carb", prefix = "carb: ")
+) %>% st_as_image()
+```
+
+Note that the prefix is completely specified by the user (including any spaces
+or a colon.
+
+
+## panel: additional customization 
+
+See the `?rowpanel` help topic for arguments to `rowpanel()` that can be passed
+to customize the panel.  Some of the customizations include
+
+1. add a prefix to the panel title
+1. skip making panels for certain data in the panel column
+1. make the panel title bold
+1. make the panel title italics
+1. opt out from drawing `hline` above panels
+1. jut the panel titles so that the rows under the panel header are indented
+(available starting with version 0.4.1)
+
+\clearpage
+
+### `jut`
+
+We recommend an value more than 1, otherwise the table looks mis-aligned rather
+than creating offset between panel row and underlying data.
+
+```{r}
+stable(
+  stdata(), 
+  panel = as.panel("STUDY", jut = 1)
+) %>% st_as_image()
+```
+
+This feature requires pmtables 0.4.1 or greater.
+
+\clearpage
+
+## panel: important points
+
+1. Most of the time, the data frame should be sorted by the `panel` column
+1. pmtables creates panels by non-repeating values in the panel column; there 
+will be an error if duplicate panel names are found and this can be 
+overridden by passing `duplicates_ok` to `as.panel()`.  
+
+
+\clearpage

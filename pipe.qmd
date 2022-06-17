@@ -1,0 +1,378 @@
+---
+title: Pipe interface
+subtitle: > 
+  A better way to compose and style your table.
+---
+
+```{r, include = FALSE}
+eval_pipe <- FALSE
+library(yspec)
+library(pmtables)
+spec <- ys_help$spec()
+library(dplyr)
+# knitr::knit_hooks$set(output = function(x,options) {
+#   if(isTRUE(options$as.is)) {
+#     return(st_asis(x))  
+#   }
+#   return(x)
+# })
+```
+
+## Basics
+
+Mostly working with this data; but some others come in later to illustrate
+certain features.
+
+```{r}
+data <- pmt_summarized
+head(data)
+```
+
+You start out a pipeline by passing your data frame into `st_new()`
+
+```{r}
+data %>% st_new() %>% class
+```
+This creates an object that gets revised by subsequent steps in the pipeline, 
+adding features and styling as you go. 
+
+For the final step in the pipeline, we'll send the object to `stable()` to 
+create the table
+
+```{r}
+data %>% 
+  st_new() %>% 
+  stable() %>% 
+  head(n=9)
+```
+
+
+\clearpage
+
+## Simple table
+
+You can terminate the pipeline and create a tabular table by sending to 
+`stable()`
+
+```{r, eval = eval_pipe}
+data %>% 
+  st_new() %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+data %>% stable()
+```
+
+## Long table
+
+You can also pipe to `stable_long()` to make a long table
+
+```{r, eval = FALSE}
+data %>% 
+  st_new() %>% 
+  stable_long()
+```
+
+
+
+## Annotate with file names
+
+```{r, eval = FALSE}
+st_new(data) %>% st_files(r = "foo.R", output = "foo.tex")
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(
+  data, 
+  r_file = "foo.R", 
+  output_file = "foo.tex"
+)
+```
+
+Note that in the pipe version, we already have `file` in the function 
+name so that gets dropped from the argument name. 
+
+## Save a table
+
+First convert with `stable()` or `stable_long()` then save with `stable_save()`
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_files(output = "foo.tex") %>%
+  stable() %>% 
+  stable_save()
+```
+
+## Align columns
+
+- `st_center(...)`
+- `st_left(...)`
+- `st_right(...)`
+- `st_align(...)`
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_center() %>% 
+  stable() 
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, align = cols_center()) 
+```
+
+## Fix a column width
+
+This is an aspect of aligning columns and uses `col_ragged()` most of the time.
+For example, if we want columns left-justified but the `Title` column is to be 
+capped at 5 cm 
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_left(Title = col_ragged(5)) %>%
+  stable()
+```
+
+
+
+## Rename columns
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_rename(Weight = "WT") %>% 
+  stable()
+```
+
+Equivalent call 
+
+```{r,  eval = FALSE}
+stable(data, cols_rename = c(Weight = "WT")) 
+```
+
+## Blank columns 
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_blank(WT, ALB, DOSE) %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, cols_blank = "WT,ALB,DOSE")
+```
+
+
+
+## Drop columns
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_drop(WT, ALB, DOSE) %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, drop = "WT, ALB, DOSE")
+```
+
+## Notes
+
+- Multiple calls are allowed; notes will accumulate
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_notes("first note") %>% 
+  st_notes("second note") %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(
+  data, 
+  notes = c("first note", "second note")
+)
+```
+
+## Units
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_units(WT = "kg", AGE = "years") %>% 
+  stable()
+```
+
+Note that `st_units()` will automatically add parens to your units; this 
+can be suppressed with the `parens` argument. 
+
+Units can also be added as a list
+
+```{r, eval = FALSE}
+u <- list(WT = "kg", AGE = "years")
+
+st_new(data) %>% 
+  st_units(u) %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, units = u)
+```
+
+## panel
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_panel("STUDY") %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, panel = "STUDY")
+```
+
+## span
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_span("Covariates", c(WT, ALB, EGFR)) %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(
+  data, 
+  span = as.span("Covariates", c(WT, ALB, EGFR))
+)
+```
+
+## hlines - at
+
+To put horizontal lines at specific rows
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_hline(at = c(2,4,6))
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, hline_at = c(2,4,6))
+```
+
+## hlines - from
+
+To calculate hlines based on data frame column values (for example, to break
+the table by changing values of `STUDYf`)
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_hline(from = "STUDYf")
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, hline_from = "STUDYf")
+```
+
+## hlines - pattern
+
+To search the table for a pattern and add hlines above matches
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_hline(pattern  = "All", cols = "Summary")
+```
+
+The `cols` argument limits the search to the `Summary` column; omit this 
+argument to search the whole table.
+
+There is no equivalent call for this using straight `stable()`.
+
+## Clear replicate values
+
+To create groups by "clearing" replicate values in a column
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_clear_reps(STUDY) %>% 
+  stable()
+```
+
+Equivalent call
+
+```{r, eval = FALSE}
+stable(data, clear_reps = "STUDY")
+```
+
+# Row and column padding
+
+Use `st_sizes()` to change padding in rows or columns or adjust other 
+aspects of table sizes
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  st_sizes(row = 1.1, col = 6) %>%
+  stable()
+```
+
+Equivalent call
+
+```{r}
+stable(data, sizes = tab_size(row = 1.1, col = 6))
+```
+
+
+The arguments to `st_sizes()` get passed to `tab_size()`.
+
+# Pipe cheat table
+
+```{r, echo = FALSE}
+arg <- function(call) {
+  fun <- get(call, mode = "function")
+  form <- formals(fun)
+  value <- unlist(form, use.names=FALSE)
+  lbl <- names(formals(fun))
+  lbl <- gsub("_", "\\\\_", lbl)
+  #lbl <- lbl[lbl != "..."]
+  lbl <- lbl[!lbl=="x"]
+  paste0(lbl, collapse = "  \\newline ")
+}
+funcs <- function(x) {
+  x <- paste0(x, "()")
+  x
+}
+
+df <- yaml_as_df("pipe.yml")
+df$args <- sapply(df$call, arg)
+df$call <- sapply(df$call, funcs)
+#df$do <- gsub("\n", "", df$do)
+df <- select(df, Call = call, Arguments = args, Description = do)
+ali <- cols_left(
+  Arguments = col_ragged(2.5), 
+  Call = col_ragged(3), 
+  Description = col_ragged(7)
+)
+
+df %>% stable(align = ali , hline_from = "Call", cols_bold = TRUE) %>%
+  st_as_image(dir = "build", width = 1)
+```

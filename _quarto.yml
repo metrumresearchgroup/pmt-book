@@ -1,0 +1,68 @@
+project:
+  type: book
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+book:
+  title: "The pmtables Book"
+  subtitle: "Tables for Pharmacometrics"
+  author: "Kyle Baron, Pharm.D., Ph.D."
+  date: today
+  date-format: medium
+  repo-url: https://github.com/metrumresearchgroup/pmt-book
+  repo-subdir: book
+  repo-branch: main
+  repo-actions: [source, issue]
+  twitter-card:
+    image: "https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png"
+    creator: "@kylebtwin"
+    description: Latex tables for pharmacometrics.
+  open-graph:
+    image: "https://metrumresearchgroup.github.io/pmt-book/pmt-hex.png"
+    description: Latex tables for pharmacometrics.
+  search: 
+    type: overlay
+  chapters:
+    - index.qmd
+    - stable.qmd
+    - panel.qmd
+    - spanners.qmd
+    - longtable.qmd
+    - pipe.qmd
+    - preview.qmd
+    - sanitize.qmd
+    - pmtable.qmd
+  navbar: 
+    background: white
+    foreground: darkgrey
+    right:
+      - text: Related
+        menu:
+          - text: pmplots
+            href: https://metrumresearchgroup.github.io/pmp-book
+          - text: yspec
+            href: https://metrumresearchgroup.github.io/ysp-book
+      - icon: book
+        href: https://metrumresearchgroup.github.io/pmtables
+      - icon: globe2
+        href: https://metrumrg.com
+
+
+# Hex colors
+# aqua 03b9b4
+# blue 0082b4
+format:
+  html:
+    theme: cosmo
+    toc: true
+    number-sections: true
+    code-line-numbers: true
+    fontsize: "15pt"
+    linkcolor: "#0082b4"
+    fig-align: center
+    title-block-banner: "#0082b4"
+    title-block-banner-color: "white"
+  # pdf:
+  #   documentclass: scrreprt

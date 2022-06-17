@@ -1,0 +1,133 @@
+---
+title: Longtable
+subtitle: Tables that span multiple pages.
+---
+
+
+## Syntax
+
+To create a long table from a data frame
+
+```{r, eval = FALSE}
+stable_long(stdata())
+```
+
+To create a long table from pipeline
+
+```{r, eval = FALSE}
+st_new(data) %>% 
+  stable_long()
+```
+
+To create a long table from `pmtable`
+
+```{r, eval = FALSE}
+pt_cont_long(data, cols = "WT,EGFR") %>% 
+  stable_long()
+```
+
+
+## Basics
+
+You can create `longtables` that span multiple pages of your pdf document.
+Tables using the`longtable` environment are very different than the the 
+basic table from `stable()` which are built using tabular environment.
+
+
+## Inserting longtable into your latex document
+
+Once you have written your long table out to a file, you can source it into 
+your latex document with a simple input command
+
+```{txt, eval = FALSE}
+\input{my-table.tex}
+```
+
+*IMPORTANT*  
+
+- Do not wrap the input in `\begin{table}` / `\end{table}`; the table
+will not show up properly that way
+- Do not include any `\caption{...}` statement; the caption must be
+provided in a special way (see below)
+
+## Writing a caption
+
+Longtable is different than regular tabular table in that the caption 
+(and label) need to be included in the longtable environment.  This means
+that you have to enter this information **when you create the table**.
+
+
+### Method 1: in the R script
+
+`stable_long()` has an argument called `lt_cap_text` that will allow you
+to provide the text for the caption. This text must be passed to the
+`stable_long()` call (or `st_make()`)
+
+```{r, eval = FALSE}
+out <- stable_long(
+  data, 
+  lt_cap_text = "A long table (example 3)"
+)
+```
+
+You will see in the TeX code that a caption is included in the longtable
+environment.
+
+
+### Method 2: as a TeX macro
+
+Rather than passing the text for the caption, you can name a macro that
+should (will) be defined at the time the table is rendered in the TeX
+document.
+
+Use the `lt_cap_macro` argument:
+
+```{r, eval = FALSE}
+out <- stable_long(
+  data, 
+  lt_cap_macro = "ltexfourcap"
+)
+```
+
+Now, there is a call to that macro in the table and you **must** define that 
+macro prior to sourcing in your tex document.
+
+```{txt}
+\newcommand{\ltexfourcap}{
+  Another long table - example 4  
+}
+
+\input{example4.tex}
+```
+
+## Add a label
+
+To add a label, pass in a caption (either as text or as a macro) and
+then use the `lt_cap_label` argument:
+
+```{r, eval = FALSE}
+data %>% 
+  stable_long(
+    lt_cap_label = "tab:example", 
+    lt_cap_macro = "example"
+  ) 
+```
+
+## Include a longtable in an Rmd document
+
+If you want to dump a table into an R markdown document, pass it to
+`st_asis()`. There is a method for `stable_long()` and it will wrap the
+table properly.
+
+```{r, eval = FALSE}
+out <- 
+  data %>%
+  stable_long() %>% 
+  st_as_image()
+```
+
+## Page breaks
+
+Starting with version 0.4.1, pmtables will modify longtables so that panel 
+headers are kept on the same page as the first row of data underneath the 
+panel row. 

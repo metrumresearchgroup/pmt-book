@@ -1,0 +1,202 @@
+---
+title: Spanners
+subtitle: Group table columns with spanners.
+---
+
+```{r, include = FALSE}
+source("global.R")
+```
+
+
+## Syntax
+
+Set the `span` argument to the output of `as.span()`. The key arguments
+for `as.span()` are the spanner title and the names of the columns
+over which you want the spanner to run
+
+```{r, eval = FALSE}
+stable(
+  stdata(), 
+  span = as.span("Covariates", WT:SCR)
+)
+```
+
+The equivalent pipe syntax is
+
+```{r, eval = FALSE}
+st_new(stdata()) %>% 
+  st_span("Covariates", WT:SCR)
+```
+
+
+
+## Basics
+
+A column spanner puts a horizontal line over a sequence of column names and 
+places a title above that line forming a column group. 
+
+As a trivial example: 
+
+```{r}
+data <- 
+  tibble(
+    Tariffville = "06081",  
+    Connecticut= "CT", 
+    Minnesota = "MN", 
+    Minneapolis = "55455"
+  ) 
+
+stable(
+  data, 
+  span = as.span("States", Connecticut:Minnesota)
+) %>%  st_as_image()
+```
+
+## Multiple spanners
+
+Multiple spanners can be added to a table by specifying the `level` for any 
+spanner that you want to be placed above the lowest level spanner.  For 
+example, 
+
+```{r}
+sp <- list(
+  as.span("States", Connecticut:Minnesota), 
+  as.span("Important Locations", Tariffville:Minneapolis, level = 2)
+)
+
+stable(data, span = sp) %>% 
+  st_as_image()
+```
+
+Note that to specify multiple spanners, we pass a list of span objects. I've 
+simplified the code a bit here by creating that list as a standalone object
+and then passing the whole list as `span`.
+
+### Using pipe syntax
+
+For problems like this, it might be preferable to use the pipe syntax
+
+```{r}
+data %>%
+  st_new() %>% 
+  st_span("States", Connecticut:Minnesota) %>% 
+  st_span("Important Locations", Tariffville:Minneapolis, level = 2) %>% 
+  stable() %>% 
+  st_as_image()
+```
+
+## Breaking span title
+
+We can make the title of the span break across multiple lines by using `...`
+
+```{r}
+stable(
+  data, 
+  span = as.span("Important ... States", Connecticut:Minnesota)) %>%
+  st_as_image()
+```
+
+
+
+## Aligning span title
+
+Beginning with version 0.4.1, the span title can be left or right justified 
+in addition to the default centering
+
+```{r}
+stable(
+  stdata(), 
+  span = as.span("Covariates", WT:SCR, align = 'l')
+) %>% st_as_image()
+```
+
+\clearpage
+
+## Span created by splitting column names
+
+`colsplit()` is a way to create column spanners which are encoded into the 
+column names of the input data frame; the names are split on a separator 
+character (like `.`) and either the left or right side are taken as the title
+and the other is taken as the column name. 
+
+Consider this data
+
+```{r, echo = FALSE}
+dd <- data.frame(
+  A.first = 1, 
+  A.second = 2, 
+  B.third = 3, 
+  B.fourth = 4
+)
+dd
+```
+
+Notice the natural grouping between `A.first` and `A.second`; we want `first`
+and `second` grouped together with the title `A`. Similar setup for `third` and
+`fourth` under the title `B`.
+
+We can make table with spanners by passing a call to `colsplit()` as 
+`span_split`
+
+```{r}
+stable(dd, span_split = colsplit(sep = '.')) %>% 
+  st_as_image()
+```
+
+### pivot_longer workflow
+
+This is pattern is convenient when summarizing data in a long format. To 
+to demonstrate, we'll calculate summary statistics for `WT` and `AGE` by `STUDY`
+
+```{r}
+summ <- 
+  pmt_first %>%
+  pivot_longer(cols = c("WT", "AGE")) %>% 
+  filter(!is.na(value)) %>%
+  group_by(STUDYf, name) %>% 
+  summarise(Mean = mean(value), Sd = sd(value), N = n(), .groups = "drop") %>%
+  mutate(across(Mean:N, sig)) %>% 
+  mutate(across(Mean:N, as.character))
+
+summ
+```
+
+Now take 2 (or 3) more steps to get the table in the right shape to feed into 
+`stable()`. **First**, pivot this `longer` using the summary stat name
+
+```{r}
+long <- pivot_longer(summ, cols = c("Mean", "Sd", "N"), names_to = "stat")
+head(long)
+```
+
+**Second**, we'll make `name` more appealing / informative
+
+```{r}
+long <- mutate(
+  long, 
+  name = recode(name, WT = "Weight (kg)", AGE = "Age (years)")
+)
+```
+
+**Third**, pivot this `wider` using the covariate `name` and `stat` 
+
+```{r}
+wide <- pivot_wider(
+  long, 
+  names_from = c("name", "stat"), 
+  names_sep = "---"
+)
+wide
+```
+
+Now we have column names set up to create the spanners
+
+```{r}
+stable(wide, span_split = colsplit(sep = "---")) %>% 
+  st_as_image()
+```
+
+This workflow takes several steps to complete, but once you identify the pattern
+it can be just an extra step or two  beyond what you're already doing to get 
+a nice table.
+
