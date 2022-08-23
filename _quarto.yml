@@ -12,7 +12,6 @@ book:
   date: today
   date-format: medium
   repo-url: https://github.com/metrumresearchgroup/pmt-book
-  repo-subdir: book
   repo-branch: main
   repo-actions: [source, issue]
   twitter-card:
