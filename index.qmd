@@ -3,6 +3,21 @@ title: Preface
 toc: false
 ---
 
+```{r, include = FALSE}
+source("global.R")
+```
+```{r, img = TRUE}
+stable(stdata() %>% select(STUDY, DOSE))
+```
+
+
+
+```{r}
+stable(stdata() %>% select(STUDY, DOSE)) %>% st_as_image()
+```
+
+
+
 <img src=pmt-hex.png align=right width=150px></img>This is a simple 
 introduction to the pmtables package for R. I hope this will be useful for 
 those who are new to the package and those who just need a  reminder on the 

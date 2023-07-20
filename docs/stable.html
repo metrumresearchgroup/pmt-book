@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.508">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -98,7 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -144,16 +149,20 @@ background: #0082b4;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">The pmtables Book</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">Related</a>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Related</span>
+    </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-related">    
         <li>
     <a class="dropdown-item" href="https://metrumresearchgroup.github.io/pmp-book">
@@ -168,17 +177,17 @@ background: #0082b4;
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumresearchgroup.github.io/pmtables"><i class="bi bi-book" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumrg.com"><i class="bi bi-globe2" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -206,6 +215,7 @@ background: #0082b4;
   <div class="quarto-title-meta">
 
       
+    
       
     </div>
     
@@ -270,34 +280,34 @@ background: #0082b4;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#syntax" id="toc-syntax" class="nav-link active" data-scroll-target="#syntax"> <span class="header-section-number">2.1</span> Syntax</a></li>
-  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics"> <span class="header-section-number">2.2</span> Basics</a></li>
-  <li><a href="#annotate-with-file-names" id="toc-annotate-with-file-names" class="nav-link" data-scroll-target="#annotate-with-file-names"> <span class="header-section-number">2.3</span> Annotate with file names</a></li>
-  <li><a href="#saving-your-stable" id="toc-saving-your-stable" class="nav-link" data-scroll-target="#saving-your-stable"> <span class="header-section-number">2.4</span> Saving your stable</a></li>
-  <li><a href="#align-columns" id="toc-align-columns" class="nav-link" data-scroll-target="#align-columns"> <span class="header-section-number">2.5</span> Align columns</a>
+  <li><a href="#syntax" id="toc-syntax" class="nav-link active" data-scroll-target="#syntax"><span class="toc-section-number">2.1</span>  Syntax</a></li>
+  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics"><span class="toc-section-number">2.2</span>  Basics</a></li>
+  <li><a href="#annotate-with-file-names" id="toc-annotate-with-file-names" class="nav-link" data-scroll-target="#annotate-with-file-names"><span class="toc-section-number">2.3</span>  Annotate with file names</a></li>
+  <li><a href="#saving-your-stable" id="toc-saving-your-stable" class="nav-link" data-scroll-target="#saving-your-stable"><span class="toc-section-number">2.4</span>  Saving your stable</a></li>
+  <li><a href="#align-columns" id="toc-align-columns" class="nav-link" data-scroll-target="#align-columns"><span class="toc-section-number">2.5</span>  Align columns</a>
   <ul class="collapse">
-  <li><a href="#fixed-column-widths" id="toc-fixed-column-widths" class="nav-link" data-scroll-target="#fixed-column-widths"> <span class="header-section-number">2.5.1</span> Fixed column widths</a></li>
+  <li><a href="#fixed-column-widths" id="toc-fixed-column-widths" class="nav-link" data-scroll-target="#fixed-column-widths"><span class="toc-section-number">2.5.1</span>  Fixed column widths</a></li>
   </ul></li>
-  <li><a href="#manipulating-columns-and-names" id="toc-manipulating-columns-and-names" class="nav-link" data-scroll-target="#manipulating-columns-and-names"> <span class="header-section-number">2.6</span> Manipulating columns and names</a>
+  <li><a href="#manipulating-columns-and-names" id="toc-manipulating-columns-and-names" class="nav-link" data-scroll-target="#manipulating-columns-and-names"><span class="toc-section-number">2.6</span>  Manipulating columns and names</a>
   <ul class="collapse">
-  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns"> <span class="header-section-number">2.6.1</span> Rename columns</a></li>
-  <li><a href="#hide-a-column-name" id="toc-hide-a-column-name" class="nav-link" data-scroll-target="#hide-a-column-name"> <span class="header-section-number">2.6.2</span> Hide a column name</a></li>
-  <li><a href="#dont-print-any-table-header-information" id="toc-dont-print-any-table-header-information" class="nav-link" data-scroll-target="#dont-print-any-table-header-information"> <span class="header-section-number">2.6.3</span> Don’t print any table header information</a></li>
-  <li><a href="#unmask-column-names" id="toc-unmask-column-names" class="nav-link" data-scroll-target="#unmask-column-names"> <span class="header-section-number">2.6.4</span> Unmask column names</a></li>
-  <li><a href="#make-column-names-bold" id="toc-make-column-names-bold" class="nav-link" data-scroll-target="#make-column-names-bold"> <span class="header-section-number">2.6.5</span> Make column names bold</a></li>
-  <li><a href="#drop-a-column-from-the-table" id="toc-drop-a-column-from-the-table" class="nav-link" data-scroll-target="#drop-a-column-from-the-table"> <span class="header-section-number">2.6.6</span> Drop a column from the table</a></li>
+  <li><a href="#rename-columns" id="toc-rename-columns" class="nav-link" data-scroll-target="#rename-columns"><span class="toc-section-number">2.6.1</span>  Rename columns</a></li>
+  <li><a href="#hide-a-column-name" id="toc-hide-a-column-name" class="nav-link" data-scroll-target="#hide-a-column-name"><span class="toc-section-number">2.6.2</span>  Hide a column name</a></li>
+  <li><a href="#dont-print-any-table-header-information" id="toc-dont-print-any-table-header-information" class="nav-link" data-scroll-target="#dont-print-any-table-header-information"><span class="toc-section-number">2.6.3</span>  Don’t print any table header information</a></li>
+  <li><a href="#unmask-column-names" id="toc-unmask-column-names" class="nav-link" data-scroll-target="#unmask-column-names"><span class="toc-section-number">2.6.4</span>  Unmask column names</a></li>
+  <li><a href="#make-column-names-bold" id="toc-make-column-names-bold" class="nav-link" data-scroll-target="#make-column-names-bold"><span class="toc-section-number">2.6.5</span>  Make column names bold</a></li>
+  <li><a href="#drop-a-column-from-the-table" id="toc-drop-a-column-from-the-table" class="nav-link" data-scroll-target="#drop-a-column-from-the-table"><span class="toc-section-number">2.6.6</span>  Drop a column from the table</a></li>
   </ul></li>
-  <li><a href="#other-customizations" id="toc-other-customizations" class="nav-link" data-scroll-target="#other-customizations"> <span class="header-section-number">2.7</span> Other customizations</a>
+  <li><a href="#other-customizations" id="toc-other-customizations" class="nav-link" data-scroll-target="#other-customizations"><span class="toc-section-number">2.7</span>  Other customizations</a>
   <ul class="collapse">
-  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"> <span class="header-section-number">2.7.1</span> Notes</a></li>
-  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units"> <span class="header-section-number">2.7.2</span> Units</a></li>
-  <li><a href="#multi-line-column-headers" id="toc-multi-line-column-headers" class="nav-link" data-scroll-target="#multi-line-column-headers"> <span class="header-section-number">2.7.3</span> Multi-line column headers</a></li>
-  <li><a href="#insert-horizontal-lines" id="toc-insert-horizontal-lines" class="nav-link" data-scroll-target="#insert-horizontal-lines"> <span class="header-section-number">2.7.4</span> Insert horizontal lines</a></li>
-  <li><a href="#clear-replicate-values" id="toc-clear-replicate-values" class="nav-link" data-scroll-target="#clear-replicate-values"> <span class="header-section-number">2.7.5</span> Clear replicate values</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link" data-scroll-target="#notes"><span class="toc-section-number">2.7.1</span>  Notes</a></li>
+  <li><a href="#units" id="toc-units" class="nav-link" data-scroll-target="#units"><span class="toc-section-number">2.7.2</span>  Units</a></li>
+  <li><a href="#multi-line-column-headers" id="toc-multi-line-column-headers" class="nav-link" data-scroll-target="#multi-line-column-headers"><span class="toc-section-number">2.7.3</span>  Multi-line column headers</a></li>
+  <li><a href="#insert-horizontal-lines" id="toc-insert-horizontal-lines" class="nav-link" data-scroll-target="#insert-horizontal-lines"><span class="toc-section-number">2.7.4</span>  Insert horizontal lines</a></li>
+  <li><a href="#clear-replicate-values" id="toc-clear-replicate-values" class="nav-link" data-scroll-target="#clear-replicate-values"><span class="toc-section-number">2.7.5</span>  Clear replicate values</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmt-book/blob/main/stable.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmt-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -310,32 +320,27 @@ background: #0082b4;
 
 <section id="syntax" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="syntax"><span class="header-section-number">2.1</span> Syntax</h2>
-<p>Pass your data.frame into <code>stable()</code></p>
+<p>Pass your data.frame into <code>st_new()</code> to start the pipeline</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">stable</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">st_new</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Other formal arguments include:</p>
-<ul>
-<li><strong>align</strong> to set column alignment</li>
-<li><strong>panel</strong> to create groups of rows under a “panel” header</li>
-<li><strong>span</strong> to group columns under a “spanner” header</li>
-<li><strong>notes</strong> to create table notes</li>
-<li><strong>sumrows</strong> to insert summary rows</li>
-<li><strong>units</strong> that get placed below the corresponding column name</li>
-<li><strong>drop</strong> to omit certain columns from the table</li>
-<li><strong>sizes</strong> to set different table size attributes</li>
-<li><strong>escape_fun</strong> a function to sanitize table items</li>
-</ul>
-<p>You can also pass a bunch of other arguments through <code>...</code> to further format the table (see <code>?stable</code> for details)</p>
+<p>Then render the table using either <code>stable()</code> to generate a single-page table in tabular environment</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or use <code>stable_long()</code> to generate a longtable</p>
+<div class="cell" data-nosanitize="false">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> <span class="fu">stable_long</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="basics" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="basics"><span class="header-section-number">2.2</span> Basics</h2>
 <p><code>stable()</code> is the name of the workhorse function that is used to turn data.frames into <code>TeX</code> tables. This chapter will introduce the <code>stable()</code> function and how to us it to create basic tables.</p>
 <p>To illustrate usage and features of <code>stable()</code>, we will use the <code>stdata</code> data set that comes with pmtables</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="ot">&lt;-</span> <span class="fu">stdata</span>()</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>data <span class="ot">&lt;-</span> <span class="fu">stdata</span>()</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. # A tibble: 6 × 9
 .   STUDY       DOSE   FORM    N     WT    CRCL  AGE   ALB   SCR  
@@ -350,9 +355,9 @@ background: #0082b4;
 </div>
 <p>We can turn this data frame into a <code>TeX</code> table by passing it into <code>stable()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable</span>(data)</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">head</span>(out, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>out <span class="ot">&lt;-</span> <span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> <span class="fu">stable</span>()</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">head</span>(out, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.  [1] "\\setlength{\\tabcolsep}{5pt} "                                            
 .  [2] "\\begin{threeparttable}"                                                   
@@ -369,14 +374,9 @@ background: #0082b4;
 <p>Note that we have shown the raw latex code that is generated by <code>stable()</code>. That is to say: the output from <code>stable()</code> is a character vector of latex code for the table. Note also that this character vector has a special class associated with it: <code>stable</code>. That means we can write functions that recognize this character vector as output from <code>stable()</code> and we can have those functions process the character vector in special ways.</p>
 <p>We can render that table in <code>TeX</code> <strong>in the current Rmarkdown document</strong> by passing the text to <code>st_asis()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>out <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>out  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Remember to only call <code>st_asis()</code> when you are rendering tables inline in an Rmd document. If you are sending table code to a <code>TeX</code> report, then you will save them to a file and then include them into your report.</p>
@@ -387,22 +387,16 @@ background: #0082b4;
 <p>pmtables can track and annotate your table with the filenames of the R code that generated the table (<code>r_file</code>) as well as the output file where you write the the table <code>.tex</code> code (<code>output_file)</code>.</p>
 <p>To have pmtables annotate your table with these file names, pass them in with the <code>r_file</code> and <code>output_file</code> arguments</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>out <span class="ot">&lt;-</span> <span class="fu">stable</span>(</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  data, </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">r_file =</span> <span class="st">"tables.R"</span>, </span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="at">output_file =</span> <span class="st">"tables.tex"</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>out <span class="ot">&lt;-</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">st_files</span>(<span class="at">r =</span> <span class="st">"tables.R"</span>, <span class="at">output =</span> <span class="st">"tables.tex"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When we look at the rendered table, these names will show up as annotations at the bottom of the table</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>out <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-nosanitize="false">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>out </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -410,15 +404,15 @@ background: #0082b4;
 <h2 data-number="2.4" class="anchored" data-anchor-id="saving-your-stable"><span class="header-section-number">2.4</span> Saving your stable</h2>
 <p>Saving your stable <strong>can</strong> be as easy as sending it into <code>writeLines()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">writeLines</span>(</span>
-<span id="cb9-2"><a href="#cb9-2"></a>  out, </span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="at">con =</span> <span class="fu">tempfile</span>(<span class="at">tmpdir =</span> <span class="st">'.'</span>, <span class="at">fileext =</span> <span class="st">".tex"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">writeLines</span>(</span>
+<span id="cb11-2"><a href="#cb11-2"></a>  out,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="at">con =</span> <span class="fu">tempfile</span>(<span class="at">tmpdir =</span> <span class="st">'.'</span>, <span class="at">fileext =</span> <span class="st">".tex"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>But remember that we passed in the <code>output_file</code> argument to <code>stable()</code> and we can use that data to save the table code to the file we named in that argument.</p>
 <p>Note that our <code>stable</code> object has another attribute now called <code>stable_file</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">attributes</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">attributes</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. $class
 . [1] "stable"
@@ -429,87 +423,69 @@ background: #0082b4;
 </div>
 <p>This has the value that we passed in as <code>output_file</code>. To save our table to <code>stable_file</code>, we call <code>stable_save()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">stable_save</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">stable_save</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There is a <code>dir</code> argument to <code>stable_save()</code> that we can use to to select the directory where the file will be saved</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">stable_save</span>(out, <span class="at">dir =</span> <span class="fu">tempdir</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">stable_save</span>(out, <span class="at">dir =</span> <span class="fu">tempdir</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And if you look at the default value for <code>dir</code> in <code>?stable_save</code>, you’ll see that this is associated with an option called <code>pmtables.dir</code>; you can set that option to your default output directory and your tables will be saved there until you change that</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">options</span>(<span class="at">pmtables.dir =</span> <span class="fu">tempdir</span>())</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">stable_save</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">options</span>(<span class="at">pmtables.dir =</span> <span class="fu">tempdir</span>())</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">stable_save</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="align-columns" class="level2" data-number="2.5">
 <h2 data-number="2.5" class="anchored" data-anchor-id="align-columns"><span class="header-section-number">2.5</span> Align columns</h2>
 <p>Use the <code>align</code> argument to align column data to the left, center or right. Use a <code>cols_*</code> function to specify the default alignment for all columns</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">AB =</span> <span class="dv">1</span>, <span class="at">CDEFGHIJ =</span> <span class="dv">2</span>, <span class="at">KL =</span> <span class="dv">3</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="fu">stable</span>(tmp, <span class="at">align =</span> <span class="fu">cols_center</span>()) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">AB =</span> <span class="dv">1</span>, <span class="at">CDEFGHIJ =</span> <span class="dv">2</span>, <span class="at">KL =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">st_new</span>(tmp) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">st_center</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stable_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>You can pass in exceptions to the default</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">stable</span>(tmp, <span class="at">align =</span> <span class="fu">cols_center</span>(<span class="at">CDEFGHIJ =</span> <span class="st">"r"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">st_new</span>(tmp) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">st_center</span>(<span class="at">CDEFGHIJ =</span> <span class="st">"r"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Or you can pass an alignment directive and the columns that are bound by that directive</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">stable</span>(tmp, <span class="at">align =</span> <span class="fu">cols_center</span>(<span class="at">.l =</span> <span class="st">"AB,KL"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">st_new</span>(tmp) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">st_center</span>(<span class="at">.l =</span> <span class="st">"AB,KL"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>A special directive called <code>.outer</code> lets you specify the alignment of the first and last column in the table. For example, this code puts the first column to the left and the last column to the right.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">stable</span>(tmp, <span class="at">align =</span> <span class="fu">cols_center</span>(<span class="at">.outer =</span> <span class="st">"lr"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">st_new</span>(tmp) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">st_center</span>(<span class="at">.outer =</span> <span class="st">"lr"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <section id="fixed-column-widths" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="fixed-column-widths"><span class="header-section-number">2.5.1</span> Fixed column widths</h3>
 <p>Use <code>col_ragged(size)</code> to force a column to be a fixed size.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">stable</span>(tmp, <span class="at">align =</span> <span class="fu">cols_center</span>(<span class="at">AB =</span> <span class="fu">col_ragged</span>(<span class="dv">2</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">st_new</span>(tmp) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">st_center</span>(<span class="at">AB =</span> <span class="fu">col_ragged</span>(<span class="dv">2</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>By default, the unit is <code>cm</code> so that the first column (<code>AB</code>) has a width of 2 cm regardless of the contents.</p>
@@ -522,17 +498,27 @@ background: #0082b4;
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="rename-columns"><span class="header-section-number">2.6.1</span> Rename columns</h3>
 <p>You can change the name that appears in the rendered table with <code>cols_rename</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">stable</span>(<span class="at">cols_rename =</span> <span class="fu">c</span>(<span class="at">Age =</span> <span class="st">"AGE"</span>, <span class="at">Weight =</span> <span class="st">"WT"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">st_rename</span>(<span class="at">Age =</span> AGE, <span class="at">Weight =</span> WT) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-5"><a href="#cb23-5"></a>  <span class="fu">stable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>.  [1] "\\setlength{\\tabcolsep}{5pt} "                                            
+.  [2] "\\begin{threeparttable}"                                                   
+.  [3] "\\renewcommand{\\arraystretch}{1.3}"                                       
+.  [4] "\\begin{tabular}[h]{lllllllll}"                                            
+.  [5] "\\hline"                                                                   
+.  [6] "STUDY &amp; DOSE &amp; FORM &amp; N &amp; Weight &amp; CRCL &amp; Age &amp; ALB &amp; SCR \\\\"            
+.  [7] "\\hline"                                                                   
+.  [8] "12-DEMO-001 &amp; 100 mg &amp; tablet &amp; 80 &amp; 71.4 &amp; 104 &amp; 33.7 &amp; 4.20 &amp; 1.06 \\\\" 
+.  [9] "12-DEMO-001 &amp; 150 mg &amp; capsule &amp; 16 &amp; 89.4 &amp; 122 &amp; 24.4 &amp; 4.63 &amp; 1.12 \\\\"
+. [10] "12-DEMO-001 &amp; 150 mg &amp; tablet &amp; 48 &amp; 81.7 &amp; 104 &amp; 34.4 &amp; 3.83 &amp; 0.910 \\\\"
+. [11] "\\hline"                                                                   
+. [12] "\\end{tabular}"                                                            
+. [13] "\\end{threeparttable}"                                                     
+. attr(,"class")
+. [1] "stable"</code></pre>
 </div>
 </div>
 <p>Note that the rename syntax follows the tidyselect convention of putting the new name on the left and the old name on the right.</p>
@@ -541,34 +527,25 @@ background: #0082b4;
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="hide-a-column-name"><span class="header-section-number">2.6.2</span> Hide a column name</h3>
 <p>You can also “erase” the name of a column in the output</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">stable</span>(<span class="at">cols_blank =</span> <span class="st">"WT,ALB,SCR"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">st_blank</span>(WT, ALB, SCR) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
 <section id="dont-print-any-table-header-information" class="level3" data-number="2.6.3">
 <h3 data-number="2.6.3" class="anchored" data-anchor-id="dont-print-any-table-header-information"><span class="header-section-number">2.6.3</span> Don’t print any table header information</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">stable</span>(<span class="at">cols_omit =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a>  <span class="fu">stable</span>(<span class="at">cols_omit =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -576,35 +553,26 @@ background: #0082b4;
 <h3 data-number="2.6.4" class="anchored" data-anchor-id="unmask-column-names"><span class="header-section-number">2.6.4</span> Unmask column names</h3>
 <p>In tibbles, you can’t have duplicate column names. The <code>cols_split</code> argument lets you unmask the names when duplicate names are prefixed with a tag and a delimiter</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a.A =</span> <span class="dv">1</span>, <span class="at">b.A =</span> <span class="dv">2</span>, <span class="at">c.A =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">a.A =</span> <span class="dv">1</span>, <span class="at">b.A =</span> <span class="dv">2</span>, <span class="at">c.A =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">stable</span>(tmp, <span class="at">cols_split =</span> <span class="st">'.'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb24-2"><a href="#cb24-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>tmp <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href="#cb28-3"></a>  <span class="fu">stable</span>(<span class="at">cols_split =</span> <span class="st">'.'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
 <section id="make-column-names-bold" class="level3" data-number="2.6.5">
 <h3 data-number="2.6.5" class="anchored" data-anchor-id="make-column-names-bold"><span class="header-section-number">2.6.5</span> Make column names bold</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href="#cb25-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">stable</span>(<span class="at">cols_bold =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a>  <span class="fu">stable</span>(<span class="at">cols_bold =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -612,7 +580,7 @@ background: #0082b4;
 <h3 data-number="2.6.6" class="anchored" data-anchor-id="drop-a-column-from-the-table"><span class="header-section-number">2.6.6</span> Drop a column from the table</h3>
 <p>If we want to prevent a column from appearing in the output table (e.g.&nbsp; <code>FORM</code>)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. # A tibble: 6 × 9
 .   STUDY       DOSE   FORM    N     WT    CRCL  AGE   ALB   SCR  
@@ -627,19 +595,20 @@ background: #0082b4;
 </div>
 <p>list the column name as <code>drop</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">stable</span>(data, <span class="at">drop =</span> <span class="st">"FORM"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a href="#cb32-2"></a>  <span class="fu">st_drop</span>(FORM) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Of course some tidyverse could accomplish the same thing</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>FORM) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">select</span>(<span class="sc">-</span>FORM) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">st_drop</span>(FORM) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-5"><a href="#cb33-5"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -649,40 +618,45 @@ background: #0082b4;
 <h3 data-number="2.7.1" class="anchored" data-anchor-id="notes"><span class="header-section-number">2.7.1</span> Notes</h3>
 <p>Arbitrary notes can get added to any table using the <code>notes</code> argument.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">stable</span>(<span class="at">notes =</span> <span class="st">"Showing just the first three rows"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">st_notes</span>(<span class="st">"Showing just the first three rows"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>The appearance of the notes can be controlled by calling <code>noteconf()</code> and passing the result as <code>note_config</code>. See <code>?tab_notes()</code> for more details.</p>
 </section>
 <section id="units" class="level3" data-number="2.7.2">
 <h3 data-number="2.7.2" class="anchored" data-anchor-id="units"><span class="header-section-number">2.7.2</span> Units</h3>
-<p>pmtables can automatically place units underneath the appropriate column. To do this, generate a list with names that match the column names you want to label with units.</p>
+<p>pmtables can automatically place units underneath the appropriate column. Pass unit assignments using <code>st_units()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>u <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb31-2"><a href="#cb31-2"></a>  <span class="at">WT =</span> <span class="st">"kg"</span>, <span class="at">CRCL =</span> <span class="st">"ml/min"</span>, <span class="at">AGE =</span> <span class="st">"year"</span>, <span class="at">ALB =</span> <span class="st">"g/dL"</span>, </span>
-<span id="cb31-3"><a href="#cb31-3"></a>  <span class="at">SCR =</span> <span class="st">"mg</span><span class="sc">\\</span><span class="st">%"</span></span>
-<span id="cb31-4"><a href="#cb31-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">map</span>(<span class="sc">~</span><span class="fu">paste0</span>(<span class="st">"("</span>, .x, <span class="st">")"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then pass that list as <code>units</code> to <code>stable()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">stable</span>(data, <span class="at">units =</span> u) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">st_units</span>(</span>
+<span id="cb35-3"><a href="#cb35-3"></a>    <span class="at">WT =</span> <span class="st">"kg"</span>, </span>
+<span id="cb35-4"><a href="#cb35-4"></a>    <span class="at">CRCL =</span> <span class="st">"ml/min"</span>, </span>
+<span id="cb35-5"><a href="#cb35-5"></a>    <span class="at">AGE =</span> <span class="st">"year"</span>, </span>
+<span id="cb35-6"><a href="#cb35-6"></a>    <span class="at">ALB =</span> <span class="st">"g/dL"</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a>    ) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
+<p><img src="stable_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="878"></p>
 </div>
+</div>
+<p>Or, create a list what unit assignments and pass that in</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>u <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="at">WT =</span> <span class="st">"kg"</span>, <span class="at">CRCL =</span> <span class="st">"ml/min"</span>, <span class="at">AGE =</span> <span class="st">"year"</span>, </span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="at">ALB =</span> <span class="st">"g/dL"</span>, <span class="at">SCR =</span> <span class="st">"mg</span><span class="sc">\\</span><span class="st">%"</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">st_new</span>(data) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">st_units</span>(u) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="stable_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -690,30 +664,21 @@ background: #0082b4;
 <h3 data-number="2.7.3" class="anchored" data-anchor-id="multi-line-column-headers"><span class="header-section-number">2.7.3</span> Multi-line column headers</h3>
 <p>If the column header is long, you can break it across multiple lines. By default, use <code>...</code> in the column name</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">tibble</span>(<span class="st">`</span><span class="at">First line ... Second line</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">123456789</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">tibble</span>(<span class="st">`</span><span class="at">First line ... Second line</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">123456789</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>The break can be introduced through the rename mechanism</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">tibble</span>(<span class="at">a =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">stable</span>(<span class="at">cols_rename =</span>  <span class="fu">c</span>(<span class="st">`</span><span class="at">First ... Second</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"a"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb34-3"><a href="#cb34-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">tibble</span>(<span class="at">a =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href="#cb39-3"></a>  <span class="fu">st_rename</span>(<span class="st">`</span><span class="at">First ... Second</span><span class="st">`</span> <span class="ot">=</span> a) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-4"><a href="#cb39-4"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-64-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Look at the <code>?tab_cols</code> help topic for the <code>cols_break</code> argument; this lets you change the character sequence used for the break.</p>
@@ -722,40 +687,32 @@ background: #0082b4;
 <h3 data-number="2.7.4" class="anchored" data-anchor-id="insert-horizontal-lines"><span class="header-section-number">2.7.4</span> Insert horizontal lines</h3>
 <p>Pass <code>hlines_at</code> to insert horizontal lines above specific rows. This can be either logical vector with the same length as the number of rows in the table or a vector of integers.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">stable</span>(<span class="fu">stdata</span>(), <span class="at">hline_at =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a href="#cb40-3"></a>  <span class="fu">st_hline</span>(<span class="at">at =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-4"><a href="#cb40-4"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-66-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">stable</span>(<span class="fu">stdata</span>(), <span class="at">hline_at =</span> data<span class="sc">$</span>FORM <span class="sc">==</span> <span class="st">"tablet"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a href="#cb41-3"></a>  <span class="fu">st_hline</span>(<span class="at">at =</span> <span class="fu">stdata</span>()<span class="sc">$</span>FORM<span class="sc">==</span><span class="st">"tablet"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-4"><a href="#cb41-4"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Pass <code>hlines_from</code> to derive hline locations based on non-repeating values in a table column. Notice how this behaves.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">stable</span>(<span class="fu">stdata</span>(), <span class="at">hline_from =</span> <span class="st">"DOSE"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">st_hline</span>(<span class="at">from =</span> <span class="st">"DOSE"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-4"><a href="#cb42-4"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-70-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>See the <code>?tab_hlines</code> help topic for more info. See also <code>st_hline()</code> for the pipe equivalent with additional feature.</p>
@@ -764,31 +721,23 @@ background: #0082b4;
 <h3 data-number="2.7.5" class="anchored" data-anchor-id="clear-replicate-values"><span class="header-section-number">2.7.5</span> Clear replicate values</h3>
 <p>You can create groups in a table by “clearing” replicate values</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">stable</span>(<span class="fu">stdata</span>(), <span class="at">clear_reps =</span> <span class="st">"STUDY"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">st_clear_reps</span>(STUDY) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-72-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>This can be combined with an hline</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">stable</span>(</span>
-<span id="cb39-2"><a href="#cb39-2"></a>  <span class="fu">stdata</span>(), </span>
-<span id="cb39-3"><a href="#cb39-3"></a>  <span class="at">clear_reps =</span> <span class="st">"STUDY"</span>, </span>
-<span id="cb39-4"><a href="#cb39-4"></a>  <span class="at">hline_from =</span> <span class="st">"STUDY"</span></span>
-<span id="cb39-5"><a href="#cb39-5"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">st_clear_reps</span>(<span class="st">"STUDY"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">st_hline</span>(<span class="at">from =</span> <span class="st">"STUDY"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb44-5"><a href="#cb44-5"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="stable_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="stable_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>See <code>?tab_clear_reps</code> for other options, including an option for clearing based on several grouping variables.</p>
@@ -800,6 +749,24 @@ background: #0082b4;
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -821,7 +788,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -849,31 +833,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

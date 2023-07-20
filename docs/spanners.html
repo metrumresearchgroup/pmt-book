@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.508">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -98,7 +103,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -144,16 +149,20 @@ background: #0082b4;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">The pmtables Book</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">Related</a>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Related</span>
+    </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-related">    
         <li>
     <a class="dropdown-item" href="https://metrumresearchgroup.github.io/pmp-book">
@@ -168,17 +177,17 @@ background: #0082b4;
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumresearchgroup.github.io/pmtables"><i class="bi bi-book" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumrg.com"><i class="bi bi-globe2" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -206,6 +215,7 @@ background: #0082b4;
   <div class="quarto-title-meta">
 
       
+    
       
     </div>
     
@@ -270,21 +280,21 @@ background: #0082b4;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#syntax" id="toc-syntax" class="nav-link active" data-scroll-target="#syntax"> <span class="header-section-number">4.1</span> Syntax</a></li>
-  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics"> <span class="header-section-number">4.2</span> Basics</a></li>
-  <li><a href="#multiple-spanners" id="toc-multiple-spanners" class="nav-link" data-scroll-target="#multiple-spanners"> <span class="header-section-number">4.3</span> Multiple spanners</a>
+  <li><a href="#syntax" id="toc-syntax" class="nav-link active" data-scroll-target="#syntax"><span class="toc-section-number">4.1</span>  Syntax</a></li>
+  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics"><span class="toc-section-number">4.2</span>  Basics</a></li>
+  <li><a href="#multiple-spanners" id="toc-multiple-spanners" class="nav-link" data-scroll-target="#multiple-spanners"><span class="toc-section-number">4.3</span>  Multiple spanners</a>
   <ul class="collapse">
-  <li><a href="#using-pipe-syntax" id="toc-using-pipe-syntax" class="nav-link" data-scroll-target="#using-pipe-syntax"> <span class="header-section-number">4.3.1</span> Using pipe syntax</a></li>
+  <li><a href="#using-pipe-syntax" id="toc-using-pipe-syntax" class="nav-link" data-scroll-target="#using-pipe-syntax"><span class="toc-section-number">4.3.1</span>  Using pipe syntax</a></li>
   </ul></li>
-  <li><a href="#breaking-span-title" id="toc-breaking-span-title" class="nav-link" data-scroll-target="#breaking-span-title"> <span class="header-section-number">4.4</span> Breaking span title</a></li>
-  <li><a href="#aligning-span-title" id="toc-aligning-span-title" class="nav-link" data-scroll-target="#aligning-span-title"> <span class="header-section-number">4.5</span> Aligning span title</a></li>
-  <li><a href="#span-created-by-splitting-column-names" id="toc-span-created-by-splitting-column-names" class="nav-link" data-scroll-target="#span-created-by-splitting-column-names"> <span class="header-section-number">4.6</span> Span created by splitting column names</a>
+  <li><a href="#breaking-span-title" id="toc-breaking-span-title" class="nav-link" data-scroll-target="#breaking-span-title"><span class="toc-section-number">4.4</span>  Breaking span title</a></li>
+  <li><a href="#aligning-span-title" id="toc-aligning-span-title" class="nav-link" data-scroll-target="#aligning-span-title"><span class="toc-section-number">4.5</span>  Aligning span title</a></li>
+  <li><a href="#span-created-by-splitting-column-names" id="toc-span-created-by-splitting-column-names" class="nav-link" data-scroll-target="#span-created-by-splitting-column-names"><span class="toc-section-number">4.6</span>  Span created by splitting column names</a>
   <ul class="collapse">
-  <li><a href="#pivot_longer-workflow" id="toc-pivot_longer-workflow" class="nav-link" data-scroll-target="#pivot_longer-workflow"> <span class="header-section-number">4.6.1</span> pivot_longer workflow</a></li>
+  <li><a href="#pivot_longer-workflow" id="toc-pivot_longer-workflow" class="nav-link" data-scroll-target="#pivot_longer-workflow"><span class="toc-section-number">4.6.1</span>  pivot_longer workflow</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmt-book/blob/main/spanners.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmt-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -328,12 +338,7 @@ background: #0082b4;
 <span id="cb3-11"><a href="#cb3-11"></a>  <span class="at">span =</span> <span class="fu">as.span</span>(<span class="st">"States"</span>, Connecticut<span class="sc">:</span>Minnesota)</span>
 <span id="cb3-12"><a href="#cb3-12"></a>) <span class="sc">%&gt;%</span>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -349,12 +354,7 @@ background: #0082b4;
 <span id="cb4-6"><a href="#cb4-6"></a><span class="fu">stable</span>(data, <span class="at">span =</span> sp) <span class="sc">%&gt;%</span> </span>
 <span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Note that to specify multiple spanners, we pass a list of span objects. I’ve simplified the code a bit here by creating that list as a standalone object and then passing the whole list as <code>span</code>.</p>
@@ -369,12 +369,7 @@ background: #0082b4;
 <span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb5-6"><a href="#cb5-6"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -388,12 +383,7 @@ background: #0082b4;
 <span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">span =</span> <span class="fu">as.span</span>(<span class="st">"Important ... States"</span>, Connecticut<span class="sc">:</span>Minnesota)) <span class="sc">%&gt;%</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -406,12 +396,7 @@ background: #0082b4;
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">span =</span> <span class="fu">as.span</span>(<span class="st">"Covariates"</span>, WT<span class="sc">:</span>SCR, <span class="at">align =</span> <span class="st">'l'</span>)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -431,12 +416,7 @@ background: #0082b4;
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">stable</span>(dd, <span class="at">span_split =</span> <span class="fu">colsplit</span>(<span class="at">sep =</span> <span class="st">'.'</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <section id="pivot_longer-workflow" class="level3" data-number="4.6.1">
@@ -500,13 +480,14 @@ background: #0082b4;
 <span id="cb15-6"><a href="#cb15-6"></a>wide</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
-  STUDYf     `Age (years)--…` `Age (years)--…` `Age (years)--…` `Weight (kg)--…`
-  &lt;fct&gt;      &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;           
-1 12-DEMO-0… 32.0             9.19             30               72.2            
-2 12-DEMO-0… 35.0             8.20             50               72.4            
-3 11-DEMO-0… 32.8             8.48             40               68.9            
-4 13-DEMO-0… 34.2             9.67             40               69.4            
-# … with 2 more variables: `Weight (kg)---Sd` &lt;chr&gt;, `Weight (kg)---N` &lt;chr&gt;</code></pre>
+  STUDYf      `Age (years)---Mean` Age (years)…¹ Age (…² Weigh…³ Weigh…⁴ Weigh…⁵
+  &lt;fct&gt;       &lt;chr&gt;                &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
+1 12-DEMO-001 32.0                 9.19          30      72.2    14.3    29     
+2 12-DEMO-002 35.0                 8.20          50      72.4    11.5    49     
+3 11-DEMO-005 32.8                 8.48          40      68.9    14.5    39     
+4 13-DEMO-001 34.2                 9.67          40      69.4    11.6    40     
+# … with abbreviated variable names ¹​`Age (years)---Sd`, ²​`Age (years)---N`,
+#   ³​`Weight (kg)---Mean`, ⁴​`Weight (kg)---Sd`, ⁵​`Weight (kg)---N`</code></pre>
 </div>
 </div>
 <p>Now we have column names set up to create the spanners</p>
@@ -514,12 +495,7 @@ background: #0082b4;
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">stable</span>(wide, <span class="at">span_split =</span> <span class="fu">colsplit</span>(<span class="at">sep =</span> <span class="st">"---"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="spanners_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="spanners_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>This workflow takes several steps to complete, but once you identify the pattern it can be just an extra step or two beyond what you’re already doing to get a nice table.</p>
@@ -531,6 +507,24 @@ background: #0082b4;
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -552,7 +546,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -580,31 +591,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

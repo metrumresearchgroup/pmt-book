@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-0.9.508">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,10 +11,15 @@
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -53,7 +58,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -66,7 +71,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -97,7 +102,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,16 +148,20 @@ background: #0082b4;
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <a class="navbar-brand" href="./index.html">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">The pmtables Book</span>
-  </a>
+    </a>
+  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">Related</a>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-related" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Related</span>
+    </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-related">    
         <li>
     <a class="dropdown-item" href="https://metrumresearchgroup.github.io/pmp-book">
@@ -167,17 +176,17 @@ background: #0082b4;
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumresearchgroup.github.io/pmtables"><i class="bi bi-book" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://metrumrg.com"><i class="bi bi-globe2" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img" aria-label="Source Code">
+    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img">
 </i> 
- </a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -205,6 +214,7 @@ background: #0082b4;
   <div class="quarto-title-meta">
 
       
+    
       
     </div>
     
@@ -269,56 +279,56 @@ background: #0082b4;
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#principles" id="toc-principles" class="nav-link active" data-scroll-target="#principles"> <span class="header-section-number">9.1</span> Principles</a></li>
-  <li><a href="#rename-cols" id="toc-rename-cols" class="nav-link" data-scroll-target="#rename-cols"> <span class="header-section-number">9.2</span> Rename cols</a></li>
-  <li><a href="#data-inventory-tables" id="toc-data-inventory-tables" class="nav-link" data-scroll-target="#data-inventory-tables"> <span class="header-section-number">9.3</span> Data inventory tables</a>
+  <li><a href="#principles" id="toc-principles" class="nav-link active" data-scroll-target="#principles"><span class="toc-section-number">9.1</span>  Principles</a></li>
+  <li><a href="#rename-cols" id="toc-rename-cols" class="nav-link" data-scroll-target="#rename-cols"><span class="toc-section-number">9.2</span>  Rename cols</a></li>
+  <li><a href="#data-inventory-tables" id="toc-data-inventory-tables" class="nav-link" data-scroll-target="#data-inventory-tables"><span class="toc-section-number">9.3</span>  Data inventory tables</a>
   <ul class="collapse">
-  <li><a href="#stacked-by-endpoint" id="toc-stacked-by-endpoint" class="nav-link" data-scroll-target="#stacked-by-endpoint"> <span class="header-section-number">9.3.1</span> Stacked by endpoint</a></li>
-  <li><a href="#paneled" id="toc-paneled" class="nav-link" data-scroll-target="#paneled"> <span class="header-section-number">9.3.2</span> Paneled</a></li>
-  <li><a href="#grouped-by-study" id="toc-grouped-by-study" class="nav-link" data-scroll-target="#grouped-by-study"> <span class="header-section-number">9.3.3</span> Grouped (by study)</a></li>
-  <li><a href="#bql-blq" id="toc-bql-blq" class="nav-link" data-scroll-target="#bql-blq"> <span class="header-section-number">9.3.4</span> BQL / BLQ</a></li>
+  <li><a href="#stacked-by-endpoint" id="toc-stacked-by-endpoint" class="nav-link" data-scroll-target="#stacked-by-endpoint"><span class="toc-section-number">9.3.1</span>  Stacked by endpoint</a></li>
+  <li><a href="#paneled" id="toc-paneled" class="nav-link" data-scroll-target="#paneled"><span class="toc-section-number">9.3.2</span>  Paneled</a></li>
+  <li><a href="#grouped-by-study" id="toc-grouped-by-study" class="nav-link" data-scroll-target="#grouped-by-study"><span class="toc-section-number">9.3.3</span>  Grouped (by study)</a></li>
+  <li><a href="#bql-blq" id="toc-bql-blq" class="nav-link" data-scroll-target="#bql-blq"><span class="toc-section-number">9.3.4</span>  BQL / BLQ</a></li>
   </ul></li>
-  <li><a href="#wide-categorical-table" id="toc-wide-categorical-table" class="nav-link" data-scroll-target="#wide-categorical-table"> <span class="header-section-number">9.4</span> Wide categorical table</a>
+  <li><a href="#wide-categorical-table" id="toc-wide-categorical-table" class="nav-link" data-scroll-target="#wide-categorical-table"><span class="toc-section-number">9.4</span>  Wide categorical table</a>
   <ul class="collapse">
-  <li><a href="#paneled-limited-utility-imo" id="toc-paneled-limited-utility-imo" class="nav-link" data-scroll-target="#paneled-limited-utility-imo"> <span class="header-section-number">9.4.1</span> Paneled (limited utility, IMO)</a></li>
-  <li><a href="#grouped-by-male-female" id="toc-grouped-by-male-female" class="nav-link" data-scroll-target="#grouped-by-male-female"> <span class="header-section-number">9.4.2</span> Grouped (by male / female)</a></li>
-  <li><a href="#paneled-and-grouped" id="toc-paneled-and-grouped" class="nav-link" data-scroll-target="#paneled-and-grouped"> <span class="header-section-number">9.4.3</span> Paneled and grouped</a></li>
-  <li><a href="#no-summary" id="toc-no-summary" class="nav-link" data-scroll-target="#no-summary"> <span class="header-section-number">9.4.4</span> No summary</a></li>
+  <li><a href="#paneled-limited-utility-imo" id="toc-paneled-limited-utility-imo" class="nav-link" data-scroll-target="#paneled-limited-utility-imo"><span class="toc-section-number">9.4.1</span>  Paneled (limited utility, IMO)</a></li>
+  <li><a href="#grouped-by-male-female" id="toc-grouped-by-male-female" class="nav-link" data-scroll-target="#grouped-by-male-female"><span class="toc-section-number">9.4.2</span>  Grouped (by male / female)</a></li>
+  <li><a href="#paneled-and-grouped" id="toc-paneled-and-grouped" class="nav-link" data-scroll-target="#paneled-and-grouped"><span class="toc-section-number">9.4.3</span>  Paneled and grouped</a></li>
+  <li><a href="#no-summary" id="toc-no-summary" class="nav-link" data-scroll-target="#no-summary"><span class="toc-section-number">9.4.4</span>  No summary</a></li>
   </ul></li>
-  <li><a href="#long-categorical-table" id="toc-long-categorical-table" class="nav-link" data-scroll-target="#long-categorical-table"> <span class="header-section-number">9.5</span> Long categorical table</a>
+  <li><a href="#long-categorical-table" id="toc-long-categorical-table" class="nav-link" data-scroll-target="#long-categorical-table"><span class="toc-section-number">9.5</span>  Long categorical table</a>
   <ul class="collapse">
-  <li><a href="#ungrouped-1" id="toc-ungrouped-1" class="nav-link" data-scroll-target="#ungrouped-1"> <span class="header-section-number">9.5.1</span> Ungrouped</a></li>
-  <li><a href="#grouped-by-formulation" id="toc-grouped-by-formulation" class="nav-link" data-scroll-target="#grouped-by-formulation"> <span class="header-section-number">9.5.2</span> Grouped (by formulation)</a></li>
-  <li><a href="#summary-on-bottom-and-right" id="toc-summary-on-bottom-and-right" class="nav-link" data-scroll-target="#summary-on-bottom-and-right"> <span class="header-section-number">9.5.3</span> Summary on bottom and right</a></li>
-  <li><a href="#no-summary-1" id="toc-no-summary-1" class="nav-link" data-scroll-target="#no-summary-1"> <span class="header-section-number">9.5.4</span> No summary</a></li>
+  <li><a href="#ungrouped-1" id="toc-ungrouped-1" class="nav-link" data-scroll-target="#ungrouped-1"><span class="toc-section-number">9.5.1</span>  Ungrouped</a></li>
+  <li><a href="#grouped-by-formulation" id="toc-grouped-by-formulation" class="nav-link" data-scroll-target="#grouped-by-formulation"><span class="toc-section-number">9.5.2</span>  Grouped (by formulation)</a></li>
+  <li><a href="#summary-on-bottom-and-right" id="toc-summary-on-bottom-and-right" class="nav-link" data-scroll-target="#summary-on-bottom-and-right"><span class="toc-section-number">9.5.3</span>  Summary on bottom and right</a></li>
+  <li><a href="#no-summary-1" id="toc-no-summary-1" class="nav-link" data-scroll-target="#no-summary-1"><span class="toc-section-number">9.5.4</span>  No summary</a></li>
   </ul></li>
-  <li><a href="#wide-continuous-table" id="toc-wide-continuous-table" class="nav-link" data-scroll-target="#wide-continuous-table"> <span class="header-section-number">9.6</span> Wide continuous table</a>
+  <li><a href="#wide-continuous-table" id="toc-wide-continuous-table" class="nav-link" data-scroll-target="#wide-continuous-table"><span class="toc-section-number">9.6</span>  Wide continuous table</a>
   <ul class="collapse">
-  <li><a href="#ungrouped-2" id="toc-ungrouped-2" class="nav-link" data-scroll-target="#ungrouped-2"> <span class="header-section-number">9.6.1</span> Ungrouped</a></li>
-  <li><a href="#paneled-1" id="toc-paneled-1" class="nav-link" data-scroll-target="#paneled-1"> <span class="header-section-number">9.6.2</span> Paneled</a></li>
-  <li><a href="#grouped-by-study-1" id="toc-grouped-by-study-1" class="nav-link" data-scroll-target="#grouped-by-study-1"> <span class="header-section-number">9.6.3</span> Grouped (by study)</a></li>
-  <li><a href="#paneled-and-grouped-1" id="toc-paneled-and-grouped-1" class="nav-link" data-scroll-target="#paneled-and-grouped-1"> <span class="header-section-number">9.6.4</span> Paneled and grouped</a></li>
+  <li><a href="#ungrouped-2" id="toc-ungrouped-2" class="nav-link" data-scroll-target="#ungrouped-2"><span class="toc-section-number">9.6.1</span>  Ungrouped</a></li>
+  <li><a href="#paneled-1" id="toc-paneled-1" class="nav-link" data-scroll-target="#paneled-1"><span class="toc-section-number">9.6.2</span>  Paneled</a></li>
+  <li><a href="#grouped-by-study-1" id="toc-grouped-by-study-1" class="nav-link" data-scroll-target="#grouped-by-study-1"><span class="toc-section-number">9.6.3</span>  Grouped (by study)</a></li>
+  <li><a href="#paneled-and-grouped-1" id="toc-paneled-and-grouped-1" class="nav-link" data-scroll-target="#paneled-and-grouped-1"><span class="toc-section-number">9.6.4</span>  Paneled and grouped</a></li>
   </ul></li>
-  <li><a href="#long-continuous-table" id="toc-long-continuous-table" class="nav-link" data-scroll-target="#long-continuous-table"> <span class="header-section-number">9.7</span> Long continuous table</a>
+  <li><a href="#long-continuous-table" id="toc-long-continuous-table" class="nav-link" data-scroll-target="#long-continuous-table"><span class="toc-section-number">9.7</span>  Long continuous table</a>
   <ul class="collapse">
-  <li><a href="#ungrouped-3" id="toc-ungrouped-3" class="nav-link" data-scroll-target="#ungrouped-3"> <span class="header-section-number">9.7.1</span> Ungrouped</a></li>
-  <li><a href="#paneled-2" id="toc-paneled-2" class="nav-link" data-scroll-target="#paneled-2"> <span class="header-section-number">9.7.2</span> Paneled</a></li>
+  <li><a href="#ungrouped-3" id="toc-ungrouped-3" class="nav-link" data-scroll-target="#ungrouped-3"><span class="toc-section-number">9.7.1</span>  Ungrouped</a></li>
+  <li><a href="#paneled-2" id="toc-paneled-2" class="nav-link" data-scroll-target="#paneled-2"><span class="toc-section-number">9.7.2</span>  Paneled</a></li>
   </ul></li>
-  <li><a href="#demographics-table" id="toc-demographics-table" class="nav-link" data-scroll-target="#demographics-table"> <span class="header-section-number">9.8</span> Demographics table</a>
+  <li><a href="#demographics-table" id="toc-demographics-table" class="nav-link" data-scroll-target="#demographics-table"><span class="toc-section-number">9.8</span>  Demographics table</a>
   <ul class="collapse">
-  <li><a href="#with-span" id="toc-with-span" class="nav-link" data-scroll-target="#with-span"> <span class="header-section-number">9.8.1</span> With span</a></li>
-  <li><a href="#no-span" id="toc-no-span" class="nav-link" data-scroll-target="#no-span"> <span class="header-section-number">9.8.2</span> No span</a></li>
-  <li><a href="#no-span-not-paneled" id="toc-no-span-not-paneled" class="nav-link" data-scroll-target="#no-span-not-paneled"> <span class="header-section-number">9.8.3</span> No span, not paneled</a></li>
-  <li><a href="#no-summary-2" id="toc-no-summary-2" class="nav-link" data-scroll-target="#no-summary-2"> <span class="header-section-number">9.8.4</span> No summary</a></li>
+  <li><a href="#with-span" id="toc-with-span" class="nav-link" data-scroll-target="#with-span"><span class="toc-section-number">9.8.1</span>  With span</a></li>
+  <li><a href="#no-span" id="toc-no-span" class="nav-link" data-scroll-target="#no-span"><span class="toc-section-number">9.8.2</span>  No span</a></li>
+  <li><a href="#no-span-not-paneled" id="toc-no-span-not-paneled" class="nav-link" data-scroll-target="#no-span-not-paneled"><span class="toc-section-number">9.8.3</span>  No span, not paneled</a></li>
+  <li><a href="#no-summary-2" id="toc-no-summary-2" class="nav-link" data-scroll-target="#no-summary-2"><span class="toc-section-number">9.8.4</span>  No summary</a></li>
   </ul></li>
-  <li><a href="#customized-summary-functions" id="toc-customized-summary-functions" class="nav-link" data-scroll-target="#customized-summary-functions"> <span class="header-section-number">9.9</span> Customized summary functions</a>
+  <li><a href="#customized-summary-functions" id="toc-customized-summary-functions" class="nav-link" data-scroll-target="#customized-summary-functions"><span class="toc-section-number">9.9</span>  Customized summary functions</a>
   <ul class="collapse">
-  <li><a href="#continuous-long-table" id="toc-continuous-long-table" class="nav-link" data-scroll-target="#continuous-long-table"> <span class="header-section-number">9.9.1</span> Continuous long table</a></li>
-  <li><a href="#continuous-wide-table" id="toc-continuous-wide-table" class="nav-link" data-scroll-target="#continuous-wide-table"> <span class="header-section-number">9.9.2</span> Continuous wide table</a></li>
+  <li><a href="#continuous-long-table" id="toc-continuous-long-table" class="nav-link" data-scroll-target="#continuous-long-table"><span class="toc-section-number">9.9.1</span>  Continuous long table</a></li>
+  <li><a href="#continuous-wide-table" id="toc-continuous-wide-table" class="nav-link" data-scroll-target="#continuous-wide-table"><span class="toc-section-number">9.9.2</span>  Continuous wide table</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/metrumresearchgroup/pmt-book/blob/main/pmtable.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/metrumresearchgroup/pmt-book/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
@@ -355,12 +365,7 @@ background: #0082b4;
 <span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">stable</span>(<span class="at">notes =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <p>Alternatively, you can use the <code>table</code> argument to enter rename info. Note that <code>table</code> is a list that should have names that match up with columns in the data frame and values that are the new names</p>
@@ -371,12 +376,7 @@ background: #0082b4;
 <span id="cb4-4"><a href="#cb4-4"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb4-5"><a href="#cb4-5"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -409,12 +409,7 @@ background: #0082b4;
 <span id="cb5-11"><a href="#cb5-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb5-12"><a href="#cb5-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -436,12 +431,7 @@ background: #0082b4;
 <span id="cb6-10"><a href="#cb6-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb6-11"><a href="#cb6-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -459,12 +449,7 @@ background: #0082b4;
 <span id="cb7-9"><a href="#cb7-9"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb7-10"><a href="#cb7-10"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -481,12 +466,7 @@ background: #0082b4;
 <span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 <div class="cell">
@@ -494,12 +474,7 @@ background: #0082b4;
 <span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -525,12 +500,7 @@ background: #0082b4;
 <span id="cb11-9"><a href="#cb11-9"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb11-10"><a href="#cb11-10"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -552,12 +522,7 @@ background: #0082b4;
 <span id="cb12-10"><a href="#cb12-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb12-11"><a href="#cb12-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -576,12 +541,7 @@ background: #0082b4;
 <span id="cb13-10"><a href="#cb13-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb13-11"><a href="#cb13-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -601,12 +561,7 @@ background: #0082b4;
 <span id="cb14-11"><a href="#cb14-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb14-12"><a href="#cb14-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -627,12 +582,7 @@ background: #0082b4;
 <span id="cb15-12"><a href="#cb15-12"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb15-13"><a href="#cb15-13"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -657,12 +607,7 @@ background: #0082b4;
 <span id="cb16-9"><a href="#cb16-9"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb16-10"><a href="#cb16-10"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/ungrouped-long-categorical-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/ungrouped-long-categorical-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -681,12 +626,7 @@ background: #0082b4;
 <span id="cb17-10"><a href="#cb17-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb17-11"><a href="#cb17-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -706,12 +646,7 @@ background: #0082b4;
 <span id="cb18-11"><a href="#cb18-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb18-12"><a href="#cb18-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -731,12 +666,7 @@ background: #0082b4;
 <span id="cb19-11"><a href="#cb19-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb19-12"><a href="#cb19-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -762,12 +692,7 @@ background: #0082b4;
 <span id="cb20-10"><a href="#cb20-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb20-11"><a href="#cb20-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -787,12 +712,7 @@ background: #0082b4;
 <span id="cb21-11"><a href="#cb21-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb21-12"><a href="#cb21-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -812,12 +732,7 @@ background: #0082b4;
 <span id="cb22-11"><a href="#cb22-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb22-12"><a href="#cb22-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -838,12 +753,7 @@ background: #0082b4;
 <span id="cb23-12"><a href="#cb23-12"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb23-13"><a href="#cb23-13"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -869,12 +779,7 @@ background: #0082b4;
 <span id="cb24-10"><a href="#cb24-10"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb24-11"><a href="#cb24-11"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -894,12 +799,7 @@ background: #0082b4;
 <span id="cb25-11"><a href="#cb25-11"></a>  <span class="at">output_file =</span> <span class="st">"test.tex"</span></span>
 <span id="cb25-12"><a href="#cb25-12"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -923,12 +823,7 @@ background: #0082b4;
 <span id="cb26-5"><a href="#cb26-5"></a>  <span class="at">span =</span> <span class="fu">c</span>(<span class="at">Study =</span> <span class="st">"STUDYf"</span>)</span>
 <span id="cb26-6"><a href="#cb26-6"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -946,12 +841,7 @@ background: #0082b4;
 <span id="cb27-6"><a href="#cb27-6"></a>  <span class="at">cols_cat =</span> <span class="st">"SEXf, CPf"</span></span>
 <span id="cb27-7"><a href="#cb27-7"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>(<span class="at">note_config =</span> mini) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -975,12 +865,7 @@ background: #0082b4;
 <span id="cb28-12"><a href="#cb28-12"></a>  )</span>
 <span id="cb28-13"><a href="#cb28-13"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-56-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -995,12 +880,7 @@ background: #0082b4;
 <span id="cb29-6"><a href="#cb29-6"></a>  <span class="at">summarize_all =</span> <span class="cn">FALSE</span></span>
 <span id="cb29-7"><a href="#cb29-7"></a>) <span class="sc">%&gt;%</span> <span class="fu">stable</span>() <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pmtable_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="878"></p>
-<p></p><figcaption aria-hidden="true" class="figure-caption"></figcaption><p></p>
-</figure>
-</div>
+<p><img src="pmtable_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="878"></p>
 </div>
 </div>
 </section>
@@ -1093,6 +973,24 @@ background: #0082b4;
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1114,7 +1012,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -1142,31 +1057,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      let href = ref.getAttribute('href');
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
