@@ -185,7 +185,7 @@ background: #0082b4;
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/metrumresearchgroup/pmt-book"><i class="bi bi-github" role="img" aria-label="Source Code">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -304,14 +304,11 @@ background: #0082b4;
 <h2 data-number="3.1" class="anchored" data-anchor-id="syntax"><span class="header-section-number">3.1</span> Syntax</h2>
 <p>To panel a table by <code>STUDY</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">stable</span>(<span class="fu">stdata</span>(), <span class="at">panel =</span> <span class="st">"STUDY"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()) <span class="sc">%&gt;%</span> <span class="fu">st_panel</span>(<span class="st">"STUDY"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To set a prefix for the panel header:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">stable</span>(</span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">stdata</span>(), </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDY"</span>, <span class="at">prefix =</span> <span class="st">"Study: "</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()) <span class="sc">%&gt;%</span> <span class="fu">st_panel</span>(<span class="st">"STUDY"</span>, <span class="at">prefix =</span> <span class="st">"Study:"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="basics" class="level2" data-number="3.2">
@@ -346,7 +343,9 @@ background: #0082b4;
 </div>
 <p>Then we pass into <code>stable()</code> and name the paneling column</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">stable</span>(smcars, <span class="at">panel =</span> <span class="st">"carb"</span>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">st_new</span>(smcars) <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">st_panel</span>(<span class="st">"carb"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="panel_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="878"></p>
 </div>
@@ -354,10 +353,9 @@ background: #0082b4;
 <p>Now, all of the <code>carb==1</code> rows are grouped with the heading <code>1</code> and similarly the <code>carb==2</code> rows are grouped with the heading <code>2</code> in bold.</p>
 <p>This is ok, but a more informative heading would be helpful. To do this, we’ll call <code>as.panel()</code> to both name the panel column and set some options</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">stable</span>(</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  smcars, </span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"carb"</span>, <span class="at">prefix =</span> <span class="st">"carb: "</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">st_new</span>(smcars) <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">st_panel</span>(<span class="st">"carb"</span>, <span class="at">prefix =</span> <span class="st">"Carb:"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="panel_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="878"></p>
 </div>
@@ -379,10 +377,10 @@ background: #0082b4;
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="jut"><span class="header-section-number">3.3.1</span> <code>jut</code></h3>
 <p>We recommend an value more than 1, otherwise the table looks mis-aligned rather than creating offset between panel row and underlying data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">stable</span>(</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">stdata</span>(), </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">panel =</span> <span class="fu">as.panel</span>(<span class="st">"STUDY"</span>, <span class="at">jut =</span> <span class="dv">1</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>) <span class="sc">%&gt;%</span> <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">stdata</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">st_new</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">st_panel</span>(<span class="st">"STUDY"</span>, <span class="at">jut =</span> <span class="fl">1.5</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">stable</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="panel_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="878"></p>
 </div>

@@ -3,30 +3,27 @@ title: Panel
 subtitle: Group table rows in panels.
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
+```
+
 ## Syntax
 
 To panel a table by `STUDY` 
 
 ```{r, eval = FALSE}
-stable(stdata(), panel = "STUDY") 
+st_new(stdata()) %>% st_panel("STUDY") 
 ```
 
 To set a prefix for the panel header:
 
 ```{r, eval = FALSE}
-stable(
-  stdata(), 
-  panel = as.panel("STUDY", prefix = "Study: ")
-)
+st_new(stdata()) %>% st_panel("STUDY", prefix = "Study:") 
 ```
 
 
 ## Basics
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(comment = '.')
-source("global.R")
-```
 
 ```{r, include = FALSE}
 smcars <- mutate(mtcars, name = rownames(mtcars))
@@ -48,7 +45,9 @@ smcars
 Then we pass into `stable()` and name the paneling column
 
 ```{r}
-stable(smcars, panel = "carb") %>% st_as_image()
+st_new(smcars) %>%
+  st_panel("carb") %>% 
+  stable() %>% st_as_image()
 ```
 
 Now, all of the `carb==1` rows are grouped with the heading `1` and similarly 
@@ -58,10 +57,9 @@ This is ok, but a more informative heading would be helpful. To do this, we'll
 call `as.panel()` to both name the panel column and set some options
 
 ```{r}
-stable(
-  smcars, 
-  panel = as.panel("carb", prefix = "carb: ")
-) %>% st_as_image()
+st_new(smcars) %>%
+  st_panel("carb", prefix = "Carb:") %>% 
+  stable() %>% st_as_image()
 ```
 
 Note that the prefix is completely specified by the user (including any spaces
@@ -89,10 +87,10 @@ We recommend an value more than 1, otherwise the table looks mis-aligned rather
 than creating offset between panel row and underlying data.
 
 ```{r}
-stable(
-  stdata(), 
-  panel = as.panel("STUDY", jut = 1)
-) %>% st_as_image()
+stdata() %>% 
+  st_new() %>%
+  st_panel("STUDY", jut = 1.5) %>% 
+  stable() %>% st_as_image()
 ```
 
 This feature requires pmtables 0.4.1 or greater.
