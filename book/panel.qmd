@@ -65,7 +65,7 @@ stable(
 ```
 
 Note that the prefix is completely specified by the user (including any spaces
-or a colon.
+or a colon).
 
 
 ## panel: additional customization 
