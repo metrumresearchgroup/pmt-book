@@ -54,7 +54,7 @@ smcars %>% stable(panel = as.panel("carb", prefix = "carb: ")) %>% st_asis()
 ```
 
 Note that the prefix is completely specified by the user (including any spaces
-or a colon.
+or a colon).
 
 
 ## panel: additional customization 
