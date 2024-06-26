@@ -41,12 +41,12 @@ So the general format for an acronym is
 ```
 
 In this example, 
-```{r}
-readLines("glossary.tex")[33]
+```{r, eval = FALSE, code = readLines("glossary.tex")[33]}
+
 ```
 - `CLF` is the label
 - `CL/F` is the abbreviation
-- `apparent clearance after oral dosing` is the definition
+- `apparent clearance` is the definition
 
 We read in this glossary file with `read_glossary()`
 
@@ -127,7 +127,7 @@ Pass in the glossary object and the unquoted names you want to select out of
 the glossary 
 
 ```{r}
-glossary_notes(glob, WT, CRCL, ALB, SCR)
+glossary_notes(glob, WT, ALB) 
 ```
 This generates a `;`-separated string with `abbreviation: definition` format 
 for all the entries you selected. This can be added to a table as notes:
@@ -189,12 +189,32 @@ glob2
 ```
 ### Combine two glossary objects
 
-Use the `c` function
+Use the `c` function.
 
 ```{r}
 glob3 <- c(glob2, glo)
 
 glob3
+```
+
+The labels in the objects you are combining must be unique. You will get an 
+error if you try combining two objects which contain the same label
+
+```{r}
+x <- glo
+y <- as_glossary(m = "mango", b = "blueberry")
+try(c(x,y))
+```
+In this case you can drop the duplicate name from one of the objects
+
+```{r}
+intersect(names(x), names(y))
+
+z <- select_glossary(glo, -b)
+
+z
+
+c(z, y)
 ```
 
 

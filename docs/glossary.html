@@ -350,21 +350,18 @@ background: #0082b4;
 </div>
 <p>In this example,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">readLines</span>(<span class="st">"glossary.tex"</span>)[<span class="dv">33</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>. [1] "\\newacronym[sort=CLF]{CLF}{CL/F}{apparent clearance after oral dosing}"</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>\newacronym[sort<span class="ot">=</span>CLF]{CLF}{CL<span class="sc">/</span>F}{apparent clearance}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>CLF</code> is the label</li>
 <li><code>CL/F</code> is the abbreviation</li>
-<li><code>apparent clearance after oral dosing</code> is the definition</li>
+<li><code>apparent clearance</code> is the definition</li>
 </ul>
 <p>We read in this glossary file with <code>read_glossary()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>glob <span class="ot">&lt;-</span> <span class="fu">read_glossary</span>(<span class="st">"glossary.tex"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2"></a></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">head</span>(glob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>glob <span class="ot">&lt;-</span> <span class="fu">read_glossary</span>(<span class="st">"glossary.tex"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">head</span>(glob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. AAG  : alpha-1-acid glycoprotein
 . AIC  : Akaike information criterion
@@ -376,7 +373,7 @@ background: #0082b4;
 </div>
 <p>When printing the object, you get the label and the abbreviation. To see the full entry, use <code>$</code> to extract an entry</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>glob<span class="sc">$</span>Cmax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>glob<span class="sc">$</span>Cmax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. maximum concentration in the dosing interval (Cmax)</code></pre>
 </div>
@@ -387,18 +384,18 @@ background: #0082b4;
 <h3 data-number="9.1.2" class="anchored" data-anchor-id="read-in-a-glossary-file---yaml"><span class="header-section-number">9.1.2</span> Read in a glossary file - Yaml</h3>
 <p>Users can also code their own glossary files in yaml format.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">CLF</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> CL/F</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent clearance after oral dosing</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">V2F</span><span class="kw">:</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> V2/F</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent central volume of distribution after oral dosing</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="fu">QF</span><span class="kw">:</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> Q/F</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent (oral) intercompartmental clearance</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="fu">V3F</span><span class="kw">:</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> V3/F</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent peripheral volume of distribution after oral dosing</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">CLF</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> CL/F</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent clearance after oral dosing</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="fu">V2F</span><span class="kw">:</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> V2/F</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent central volume of distribution</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="fu">QF</span><span class="kw">:</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> Q/F</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent intercompartmental clearance</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="fu">V3F</span><span class="kw">:</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="at">  </span><span class="fu">abb</span><span class="kw">:</span><span class="at"> V3/F</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="at">  </span><span class="fu">def</span><span class="kw">:</span><span class="at"> apparent peripheral volume of distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For this format,</p>
 <ol type="1">
@@ -408,13 +405,13 @@ background: #0082b4;
 </ol>
 <p>We can read the glossary file in yaml format again with <code>read_glossary()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>yam <span class="ot">&lt;-</span> <span class="fu">read_glossary</span>(<span class="st">"glossary.yaml"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a>yam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>yam <span class="ot">&lt;-</span> <span class="fu">read_glossary</span>(<span class="st">"glossary.yaml"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>yam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. CLF : apparent clearance after oral dosing
-. V2F : apparent central volume of distribution ...
-. QF  : apparent (oral) intercompartmental clear...
+. V2F : apparent central volume of distribution
+. QF  : apparent intercompartmental clearance
 . V3F : apparent peripheral volume of distributi...</code></pre>
 </div>
 </div>
@@ -423,9 +420,9 @@ background: #0082b4;
 <h3 data-number="9.1.3" class="anchored" data-anchor-id="create-with-r-constructor"><span class="header-section-number">9.1.3</span> Create with R constructor</h3>
 <p>Use the <code>as_glossary()</code> function to create a glossary object in your R session</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>glo <span class="ot">&lt;-</span> <span class="fu">as_glossary</span>(<span class="at">a =</span> <span class="st">"apple"</span>, <span class="at">b =</span> <span class="st">"banana"</span>, <span class="at">g =</span> <span class="st">"grape"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2"></a></span>
-<span id="cb12-3"><a href="#cb12-3"></a>glo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>glo <span class="ot">&lt;-</span> <span class="fu">as_glossary</span>(<span class="at">a =</span> <span class="st">"apple"</span>, <span class="at">b =</span> <span class="st">"banana"</span>, <span class="at">g =</span> <span class="st">"grape"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a>glo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. a : apple
 . b : banana
@@ -434,22 +431,22 @@ background: #0082b4;
 </div>
 <p>Alternatively, you can coerce a list</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="st">"apple"</span>, <span class="at">b =</span> <span class="st">"banana"</span>, <span class="at">g =</span> <span class="st">"grape"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2"></a></span>
-<span id="cb14-3"><a href="#cb14-3"></a>glo <span class="ot">&lt;-</span> <span class="fu">as_glossary</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="st">"apple"</span>, <span class="at">b =</span> <span class="st">"banana"</span>, <span class="at">g =</span> <span class="st">"grape"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a></span>
+<span id="cb13-3"><a href="#cb13-3"></a>glo <span class="ot">&lt;-</span> <span class="fu">as_glossary</span>(l)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>In this object, the label and the abbreviation are assumed to be the same.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>glo<span class="sc">$</span>g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>glo<span class="sc">$</span>g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. grape (g)</code></pre>
 </div>
 </div>
 <p>To update the abbreviation,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>glo <span class="ot">&lt;-</span> <span class="fu">update_abbrev</span>(glo, <span class="at">g =</span> <span class="st">"gr"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a>glo<span class="sc">$</span>g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>glo <span class="ot">&lt;-</span> <span class="fu">update_abbrev</span>(glo, <span class="at">g =</span> <span class="st">"gr"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a>glo<span class="sc">$</span>g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. grape (gr)</code></pre>
 </div>
@@ -461,19 +458,19 @@ background: #0082b4;
 <p>Once the glossary object is created, you can form table notes using the <code>glossary_notes()</code> function.</p>
 <p>Pass in the glossary object and the unquoted names you want to select out of the glossary</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">glossary_notes</span>(glob, WT, CRCL, ALB, SCR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">glossary_notes</span>(glob, WT, ALB) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>. [1] "WT: weight; CRCL: Cockroft-Gault calculated creatinine clearance based on total body weight; ALB: albumin; SCR: serum creatinine"</code></pre>
+<pre><code>. [1] "WT: weight; ALB: albumin"</code></pre>
 </div>
 </div>
 <p>This generates a <code>;</code>-separated string with <code>abbreviation: definition</code> format for all the entries you selected. This can be added to a table as notes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>notes <span class="ot">&lt;-</span> <span class="fu">glossary_notes</span>(glob, WT, ALB, SCR)</span>
-<span id="cb21-2"><a href="#cb21-2"></a></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">st_notes</span>(notes) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-5"><a href="#cb21-5"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb21-6"><a href="#cb21-6"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>notes <span class="ot">&lt;-</span> <span class="fu">glossary_notes</span>(glob, WT, ALB, SCR)</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">st_notes</span>(notes) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="#cb20-6"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -486,10 +483,10 @@ background: #0082b4;
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="inline"><span class="header-section-number">9.2.1</span> Inline</h3>
 <p>Notes can also be attached to a table inline with <code>st_notes_glo()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">st_notes_glo</span>(glob, WT, CRCL, ALB, SCR) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">st_notes_glo</span>(glob, WT, CRCL, ALB, SCR) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -500,10 +497,10 @@ background: #0082b4;
 </div>
 <p>Notice in this example that the notes are longer than the longest line in the table and the formatting looks off. In this case, use the <code>width</code> argument to detach the notes into a minipage arrangement</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href="#cb23-2"></a>  <span class="fu">st_notes_glo</span>(glob, WT, CRCL, ALB, SCR, <span class="at">width =</span> <span class="fl">0.9</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb23-4"><a href="#cb23-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">st_new</span>(<span class="fu">stdata</span>()[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">st_notes_glo</span>(glob, WT, CRCL, ALB, SCR, <span class="at">width =</span> <span class="fl">0.9</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="#cb22-3"></a>  <span class="fu">stable</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">st_as_image</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -519,13 +516,13 @@ background: #0082b4;
 <section id="update-the-abbreviation" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="update-the-abbreviation"><span class="header-section-number">9.3.1</span> Update the abbreviation</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>glob<span class="sc">$</span>hl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>glob<span class="sc">$</span>hl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. elimination half-life (\ensuremath{t_{1/2}})</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>glob <span class="ot">&lt;-</span> <span class="fu">update_abbrev</span>(glob, <span class="at">hl =</span> <span class="st">"t1/2"</span>)</span>
-<span id="cb26-2"><a href="#cb26-2"></a></span>
-<span id="cb26-3"><a href="#cb26-3"></a>glob<span class="sc">$</span>hl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>glob <span class="ot">&lt;-</span> <span class="fu">update_abbrev</span>(glob, <span class="at">hl =</span> <span class="st">"t1/2"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2"></a></span>
+<span id="cb25-3"><a href="#cb25-3"></a>glob<span class="sc">$</span>hl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. elimination half-life (t1/2)</code></pre>
 </div>
@@ -538,9 +535,9 @@ background: #0082b4;
 <section id="select-certain-items-in-a-glossary-object" class="level3" data-number="9.3.3">
 <h3 data-number="9.3.3" class="anchored" data-anchor-id="select-certain-items-in-a-glossary-object"><span class="header-section-number">9.3.3</span> Select certain items in a glossary object</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>glob2 <span class="ot">&lt;-</span> <span class="fu">select_glossary</span>(glob, AIC, BIC)</span>
-<span id="cb28-2"><a href="#cb28-2"></a></span>
-<span id="cb28-3"><a href="#cb28-3"></a>glob2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>glob2 <span class="ot">&lt;-</span> <span class="fu">select_glossary</span>(glob, AIC, BIC)</span>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a>glob2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. AIC : Akaike information criterion
 . BIC : Bayesian information criterion</code></pre>
@@ -549,11 +546,11 @@ background: #0082b4;
 </section>
 <section id="combine-two-glossary-objects" class="level3" data-number="9.3.4">
 <h3 data-number="9.3.4" class="anchored" data-anchor-id="combine-two-glossary-objects"><span class="header-section-number">9.3.4</span> Combine two glossary objects</h3>
-<p>Use the <code>c</code> function</p>
+<p>Use the <code>c</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>glob3 <span class="ot">&lt;-</span> <span class="fu">c</span>(glob2, glo)</span>
-<span id="cb30-2"><a href="#cb30-2"></a></span>
-<span id="cb30-3"><a href="#cb30-3"></a>glob3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>glob3 <span class="ot">&lt;-</span> <span class="fu">c</span>(glob2, glo)</span>
+<span id="cb29-2"><a href="#cb29-2"></a></span>
+<span id="cb29-3"><a href="#cb29-3"></a>glob3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. AIC : Akaike information criterion
 . BIC : Bayesian information criterion
@@ -562,11 +559,41 @@ background: #0082b4;
 . g   : grape</code></pre>
 </div>
 </div>
+<p>The labels in the objects you are combining must be unique. You will get an error if you try combining two objects which contain the same label</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>x <span class="ot">&lt;-</span> glo</span>
+<span id="cb31-2"><a href="#cb31-2"></a>y <span class="ot">&lt;-</span> <span class="fu">as_glossary</span>(<span class="at">m =</span> <span class="st">"mango"</span>, <span class="at">b =</span> <span class="st">"blueberry"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="fu">try</span>(<span class="fu">c</span>(x,y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. Error in c.glossary(x, y) : Arguments cannot share any names.</code></pre>
+</div>
+</div>
+<p>In this case you can drop the duplicate name from one of the objects</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">intersect</span>(<span class="fu">names</span>(x), <span class="fu">names</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. [1] "b"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>z <span class="ot">&lt;-</span> <span class="fu">select_glossary</span>(glo, <span class="sc">-</span>b)</span>
+<span id="cb35-2"><a href="#cb35-2"></a></span>
+<span id="cb35-3"><a href="#cb35-3"></a>z</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. a : apple
+. g : grape</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">c</span>(z, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>. a : apple
+. g : grape
+. m : mango
+. b : blueberry</code></pre>
+</div>
+</div>
 </section>
 <section id="get-the-glossary-as-a-plain-r-list" class="level3" data-number="9.3.5">
 <h3 data-number="9.3.5" class="anchored" data-anchor-id="get-the-glossary-as-a-plain-r-list"><span class="header-section-number">9.3.5</span> Get the glossary as a plain R list</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">as.list</span>(glob)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="fu">as.list</span>(glob)[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. $AAG
 . $AAG$abbreviation
@@ -580,7 +607,7 @@ background: #0082b4;
 <section id="get-the-glossary-object-as-a-data-frame" class="level3" data-number="9.3.6">
 <h3 data-number="9.3.6" class="anchored" data-anchor-id="get-the-glossary-object-as-a-data-frame"><span class="header-section-number">9.3.6</span> Get the glossary object as a data frame</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">as.data.frame</span>(glo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">as.data.frame</span>(glo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>.   label definition abbreviation
 . 1     a      apple            a
@@ -593,20 +620,20 @@ background: #0082b4;
 <h3 data-number="9.3.7" class="anchored" data-anchor-id="view-the-glossary-object"><span class="header-section-number">9.3.7</span> View the glossary object</h3>
 <p>You’ll have to coerce to data frame first</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">View</span>(<span class="fu">as.data.frame</span>(glo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">View</span>(<span class="fu">as.data.frame</span>(glo))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="extract-one-glossary-entry" class="level3" data-number="9.3.8">
 <h3 data-number="9.3.8" class="anchored" data-anchor-id="extract-one-glossary-entry"><span class="header-section-number">9.3.8</span> Extract one glossary entry</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>glo<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>glo<span class="sc">$</span>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. apple (a)</code></pre>
 </div>
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>glo[[<span class="st">"a"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>glo[[<span class="st">"a"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. apple (a)</code></pre>
 </div>
@@ -615,7 +642,7 @@ background: #0082b4;
 <section id="extract-multiple-glossary-entries" class="level3" data-number="9.3.9">
 <h3 data-number="9.3.9" class="anchored" data-anchor-id="extract-multiple-glossary-entries"><span class="header-section-number">9.3.9</span> Extract multiple glossary entries</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">select_glossary</span>(glo, a, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">select_glossary</span>(glo, a, g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. a : apple
 . g : grape</code></pre>
@@ -623,7 +650,7 @@ background: #0082b4;
 </div>
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>glo[<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"g"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>glo[<span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"g"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. b : banana
 . g : grape</code></pre>
@@ -633,7 +660,7 @@ background: #0082b4;
 <section id="extract-the-abbreviations" class="level3" data-number="9.3.10">
 <h3 data-number="9.3.10" class="anchored" data-anchor-id="extract-the-abbreviations"><span class="header-section-number">9.3.10</span> Extract the abbreviations</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(glob, <span class="st">"abbreviation"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(glob, <span class="st">"abbreviation"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. $AAG
 . [1] "AAG"
@@ -646,7 +673,7 @@ background: #0082b4;
 <section id="extract-the-definitions" class="level3" data-number="9.3.11">
 <h3 data-number="9.3.11" class="anchored" data-anchor-id="extract-the-definitions"><span class="header-section-number">9.3.11</span> Extract the definitions</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(glob, <span class="st">"definition"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>purrr<span class="sc">::</span><span class="fu">map</span>(glob, <span class="st">"definition"</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>. $AAG
 . [1] "alpha-1-acid glycoprotein"
