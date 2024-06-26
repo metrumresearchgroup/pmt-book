@@ -1,0 +1,254 @@
+---
+title: Glossary
+subtitle: Create table footnotes from glossary files
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(comment = '.')
+source("global.R")
+```
+
+Users can read in a tex or yaml-formatted glossary file and use those 
+abbreviations and definitions to form table footnotes. The goal is consistency
+across the project in how terms are defined. 
+
+
+## Create a glossary object
+
+Information from a glossary is stored in a glossary object. The object is a list
+that contains glossary entries. The glossary object may be created either by 
+reading a glossary file or through a constructor function in R. 
+
+### Read in a glossary file - TeX
+
+Glossary files can be formatted as a collection of acronyms as you would 
+normally have in a `glossary.tex` file. Something like this:
+
+```{r, code = readLines("glossary.tex")[10:13], eval = FALSE}
+
+```
+
+Acronyms in TeX glossary files have 3 parts: 
+
+1. a label
+2. an abbreviation
+3. a definition
+
+So the general format for an acronym is 
+
+```{r, eval = FALSE}
+\newacronym{label}{abbreviation}{definition}
+```
+
+In this example, 
+```{r}
+readLines("glossary.tex")[33]
+```
+- `CLF` is the label
+- `CL/F` is the abbreviation
+- `apparent clearance after oral dosing` is the definition
+
+We read in this glossary file with `read_glossary()`
+
+```{r}
+glob <- read_glossary("glossary.tex")
+
+head(glob)
+```
+
+When printing the object, you get the label and the abbreviation. To see the 
+full entry, use `$` to extract an entry
+
+```{r}
+glob$Cmax
+```
+Here, we get the definition and the abbreviation printed to the console. 
+
+### Read in a glossary file - Yaml
+
+Users can also code their own glossary files in yaml format. 
+
+```{yaml, code = readLines("glossary.yaml"), eval = FALSE}
+
+```
+
+For this format, 
+
+1. Put the label in the outer level (e.g., `CLF` or `V2F`)
+2. Put the abbreviation under `abb`
+3. Put the definition under `def`
+
+
+We can read the glossary file in yaml format again with `read_glossary()`
+```{r}
+yam <- read_glossary("glossary.yaml")
+
+yam
+```
+
+### Create with R constructor
+
+Use the `as_glossary()` function to create a glossary object in your R session
+
+```{r}
+glo <- as_glossary(a = "apple", b = "banana", g = "grape")
+
+glo
+```
+
+Alternatively, you can coerce a list
+
+```{r}
+l <- list(a = "apple", b = "banana", g = "grape")
+
+glo <- as_glossary(l)
+```
+
+In this object, the label and the abbreviation are assumed to be the same. 
+
+```{r}
+glo$g
+```
+
+To update the abbreviation, 
+
+```{r}
+glo <- update_abbrev(glo, g = "gr")
+
+glo$g
+```
+
+## Create table notes
+
+Once the glossary object is created, you can form table notes using the 
+`glossary_notes()` function. 
+
+Pass in the glossary object and the unquoted names you want to select out of 
+the glossary 
+
+```{r}
+glossary_notes(glob, WT, CRCL, ALB, SCR)
+```
+This generates a `;`-separated string with `abbreviation: definition` format 
+for all the entries you selected. This can be added to a table as notes:
+
+```{r}
+notes <- glossary_notes(glob, WT, ALB, SCR)
+
+st_new(stdata()[1:3,]) %>% 
+  st_notes(notes) %>% 
+  stable() %>% 
+  st_as_image()
+```
+
+### Inline
+
+Notes can also be attached to a table inline with `st_notes_glo()`
+
+```{r}
+st_new(stdata()[1:3,]) %>% 
+  st_notes_glo(glob, WT, CRCL, ALB, SCR) %>% 
+  stable() %>% 
+  st_as_image()
+```
+
+Notice in this example that the notes are longer than the longest line in 
+the table and the formatting looks off. In this case, use the `width` argument
+to detach the notes into a minipage arrangement
+
+```{r}
+st_new(stdata()[1:3,]) %>% 
+  st_notes_glo(glob, WT, CRCL, ALB, SCR, width = 0.9) %>% 
+  stable() %>% 
+  st_as_image()
+```
+
+## Work with glossary objects
+
+### Update the abbreviation
+
+```{r}
+glob$hl
+
+glob <- update_abbrev(glob, hl = "t1/2")
+
+glob$hl
+```
+
+### Update the definition
+
+There is no api to update the definition. This change should be made in the 
+glossary file. 
+
+### Select certain items in a glossary object
+
+```{r}
+glob2 <- select_glossary(glob, AIC, BIC)
+
+glob2
+```
+### Combine two glossary objects
+
+Use the `c` function
+
+```{r}
+glob3 <- c(glob2, glo)
+
+glob3
+```
+
+
+### Get the glossary as a plain R list
+
+```{r}
+as.list(glob)[1]
+```
+### Get the glossary object as a data frame
+
+```{r}
+as.data.frame(glo)
+```
+
+### View the glossary object
+
+You'll have to coerce to data frame first
+
+```{r, eval = FALSE}
+View(as.data.frame(glo))
+```
+
+### Extract one glossary entry
+
+```{r}
+glo$a
+```
+or
+
+```{r}
+glo[["a"]]
+```
+
+### Extract multiple glossary entries
+
+```{r}
+select_glossary(glo, a, g)
+```
+or 
+
+```{r}
+glo[c("b", "g")]
+```
+
+
+### Extract the abbreviations
+
+```{r}
+purrr::map(glob, "abbreviation")[1:2]
+```
+
+### Extract the definitions
+
+```{r}
+purrr::map(glob, "definition")[1:2]
+```
+

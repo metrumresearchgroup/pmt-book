@@ -33,6 +33,7 @@ book:
     - pipe.qmd
     - preview.qmd
     - sanitize.qmd
+    - glossary.qmd
     - pmtable.qmd
   navbar: 
     background: white
