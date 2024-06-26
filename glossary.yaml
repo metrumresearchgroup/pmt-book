@@ -3,10 +3,10 @@ CLF:
   def: apparent clearance after oral dosing
 V2F:
   abb: V2/F
-  def: apparent central volume of distribution after oral dosing
+  def: apparent central volume of distribution
 QF:
   abb: Q/F
-  def: apparent (oral) intercompartmental clearance
+  def: apparent intercompartmental clearance
 V3F:
   abb: V3/F
-  def: apparent peripheral volume of distribution after oral dosing
+  def: apparent peripheral volume of distribution
